@@ -1,58 +1,101 @@
-# Statecraft Landing Page
+# Statecraft: The Situation Room 🏛️
 
-Statecraft is an immersive simulation designed for AP Government classrooms, moving beyond traditional lecturing to let students experience government through action.
+**Status:** 🟢 Live Production  
+**Live URL:** [https://statecraft-landing.vercel.app](https://statecraft-landing.vercel.app)
 
-## Project Overview
+Statecraft: The Situation Room is a high-fidelity, interactive landing page designed for the modern AP Government classroom. It transforms abstract constitutional concepts into a "Situation Room" experience, combining real-world data with immersive simulation gameplay.
 
-This is a modern landing page built with **Next.js**, **Tailwind CSS**, and **Framer Motion**. It features interactive components to showcase the core value propositions of the Statecraft curriculum.
+---
 
-### Key Components
+## 🧠 Architecture Overview: The "Neural Link"
 
-- **Crisis Simulator**: A visual representation of the immersive "situation room" experience students face.
-- **AI Firewall**: Showcases the safeguards and AI-driven guardrails integrated into the platform.
-- **Standards Mapper**: Demonstrates how the simulation aligns with AP Government educational standards.
-- **Statecraft TA**: (Under development) A teaching assistant component.
+This project utilizes a sophisticated automated loop to keep the "Intelligence Briefing" fresh and relevant without manual intervention:
 
-## Tech Stack
+1.  **Sensing (Google Trends):** A custom **Make.com** scenario monitors global and national trends via Google Trends.
+2.  **Reasoning (Gemini 1.5 Flash):** Relevant trends are processed through **Gemini 1.5 Flash** (via Make.com) to synthesize high-stakes educational briefings aligned with AP Gov curriculum.
+3.  **Persistence (Upstash Redis):** The synthesized "Intel" is pushed to a secure API endpoint and persisted in **Upstash Redis** (Phase 4 Storage).
+4.  **Presentation (Next.js + Vercel):** The frontend, built with **Next.js 14** and **Tailwind CSS**, polls the Redis database every 10 seconds to display live, interactive updates to users.
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
+---
 
-## Getting Started
+## 🛠️ Tech Stack
 
-### Prerequisites
+*   **Framework:** Next.js 14 (App Router)
+*   **Styling:** Tailwind CSS + Framer Motion (Animations)
+*   **Icons:** Lucide React
+*   **Database:** Upstash Redis
+*   **Deployment:** Vercel
+*   **Automation:** Make.com + Gemini API
 
-- Node.js (v18.17 or later)
-- npm, yarn, or pnpm
+---
 
-### Installation
+## 🔐 Environment Variables
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd statecraft-landing
-   ```
+To run this project locally, create a `.env.local` file and provide the following variables:
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+# Security key for the /api/intel endpoint
+CR_INTEL_SECRET_KEY=your_secret_key
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+# Upstash Redis Connection (Found in Upstash Console)
+UPSTASH_REDIS_REST_URL=https://your-database-url.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your_token
+```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+---
 
-## Project Structure
+## 🚀 Quick Start
 
-- `app/`: Next.js App Router files (routes, layouts, globals).
-- `components/`: Reusable React components, including the main feature sections.
-- `public/`: Static assets.
-- `tailwind.config.ts`: Tailwind CSS configuration (includes custom colors like `terminal-green` and `alert-red`).
+1.  **Clone and Install:**
+    ```bash
+    git clone https://github.com/BatDad7/statecraft-landing.git
+    cd statecraft-landing
+    npm install
+    ```
 
+2.  **Run Development Server:**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to view the application.
 
+3.  **Run Tests:**
+    ```bash
+    npm test
+    ```
+
+---
+
+## 📡 API Reference
+
+### `POST /api/intel`
+
+Updates the live intelligence feed on the landing page. Requires a Bearer Token in the `Authorization` header.
+
+**Headers:**
+*   `Authorization: Bearer <CR_INTEL_SECRET_KEY>`
+*   `Content-Type: application/json`
+
+**Body:**
+```json
+{
+  "headline": "Active Simulation: The Federal Budget Crisis (AP Unit 2)",
+  "date": "2025-12-22",
+  "activity": "Students are navigating legislative gridlock and executive veto points."
+}
+```
+
+**Response:** `200 OK`
+```json
+{
+  "success": true,
+  "message": "Secure Uplink Established & Persisted",
+  "data": { ... }
+}
+```
+
+---
+
+## 📜 License
+
+Project developed for Statecraft Simulations. All rights reserved.

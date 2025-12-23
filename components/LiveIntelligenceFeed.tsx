@@ -94,7 +94,12 @@ const LiveIntelligenceFeed = () => {
         </div>
 
         {/* Content Body */}
-        <div className="space-y-4">
+        <div 
+          className="space-y-4"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={headline}
@@ -103,6 +108,9 @@ const LiveIntelligenceFeed = () => {
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.4 }}
             >
+              {isNew && (
+                <span className="sr-only">New Intelligence Received:</span>
+              )}
               <h3 
                 id="dynamic-headline" 
                 className="text-2xl md:text-3xl font-serif font-bold text-white leading-tight"
