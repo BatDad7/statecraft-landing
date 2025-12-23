@@ -12,7 +12,7 @@ Statecraft: The Situation Room is a high-fidelity, interactive landing page desi
 This project utilizes a sophisticated automated loop to keep the "Intelligence Briefing" fresh and relevant without manual intervention:
 
 1.  **Sensing (Google Trends):** A custom **Make.com** scenario monitors global and national trends via Google Trends.
-2.  **Reasoning (Gemini 1.5 Flash):** Relevant trends are processed through **Gemini 1.5 Flash** (via Make.com) to synthesize high-stakes educational briefings aligned with AP Gov curriculum.
+2.  **Reasoning (Gemini 3 Flash Preview):** Relevant trends are processed through **Gemini 3 Flash Preview** (via Make.com) to synthesize high-stakes educational briefings aligned with AP Gov curriculum.
 3.  **Persistence (Upstash Redis):** The synthesized "Intel" is pushed to a secure API endpoint and persisted in **Upstash Redis** (Phase 4 Storage).
 4.  **Presentation (Next.js + Vercel):** The frontend, built with **Next.js 14** and **Tailwind CSS**, polls the Redis database every 10 seconds to display live, interactive updates to users.
 
