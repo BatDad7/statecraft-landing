@@ -15,7 +15,11 @@ export async function GET() {
       return NextResponse.json({
         headline: "Awaiting Satellite Uplink...",
         date: new Date().toISOString().split('T')[0],
-        activity: "Initializing secure connection to educational database..."
+        activity: "Initializing secure connection to educational database...",
+        ap_unit: "Unit 0",
+        concept: "Introduction",
+        foundational_doc: "Syllabus",
+        seo_slug: "awaiting-uplink"
       });
     }
 
@@ -38,32 +42,42 @@ export async function POST(request: NextRequest) {
   try {
     // 2. Extract Body
     const body = await request.json();
-    const { headline, date, activity } = body;
+    const { headline, date, activity, ap_unit, concept, foundational_doc, seo_slug } = body;
 
     // 3. Validation: Ensure all fields are valid strings
     if (
       typeof headline !== "string" || !headline.trim() ||
       typeof date !== "string" || !date.trim() ||
-      typeof activity !== "string" || !activity.trim()
+      typeof activity !== "string" || !activity.trim() ||
+      typeof ap_unit !== "string" || !ap_unit.trim() ||
+      typeof concept !== "string" || !concept.trim() ||
+      typeof foundational_doc !== "string" || !foundational_doc.trim() ||
+      typeof seo_slug !== "string" || !seo_slug.trim()
     ) {
-      return NextResponse.json({ error: "Invalid payload: headline, date, and activity are required." }, { status: 400 });
+      return NextResponse.json({ 
+        error: "Invalid payload: All fields (headline, date, activity, ap_unit, concept, foundational_doc, seo_slug) are required." 
+      }, { status: 400 });
     }
 
-    // Phase 4: Persistence with Upstash Redis
-    await redis.set("daily_intel", { headline, date, activity });
+    const payload = { headline, date, activity, ap_unit, concept, foundational_doc, seo_slug };
+
+    // Phase 4: Persistence with Upstash Redis (Dual-Write for Programmatic SEO)
+    // 1. Keep the homepage fast with the current intel
+    await redis.set("daily_intel", payload);
+    // 2. Archive the entry to build history/programmatic pages
+    await redis.lpush("intel_archive", payload);
 
     // 4. Action: Log and Return Success
-    console.log("--- SECURE INTEL UPLINK RECEIVED (PERSISTED) ---");
+    console.log("--- SECURE INTEL UPLINK RECEIVED (PERSISTED & ARCHIVED) ---");
     console.log("Headline:", headline);
-    console.log("Date:", date);
-    console.log("Activity:", activity);
-    console.log("------------------------------------------------");
+    console.log("SEO Slug:", seo_slug);
+    console.log("-----------------------------------------------------------");
 
     return NextResponse.json(
       { 
         success: true, 
         message: "Secure Uplink Established & Persisted", 
-        data: { headline, date, activity } 
+        data: payload 
       },
       { status: 200 }
     );

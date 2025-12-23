@@ -7,6 +7,9 @@ const LiveIntelligenceFeed = () => {
   const [headline, setHeadline] = useState("Awaiting Satellite Uplink...");
   const [date, setDate] = useState("YYYY-MM-DD");
   const [activity, setActivity] = useState("Initializing secure connection to educational database...");
+  const [apUnit, setApUnit] = useState<string | null>(null);
+  const [concept, setConcept] = useState<string | null>(null);
+  const [foundationalDoc, setFoundationalDoc] = useState<string | null>(null);
   const [isNew, setIsNew] = useState(false);
   
   // Track previous headline to avoid unnecessary updates
@@ -21,6 +24,9 @@ const LiveIntelligenceFeed = () => {
         setHeadline(data.headline);
         setDate(data.date);
         setActivity(data.activity);
+        setApUnit(data.ap_unit || null);
+        setConcept(data.concept || null);
+        setFoundationalDoc(data.foundational_doc || null);
         prevHeadlineRef.current = data.headline;
         
         // Visual flash for new data
@@ -48,8 +54,9 @@ const LiveIntelligenceFeed = () => {
     "@type": "LearningResource",
     "name": headline,
     "description": activity,
-    "educationalLevel": "AP Government",
+    "educationalLevel": "High School",
     "learningResourceType": "Simulation",
+    "teaches": concept || "AP Government",
     "datePublished": date,
     "publisher": {
       "@type": "Organization",
@@ -117,6 +124,28 @@ const LiveIntelligenceFeed = () => {
               >
                 {headline}
               </h3>
+
+              {/* Curriculum Metadata Badges */}
+              {(apUnit || concept || foundationalDoc) && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {apUnit && (
+                    <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-bold text-blue-800 uppercase tracking-tighter">
+                      {apUnit}
+                    </span>
+                  )}
+                  {concept && (
+                    <span className="inline-flex items-center rounded-full bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-300 border border-slate-700">
+                      {concept}
+                    </span>
+                  )}
+                  {foundationalDoc && (
+                    <span className="inline-flex items-center rounded-full bg-amber-500/20 px-2.5 py-0.5 text-xs font-bold text-amber-500 border border-amber-500/30">
+                      {foundationalDoc}
+                    </span>
+                  )}
+                </div>
+              )}
+
               <p 
                 id="dynamic-activity" 
                 className="text-slate-400 font-sans leading-relaxed border-l-2 border-brand-blue/30 pl-4 mt-4"

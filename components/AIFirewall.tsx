@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Bot, User, ShieldAlert, Cpu, Zap, MessageSquare } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Bot, User, ShieldAlert, Cpu, Zap } from "lucide-react";
 
 const AIFirewall = () => {
-  const [typedLines, setTypedLines] = useState<number>(0);
-  const simulationLines = [
-    { user: "USA", text: "If you don't lower tariffs by midnight, we block the naval strait.", color: "text-blue-400" },
-    { user: "China", text: "That is an act of war. We are mobilizing the 7th Fleet.", color: "text-red-400" },
-    { user: "UN", text: "Security Council is convening an emergency session.", color: "text-amber-400" },
-  ];
-
   return (
     <section className="relative py-24 px-4 border-t border-slate-800 bg-slate-900 overflow-hidden">
       <div className="container mx-auto max-w-7xl">
@@ -29,9 +22,9 @@ const AIFirewall = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif font-black tracking-tight uppercase italic text-white"
+            className="text-4xl md:text-5xl font-extrabold tracking-tight uppercase italic text-white"
           >
-            The <span className="text-brand-blue">AI Firewall</span>
+            The <span className="text-terminal-green">AI Firewall</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -52,52 +45,46 @@ const AIFirewall = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col h-full group"
+            className="flex flex-col h-full"
           >
             <div className="mb-4 flex items-center gap-2 px-2">
               <Cpu className="h-4 w-4 text-slate-500" />
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500">The Problem: AI Slop</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-500">What AI Can Fake</span>
             </div>
-            <div className="flex-1 rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-inner relative overflow-hidden">
-              <div className="absolute top-4 right-4 z-10">
-                <motion.div
-                  initial={{ rotate: -15, scale: 0 }}
-                  whileInView={{ rotate: -15, scale: 1 }}
-                  className="bg-red-600 text-white font-black text-xs px-3 py-1 border-2 border-white shadow-lg uppercase tracking-tighter"
-                >
-                  Easy to Fake
-                </motion.div>
-              </div>
-
+            <div className="flex-1 rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-inner relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-slate-700 opacity-20" />
+              
               {/* ChatGPT Interface Mockup */}
-              <div className="space-y-6 opacity-60">
+              <div className="space-y-6">
                 <div className="flex gap-4 items-start">
                   <div className="h-8 w-8 rounded-sm bg-slate-800 flex items-center justify-center shrink-0">
                     <User className="h-5 w-5 text-slate-400" />
                   </div>
                   <div className="bg-slate-900 rounded-lg px-4 py-2 border border-slate-800">
-                    <p className="text-sm text-slate-300">Explain Realism in IR.</p>
+                    <p className="text-sm text-slate-300">Write a 500-word essay on Political Realism for AP Gov.</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="h-8 w-8 rounded-sm bg-slate-800 flex items-center justify-center shrink-0">
-                    <Bot className="h-5 w-5 text-slate-400" />
+                  <div className="h-8 w-8 rounded-sm bg-[#10a37f]/20 flex items-center justify-center shrink-0">
+                    <Bot className="h-5 w-5 text-[#10a37f]" />
                   </div>
-                  <div className="space-y-4 text-slate-400 font-serif leading-relaxed text-sm bg-slate-900/50 p-4 rounded-lg border border-slate-800/50">
-                    <p className="font-bold text-slate-300 mb-2">The GPT Essay</p>
+                  <div className="space-y-4 text-slate-400 font-serif leading-relaxed text-sm">
+                    <p className="border-b border-slate-800 pb-2 italic text-slate-500">Generating response...</p>
                     <p>
-                      Realism is a theory in international relations that emphasizes the competitive and conflictual side of politics. It assumes that the state is the principal actor...
+                      Political realism is a theory of international relations that focuses on the role of the state and the pursuit of national interest. Realists argue that the international system is anarchic, meaning there is no central authority to govern the behavior of states...
                     </p>
-                    <p className="text-xs italic text-slate-500 mt-4">
-                      (Generated in 1.4 seconds. Identical to 4,000 other submissions.)
+                    <p>
+                      States must therefore rely on themselves to ensure their survival, often leading to a focus on military power and strategic alliances. This perspective emphasizes that ethics and morality have little place in the pragmatic world of global politics...
                     </p>
+                    <div className="h-4 w-1 bg-slate-600 animate-pulse" />
                   </div>
                 </div>
               </div>
 
-              {/* Blurred Overlay */}
+              {/* Blurred Overlay for 'Boring' effect */}
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 border-2 border-red-900/0 group-hover:border-red-900/20 transition-colors pointer-events-none rounded-xl" />
             </div>
           </motion.div>
 
@@ -106,79 +93,57 @@ const AIFirewall = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            onViewportEnter={() => {
-              const interval = setInterval(() => {
-                setTypedLines((prev) => {
-                  if (prev < simulationLines.length) return prev + 1;
-                  clearInterval(interval);
-                  return prev;
-                });
-              }, 1000);
-            }}
             className="flex flex-col h-full"
           >
             <div className="mb-4 flex items-center gap-2 px-2">
-              <Zap className="h-4 w-4 text-brand-blue" />
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-blue">The Solution: Statecraft Data</span>
+              <Zap className="h-4 w-4 text-terminal-green" />
+              <span className="text-xs font-bold uppercase tracking-widest text-terminal-green">What AI Can&apos;t Fake</span>
             </div>
-            <div className="flex-1 rounded-xl border border-brand-blue/30 bg-black p-6 shadow-[0_0_30px_rgba(37,99,235,0.1)] relative overflow-hidden group">
-              <div className="absolute top-4 right-4 z-10">
-                <motion.div
-                  initial={{ rotate: 15, scale: 0 }}
-                  whileInView={{ rotate: 15, scale: 1 }}
-                  className="bg-brand-blue text-white font-black text-xs px-3 py-1 border-2 border-white shadow-lg uppercase tracking-tighter"
-                >
-                  Impossible to Fake
-                </motion.div>
-              </div>
-
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent" />
+            <div className="flex-1 rounded-xl border border-terminal-green/30 bg-black p-6 shadow-[0_0_30px_rgba(34,197,94,0.1)] relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-terminal-green/50" />
               
-              {/* Simulation Log Interface */}
-              <div className="font-mono text-sm space-y-6">
-                <div className="flex items-center gap-2 border-b border-slate-800 pb-4">
-                  <MessageSquare className="h-4 w-4 text-brand-blue" />
-                  <span className="font-bold text-white">The Simulation Log</span>
+              {/* Diplomatic Cable Mockup */}
+              <div className="font-mono text-sm space-y-8">
+                <div className="border-b border-terminal-green/20 pb-4">
+                  <p className="text-terminal-green/50 text-[10px] mb-1">ENCRYPTED CHANNEL: STATECRAFT_V3_SIGINT</p>
+                  <p className="text-terminal-green font-bold">MESSAGE TYPE: DIPLOMATIC CABLE // URGENT</p>
                 </div>
 
-                <div className="space-y-4">
-                  <AnimatePresence>
-                    {simulationLines.slice(0, typedLines).map((line, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="flex gap-3 items-start"
-                      >
-                        <span className={`font-bold shrink-0 min-w-[60px] ${line.color}`}>[{line.user}]:</span>
-                        <p className="text-slate-200 leading-snug">{line.text}</p>
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
-                  
-                  {typedLines < simulationLines.length && (
-                    <motion.div
-                      animate={{ opacity: [0, 1, 0] }}
-                      transition={{ repeat: Infinity, duration: 0.8 }}
-                      className="h-5 w-2 bg-brand-blue ml-[60px]"
-                    />
-                  )}
-                </div>
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <span className="text-terminal-green/40 shrink-0">08:14</span>
+                    <p className="text-terminal-green">
+                      <span className="font-bold">[REBEL_LEADER_PLAYER_2]</span>: 
+                      If you sanction my oil exports, I will fund the insurgency in Region 4. Your domestic approval won&apos;t survive a proxy war.
+                    </p>
+                  </div>
 
-                {typedLines === simulationLines.length && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="pt-8 border-t border-slate-800 flex justify-between items-center"
-                  >
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-brand-blue rounded-full animate-pulse" />
-                      <div className="w-2 h-2 bg-brand-blue/40 rounded-full" />
-                      <div className="w-2 h-2 bg-brand-blue/40 rounded-full" />
+                  <div className="flex gap-4">
+                    <span className="text-terminal-green/40 shrink-0">08:16</span>
+                    <p className="text-white bg-terminal-green/10 p-2 rounded border border-terminal-green/20">
+                      <span className="font-bold text-terminal-green">[PRESIDENT_PLAYER_1]</span>: 
+                      I have three carriers moving into the Gulf. Try me. I&apos;ll trade my approval for your total collapse.
+                    </p>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <span className="text-terminal-green/40 shrink-0">08:17</span>
+                    <div className="flex flex-col gap-1">
+                      <p className="text-terminal-green/80 italic">
+                        SYSTEM: Intelligence reports show Player 1&apos;s trade deficit is widening. Brinkmanship risk: SEVERE.
+                      </p>
                     </div>
-                    <span className="text-[10px] text-brand-blue/50 tracking-widest uppercase font-sans">Verified Human Activity</span>
-                  </motion.div>
-                )}
+                  </div>
+                </div>
+
+                <div className="pt-8 border-t border-terminal-green/10 flex justify-between items-center">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-terminal-green rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-terminal-green/40 rounded-full" />
+                    <div className="w-2 h-2 bg-terminal-green/40 rounded-full" />
+                  </div>
+                  <span className="text-[10px] text-terminal-green/30 tracking-widest uppercase font-sans">Human intelligence required</span>
+                </div>
               </div>
             </div>
           </motion.div>
