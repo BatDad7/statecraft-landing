@@ -73,41 +73,41 @@ const StandardsMapper = () => {
   }, []);
 
   return (
-    <section id="standards-mapper" className="py-24 px-4 bg-slate-900/50 relative overflow-hidden">
+    <section id="standards-mapper" className="py-24 md:py-32 px-4 bg-slate-900/50 relative overflow-hidden">
       {/* Decorative lines */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-brand-blue/50 to-transparent" />
       
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif font-black uppercase italic mb-4">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-black uppercase italic">
             AP Gov <span className="text-brand-blue">Standards Mapper</span>
           </h2>
-          <p className="text-slate-400">Align your curriculum with immersive simulations in seconds.</p>
+          <p className="text-slate-400 max-w-2xl mx-auto">Align your curriculum with immersive simulations in seconds.</p>
         </div>
 
         <div className="relative z-10 space-y-8">
-          {/* Dropdown Menu */}
-          <div className="max-w-md mx-auto relative">
-            <label className="block text-xs font-bold uppercase tracking-[0.2em] text-brand-blue/70 mb-2 px-1">
-              Which Unit are you teaching next?
-            </label>
-            <div className="relative group">
-              <select
-                value={selectedUnit}
-                onChange={(e) => setSelectedUnit(e.target.value as UnitKey)}
-                className={`w-full appearance-none bg-slate-800 border ${selectedUnit ? 'border-brand-blue' : 'border-slate-700'} text-white py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all cursor-pointer font-bold`}
-              >
-                <option value="" disabled>Select an AP Unit...</option>
-                <option value="Unit 1">Unit 1: Foundations of American Democracy</option>
-                <option value="Unit 2">Unit 2: Interactions Among Branches</option>
-                <option value="Unit 3">Unit 3: Civil Liberties and Civil Rights</option>
-                <option value="Unit 4">Unit 4: American Political Ideologies</option>
-                <option value="Unit 5">Unit 5: Political Participation</option>
-              </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500 group-hover:text-brand-blue transition-colors">
-                <ChevronDown className="h-5 w-5" />
-              </div>
-            </div>
+          {/* Unit Tabs Selector */}
+          <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+            {(Object.keys(unitData) as UnitKey[]).map((unit) => {
+              const isSelected = selectedUnit === unit;
+              return (
+                <motion.button
+                  key={unit}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSelectedUnit(unit)}
+                  className={`
+                    px-6 py-3 rounded-full font-bold transition-all duration-300 whitespace-nowrap
+                    ${isSelected 
+                      ? "bg-blue-600 text-white shadow-lg scale-105 ring-2 ring-blue-400 ring-offset-2 ring-offset-slate-900" 
+                      : "bg-slate-800/50 text-slate-400 border border-slate-700 hover:bg-slate-700 hover:text-white"
+                    }
+                  `}
+                >
+                  {unit}
+                </motion.button>
+              );
+            })}
           </div>
 
           {/* Dynamic Mission Brief Card */}

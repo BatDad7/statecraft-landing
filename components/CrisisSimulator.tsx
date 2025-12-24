@@ -52,9 +52,12 @@ const CrisisSimulator = () => {
             exit="exit_left"
             className="flex flex-col items-center text-center space-y-6"
           >
-            <div className="flex items-center gap-2 text-alert-red animate-pulse">
-              <AlertTriangle className="h-6 w-6" />
-              <span className="font-serif text-sm tracking-widest uppercase font-bold">Crisis Alert</span>
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center gap-2 text-alert-red animate-pulse">
+                <AlertTriangle className="h-6 w-6" />
+                <span className="font-serif text-sm tracking-widest uppercase font-bold">Interactive Case Study</span>
+              </div>
+              <span className="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-black">Simulation Sandbox // Decision Logic</span>
             </div>
             <h2 className="text-2xl font-bold text-white max-w-md">
               The Supreme Court just struck down your Executive Order. Polls are crashing.
@@ -70,11 +73,11 @@ const CrisisSimulator = () => {
                 <div className="flex items-center gap-3">
                   <Gavel className="h-5 w-5 text-brand-blue" />
                   <span className="text-sm font-bold text-white uppercase tracking-tight">
-                    Draft Emergency Legislation
+                    Example: Pass Bill
                   </span>
                 </div>
                 <span className="text-[10px] font-bold text-brand-blue/60 uppercase tracking-widest">
-                  (Unit 2: Congress)
+                  (Simulate Unit 2 Action)
                 </span>
               </motion.button>
               <motion.button
@@ -87,11 +90,11 @@ const CrisisSimulator = () => {
                 <div className="flex items-center gap-3">
                   <Share2 className="h-5 w-5 text-alert-red" />
                   <span className="text-sm font-bold text-white uppercase tracking-tight">
-                    Leak Statement to Press
+                    Example: Leak Info
                   </span>
                 </div>
                 <span className="text-[10px] font-bold text-alert-red/60 uppercase tracking-widest">
-                  (Unit 5: Media)
+                  (Simulate Unit 5 Action)
                 </span>
               </motion.button>
             </div>

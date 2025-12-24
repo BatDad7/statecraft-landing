@@ -43,7 +43,7 @@ describe("Intelligence API (/api/intel)", () => {
       const json = await response.json();
 
       expect(response.status).toBe(200);
-      expect(json.headline).toBe("Awaiting Satellite Uplink...");
+      expect(json.headline).toBe("ESTABLISHING SECURE UPLINK... [STAND BY]");
       expect(json.ap_unit).toBe("Unit 0");
       expect(mockRedis.get).toHaveBeenCalledWith("daily_intel");
     });

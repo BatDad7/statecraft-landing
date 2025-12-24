@@ -25,7 +25,7 @@ const stepData: Record<TourStep, StepContent> = {
     role: "Red Interest Group Leader",
     context: "The Nuclear Modernization Bill is stuck in committee. You need to grease the wheels.",
     concept: "Dark Money & Lobbying",
-    buttonText: "Deploy Dark Money (50 XP)",
+    buttonText: "[EXECUTE] DEPLOY DARK MONEY",
     successBadge: "+2 Votes Gained",
     image: "/tour/step-1-lobby.png",
   },
@@ -35,7 +35,7 @@ const stepData: Record<TourStep, StepContent> = {
     role: "Senate Majority Leader",
     context: "The Minority party is filibustering your bill. You need 60 votes (or a nuclear option).",
     concept: "Filibuster & Cloture",
-    buttonText: "Trigger Nuclear Option (Force Vote)",
+    buttonText: "[EXECUTE] NUCLEAR OPTION",
     successBadge: "Filibuster Broken",
     image: "/tour/step-2-senate.png",
   },
@@ -45,7 +45,7 @@ const stepData: Record<TourStep, StepContent> = {
     role: "Eagle News Editor",
     context: "The public is panicking about the vote. Control the narrative.",
     concept: "Media as Gatekeeper",
-    buttonText: 'Publish Editorial: "Patriotic Duty"',
+    buttonText: '[EXECUTE] PUBLISH EDITORIAL',
     successBadge: "Public Support Rising",
     image: "/tour/step-3-media.png",
   },
@@ -55,7 +55,7 @@ const stepData: Record<TourStep, StepContent> = {
     role: "U.S. President",
     context: "The bill has reached your desk. It is time to make it law.",
     concept: "Formal Powers (Sign vs Veto)",
-    buttonText: "Sign Legislation",
+    buttonText: "[EXECUTE] SIGN LEGISLATION",
     successBadge: "Bill Signed Into Law",
     image: "/tour/step-4-president.png",
   },
@@ -81,13 +81,13 @@ const SimTour = () => {
   const currentData = stepData[step];
 
   return (
-    <section className="py-24 px-4 bg-slate-900 border-t border-slate-800 relative overflow-hidden">
+    <section className="py-24 md:py-32 px-4 bg-slate-900 border-t border-slate-800 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase italic mb-4">
-            The <span className="text-brand-blue">Iron Triangle</span> in Action.
+        <div className="text-center mb-20 space-y-4">
+          <h2 className="text-3xl md:text-5xl font-serif font-black uppercase italic">
+            The <span className="text-brand-blue cursor-help border-b border-dashed border-brand-blue/50" title="Iron Triangle: The three-way relationship between Congress, Government Agencies, and Interest Groups.">Iron Triangle</span> in Action.
           </h2>
-          <p className="text-slate-400 text-lg">Experience the journey from Lobbyist to Law through immersive gameplay.</p>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">Experience the journey from Lobbyist to Law through immersive gameplay.</p>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-center">

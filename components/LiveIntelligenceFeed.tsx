@@ -4,16 +4,24 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LiveIntelligenceFeed = () => {
-  const [headline, setHeadline] = useState("Awaiting Satellite Uplink...");
-  const [date, setDate] = useState("YYYY-MM-DD");
+  const INITIAL_HEADLINE = (
+    <>
+      ESTABLISHING SECURE <span className="cursor-help border-b border-dashed border-slate-500" title="Uplink: A communications link from a ground station to a satellite.">UPLINK</span>... [STAND BY]
+    </>
+  );
+  const [headline, setHeadline] = useState<string | React.ReactNode>(INITIAL_HEADLINE);
+  const [headlineKey, setHeadlineKey] = useState("initial");
+  const [date, setDate] = useState("Establishing...");
   const [activity, setActivity] = useState("Initializing secure connection to educational database...");
   const [apUnit, setApUnit] = useState<string | null>(null);
   const [concept, setConcept] = useState<string | null>(null);
   const [foundationalDoc, setFoundationalDoc] = useState<string | null>(null);
   const [isNew, setIsNew] = useState(false);
   
+  const isInitial = headlineKey === "initial";
+  
   // Track previous headline to avoid unnecessary updates
-  const prevHeadlineRef = useRef(headline);
+  const prevHeadlineRef = useRef<string | React.ReactNode>(headline);
 
   const fetchIntel = async () => {
     try {
@@ -22,6 +30,7 @@ const LiveIntelligenceFeed = () => {
       
       if (data.headline && data.headline !== prevHeadlineRef.current) {
         setHeadline(data.headline);
+        setHeadlineKey(data.headline);
         setDate(data.date);
         setActivity(data.activity);
         setApUnit(data.ap_unit || null);
@@ -77,7 +86,7 @@ const LiveIntelligenceFeed = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className={`relative overflow-hidden rounded-xl border transition-colors duration-500 ${isNew ? 'border-brand-blue shadow-[0_0_30px_rgba(37,99,235,0.3)]' : 'border-slate-800'} bg-slate-900 p-6 md:p-8 tactical-grid shadow-2xl`}>
+      <div className={`relative overflow-hidden rounded-xl border transition-all duration-500 ${isNew ? 'border-brand-blue shadow-[0_0_30px_rgba(37,99,235,0.3)] bg-slate-900' : 'border-slate-800 bg-slate-900/40'} p-6 md:p-8 shadow-2xl ${isInitial ? 'cursor-wait' : ''}`}>
         {/* Header with Status Dot */}
         <div className="flex items-center justify-between mb-6 border-b border-slate-800 pb-4">
           <div className="flex items-center gap-3">
@@ -109,7 +118,7 @@ const LiveIntelligenceFeed = () => {
         >
           <AnimatePresence mode="wait">
             <motion.div
-              key={headline}
+              key={headlineKey}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
@@ -123,6 +132,13 @@ const LiveIntelligenceFeed = () => {
                 className="text-2xl md:text-3xl font-serif font-bold text-white leading-tight"
               >
                 {headline}
+                {isInitial && (
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)" }}
+                    className="inline-block ml-1 w-2 h-6 md:h-8 bg-brand-blue align-middle"
+                  />
+                )}
               </h3>
 
               {/* Curriculum Metadata Badges */}
@@ -154,17 +170,6 @@ const LiveIntelligenceFeed = () => {
               </p>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Decorative Corner */}
-        <div className="absolute top-0 right-0 p-2 opacity-20">
-          <div className="w-8 h-8 border-t-2 border-r-2 border-slate-700" />
-        </div>
-
-        {/* Syncing status indicator (only visible on mobile or small screens) */}
-        <div className="absolute bottom-2 right-4 flex items-center gap-1">
-          <div className="h-1 w-1 rounded-full bg-slate-800 animate-pulse" />
-          <span className="text-[8px] uppercase tracking-tighter text-slate-700 font-mono">Syncing...</span>
         </div>
       </div>
     </motion.div>
