@@ -1,9 +1,10 @@
 import { jsPDF } from "jspdf";
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, UnderlineType } from "docx";
 import fs from "fs";
 import path from "path";
 
-// Function to generate the PDF
-const generateSyllabus = () => {
+// --- PDF GENERATION LOGIC ---
+const generatePDF = () => {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -201,5 +202,95 @@ const generateSyllabus = () => {
   console.log(`✅ Syllabus PDF generated at: ${outputPath}`);
 };
 
-generateSyllabus();
+// --- DOCX GENERATION LOGIC ---
+const generateDOCX = async () => {
+  const doc = new Document({
+    sections: [
+      {
+        properties: {},
+        children: [
+          new Paragraph({
+            text: "AP U.S. Government & Politics",
+            heading: HeadingLevel.TITLE,
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({
+            text: "Simulation Integration Guide & Curriculum Map",
+            heading: HeadingLevel.HEADING_2,
+            alignment: AlignmentType.CENTER,
+          }),
+          new Paragraph({ text: "" }), // Spacing
 
+          new Paragraph({
+            text: "To the Instructor: Why Simulate?",
+            heading: HeadingLevel.HEADING_1,
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({ text: "Statecraft: The Situation Room", bold: true }),
+              new TextRun("\nAP Government students often struggle to connect abstract concepts (Federalism, Checks and Balances) with reality. This curriculum map demonstrates how the Statecraft simulation replaces passive lecturing with active political conflict. By placing students in the roles of President, Senator, or Justice, we force them to 'live' the required documents rather than just memorize them."),
+            ],
+          }),
+          new Paragraph({ text: "" }), // Spacing
+
+          new Paragraph({
+            text: "AP® Disciplinary Practices & Big Ideas",
+            heading: HeadingLevel.HEADING_3,
+          }),
+          new Paragraph({ text: "• Concept Application: Apply political concepts (War Powers, Federalism) to real-world scenarios.", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Data Analysis: Analyze approval ratings, polling data, and budget deficits.", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Source Analysis: Interpret primary documents (Executive Orders, Legislative Bills).", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Argumentation: Develop defensible claims about policy choices (Security vs. Liberty).", bullet: { level: 0 } }),
+          new Paragraph({ text: "" }), // Spacing
+
+          new Paragraph({
+            text: "Curriculum Map: Mapping Simulation to AP Units",
+            heading: HeadingLevel.HEADING_1,
+          }),
+
+          // Units (Simplified loop)
+          ...[
+            { title: "Unit 1: Foundations", sub: "FEDERALISM", mech: "State Governors block Federal prisoner transfers.", docs: "Federalist No. 10, Brutus No. 1" },
+            { title: "Unit 2: Branches", sub: "CHECKS & BALANCES", mech: "Congress overrides Veto. Agencies fight for funding.", docs: "Federalist No. 51, Federalist No. 70" },
+            { title: "Unit 3: Civil Liberties", sub: "LIBERTY & ORDER", mech: "President chooses surveillance vs. privacy.", docs: "Bill of Rights, Birmingham Jail" },
+            { title: "Unit 4: Ideologies", sub: "POLLING", mech: "Candidates analyze tracking polls and approval ratings.", docs: "Reliability of Data" },
+            { title: "Unit 5: Participation", sub: "ELECTIONS", mech: "Media leaks and interest group lobbying.", docs: "Citizens United" }
+          ].map(u => [
+            new Paragraph({ text: u.title, heading: HeadingLevel.HEADING_3 }),
+            new Paragraph({ children: [new TextRun({ text: u.sub, bold: true, color: "FF0000" })] }),
+            new Paragraph({ text: `Simulation Mechanics: ${u.mech}` }),
+            new Paragraph({ children: [new TextRun({ text: `Required Documents: ${u.docs}`, italics: true })] }),
+            new Paragraph({ text: "" }),
+          ]).flat(),
+
+          new Paragraph({
+            text: "Funding Proposal / Purchase Justification",
+            heading: HeadingLevel.HEADING_1,
+            pageBreakBefore: true,
+          }),
+          new Paragraph({ children: [new TextRun({ text: "Instructions: Submit this letter to your Department Head or Principal.", italics: true })] }),
+          new Paragraph({ text: "" }),
+          
+          new Paragraph({ text: "To: Administration / Social Studies Department Chair" }),
+          new Paragraph({ text: "From: AP Government Instructor" }),
+          new Paragraph({ children: [new TextRun({ text: "Subject: Proposal to Integrate 'Statecraft' Simulation into AP Curriculum", bold: true })] }),
+          new Paragraph({ text: "" }),
+          new Paragraph({ text: "Dear Administrator," }),
+          new Paragraph({ text: "I am writing to request approval to adopt the Statecraft US Government simulation..." }),
+          new Paragraph({ text: "[Full text included in PDF version...]" }), // Abbreviated for DOCX demo
+          new Paragraph({ text: "" }),
+          new Paragraph({ text: "Sincerely," }),
+          new Paragraph({ text: "[Instructor Signature]" }),
+        ],
+      },
+    ],
+  });
+
+  const buffer = await Packer.toBuffer(doc);
+  const outputPath = path.join(process.cwd(), "public/assets/Statecraft_Syllabus_2025.docx");
+  fs.writeFileSync(outputPath, buffer);
+  console.log(`✅ Syllabus DOCX generated at: ${outputPath}`);
+};
+
+generatePDF();
+generateDOCX();

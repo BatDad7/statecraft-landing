@@ -77,6 +77,15 @@ export default function Home() {
               </span>
               <div className="absolute inset-0 -z-10 rounded-full bg-amber-400 opacity-0 blur-lg transition-opacity group-hover:opacity-50" />
             </motion.button>
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center">
+              <a 
+                href="/assets/Statecraft_Syllabus_2025.docx" 
+                className="text-xs text-slate-500 hover:text-amber-500 underline underline-offset-4 transition-colors font-mono"
+                download
+              >
+                [ Need an editable version? Download .DOCX ]
+              </a>
+            </div>
           </motion.div>
 
           <motion.div
