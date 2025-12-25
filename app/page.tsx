@@ -57,6 +57,30 @@ export default function Home() {
           </motion.p>
 
           <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex justify-center mb-12"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                // Handle click - ideally scroll to form or open modal
+                const element = document.getElementById('pricing');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-amber-500 px-8 py-4 text-lg font-black text-slate-900 transition-all hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)]"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                AUTHORIZE MISSION ACCESS
+                <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </span>
+              <div className="absolute inset-0 -z-10 rounded-full bg-amber-400 opacity-0 blur-lg transition-opacity group-hover:opacity-50" />
+            </motion.button>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.4 }}
