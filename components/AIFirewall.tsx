@@ -113,8 +113,8 @@ const AIFirewall = () => {
                   <div className="flex gap-4">
                     <span className="text-terminal-green/40 shrink-0">08:14</span>
                     <p className="text-terminal-green">
-                      <span className="font-bold">[REBEL_LEADER_PLAYER_2]</span>: 
-                      If you sanction my oil exports, I will fund the insurgency in Region 4. Your domestic approval won&apos;t survive a proxy war.
+                      <span className="font-bold">[SENATE_MAJORITY_LEADER]</span>: 
+                      If you veto the Education Bill, we have the votes to override. The midterms are in 6 months. Do you really want this fight?
                     </p>
                   </div>
 
@@ -122,7 +122,7 @@ const AIFirewall = () => {
                     <span className="text-terminal-green/40 shrink-0">08:16</span>
                     <p className="text-white bg-terminal-green/10 p-2 rounded border border-terminal-green/20">
                       <span className="font-bold text-terminal-green">[PRESIDENT_PLAYER_1]</span>: 
-                      I have three carriers moving into the Gulf. Try me. I&apos;ll trade my approval for your total collapse.
+                      Go ahead and override. I&apos;ll campaign on fiscal responsibility in every swing district you hold.
                     </p>
                   </div>
 
@@ -130,7 +130,7 @@ const AIFirewall = () => {
                     <span className="text-terminal-green/40 shrink-0">08:17</span>
                     <div className="flex flex-col gap-1">
                       <p className="text-terminal-green/80 italic">
-                        SYSTEM: Intelligence reports show Player 1&apos;s trade deficit is widening. <span className="cursor-help border-b border-dashed border-terminal-green/30" title="Brinkmanship: The art of pushing dangerous situations to the edge of war to force an opponent to back down.">Brinkmanship</span> risk: SEVERE.
+                        SYSTEM: Intelligence reports show Player 1&apos;s approval rating dropping in swing states. <span className="cursor-help border-b border-dashed border-terminal-green/30" title="Brinkmanship: The practice of pushing dangerous events to the verge of disaster in order to achieve the most advantageous outcome.">Brinkmanship</span> risk: CRITICAL.
                       </p>
                     </div>
                   </div>
