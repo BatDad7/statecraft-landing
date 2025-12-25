@@ -25,7 +25,7 @@ const Navbar = () => {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="https://go.oncehub.com/Statecraft-Demo"
-              className="rounded-md bg-amber-500 px-4 py-2 text-sm font-bold text-slate-900 transition-colors hover:bg-amber-400 block shadow-lg shadow-amber-500/20"
+              className="rounded-md border border-slate-700 bg-slate-800/50 px-4 py-2 text-sm font-bold text-slate-300 transition-colors hover:bg-slate-700 hover:text-white block"
             >
               Book Demo
             </Link>

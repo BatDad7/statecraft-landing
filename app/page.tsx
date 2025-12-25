@@ -31,8 +31,8 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-8 flex justify-center"
           >
-            <span className="inline-flex items-center rounded-full bg-alert-red/10 px-3 py-1 text-xs font-medium text-alert-red ring-1 ring-inset ring-alert-red/20 uppercase tracking-widest">
-              <AlertCircle className="mr-1 h-3 w-3" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-bold text-alert-red uppercase tracking-widest cursor-default">
+              <div className="h-2 w-2 rounded-full bg-alert-red animate-pulse" />
               Situation Room Active
             </span>
           </motion.div>
