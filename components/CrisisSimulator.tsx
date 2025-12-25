@@ -68,16 +68,16 @@ const CrisisSimulator = () => {
                 whileTap={{ scale: 0.95 }}
                 animate={pulseAnimation}
                 onClick={() => setState("legislation_selected")}
-                className="flex-1 group relative flex flex-col items-center justify-center gap-1 rounded-lg border border-brand-blue/30 bg-brand-blue/10 px-6 py-4 transition-all hover:bg-brand-blue/20"
+                className="flex-1 group relative flex flex-col items-center justify-center gap-1 rounded-lg border border-brand-blue/30 bg-brand-blue/20 hover:bg-brand-blue/30 px-6 py-4 transition-all shadow-lg"
               >
                 <div className="flex items-center gap-3">
                   <Gavel className="h-5 w-5 text-brand-blue" />
                   <span className="text-sm font-bold text-white uppercase tracking-tight">
-                    Example: Veto Bill
+                    Action: Veto Bill
                   </span>
                 </div>
-                <span className="text-[10px] font-bold text-brand-blue/60 uppercase tracking-widest">
-                  (Simulate Unit 2 Action)
+                <span className="text-[10px] font-bold text-brand-blue/80 uppercase tracking-widest">
+                  Click to Simulate Unit 2
                 </span>
               </motion.button>
               <motion.button
@@ -85,16 +85,16 @@ const CrisisSimulator = () => {
                 whileTap={{ scale: 0.95 }}
                 animate={pulseAnimation}
                 onClick={() => setState("leak_selected")}
-                className="flex-1 group relative flex flex-col items-center justify-center gap-1 rounded-lg border border-alert-red/30 bg-alert-red/10 px-6 py-4 transition-all hover:bg-alert-red/20"
+                className="flex-1 group relative flex flex-col items-center justify-center gap-1 rounded-lg border border-alert-red/30 bg-alert-red/20 hover:bg-alert-red/30 px-6 py-4 transition-all shadow-lg"
               >
                 <div className="flex items-center gap-3">
                   <Share2 className="h-5 w-5 text-alert-red" />
                   <span className="text-sm font-bold text-white uppercase tracking-tight">
-                    Example: Leak Memo
+                    Action: Leak Memo
                   </span>
                 </div>
-                <span className="text-[10px] font-bold text-alert-red/60 uppercase tracking-widest">
-                  (Simulate Unit 5 Action)
+                <span className="text-[10px] font-bold text-alert-red/80 uppercase tracking-widest">
+                  Click to Simulate Unit 5
                 </span>
               </motion.button>
             </div>
