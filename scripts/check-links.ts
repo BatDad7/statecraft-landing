@@ -1,42 +1,11 @@
 const BASE_URL = process.argv[2] || 'http://localhost:3000';
 
-export {};
-
 async function checkLinks() {
   console.log(`🚀 Starting link checker against: ${BASE_URL}\n`);
 
   const visited = new Set<string>();
-  const queue: string[] = ['/'];
+  const queue = ['/'];
   const brokenLinks: { url: string; source: string; status: number }[] = [];
-
-  // Try to add URLs from sitemap.xml first
-  try {
-    console.log(`📡 Fetching sitemap.xml for initial paths...`);
-    const sitemapRes = await fetch(`${BASE_URL}/sitemap.xml`);
-    if (sitemapRes.ok) {
-      const xml = await sitemapRes.text();
-      const locRegex = /<loc>(https?:\/\/[^<]+)<\/loc>/g;
-      let match;
-      while ((match = locRegex.exec(xml)) !== null) {
-        const url = match[1];
-        // Extract the path regardless of what the domain in the sitemap is
-        try {
-          const urlObj = new URL(url);
-          const path = urlObj.pathname + urlObj.search;
-          if (!visited.has(path) && !queue.includes(path)) {
-            queue.push(path);
-          }
-        } catch (e) {
-          console.warn(`⚠️ Could not parse URL from sitemap: ${url}`);
-        }
-      }
-      console.log(`✅ Found ${queue.length} paths in sitemap.\n`);
-    } else {
-      console.log(`⚠️ No sitemap.xml found at ${BASE_URL}/sitemap.xml. Falling back to crawl only.\n`);
-    }
-  } catch (error) {
-    console.log(`⚠️ Error fetching sitemap: Falling back to crawl only.\n`);
-  }
 
   while (queue.length > 0) {
     const path = queue.shift()!;
@@ -50,7 +19,7 @@ async function checkLinks() {
     
     try {
       console.log(`🔍 Checking: ${cleanPath}...`);
-      const response = await fetch(fullUrl, { method: 'GET' });
+      const response = await fetch(fullUrl);
       
       if (!response.ok) {
         brokenLinks.push({ url: cleanPath, source: 'Internal Link', status: response.status });
@@ -60,7 +29,7 @@ async function checkLinks() {
 
       // If it's an internal HTML page, scan for more links
       const contentType = response.headers.get('content-type') || '';
-      if (contentType.includes('text/html') && (fullUrl.startsWith(BASE_URL) || fullUrl.startsWith('/'))) {
+      if (contentType.includes('text/html') && fullUrl.startsWith(BASE_URL)) {
         const html = await response.text();
         const linkRegex = /href="([^"]+)"/g;
         let match;
@@ -72,7 +41,6 @@ async function checkLinks() {
           if (link.startsWith('/') && !link.startsWith('//')) {
             const internalPath = link.split('#')[0] || '/';
             if (!visited.has(internalPath)) {
-              console.log(`📍 Found internal link: ${link} on ${cleanPath}`);
               queue.push(internalPath);
             }
           } else if (link.startsWith(BASE_URL)) {

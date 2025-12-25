@@ -4,10 +4,10 @@ import { Bot, User, ShieldAlert, Cpu, Zap } from "lucide-react";
 
 const AIFirewall = () => {
   return (
-    <section className="relative py-24 md:py-32 px-4 border-t border-slate-800 bg-slate-900 overflow-hidden">
+    <section className="relative py-24 px-4 border-t border-slate-800 bg-slate-900 overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-20 space-y-6">
+        <div className="text-center mb-16 space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ const AIFirewall = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-2xl md:text-3xl font-bold text-slate-400 max-w-2xl mx-auto tracking-tight leading-snug"
+            className="text-2xl md:text-3xl font-bold text-slate-400 max-w-3xl mx-auto tracking-tight"
           >
             The Essay is Dead. Long Live the Simulation.
           </motion.p>
@@ -105,7 +105,7 @@ const AIFirewall = () => {
               {/* Diplomatic Cable Mockup */}
               <div className="font-mono text-sm space-y-8">
                 <div className="border-b border-terminal-green/20 pb-4">
-                  <p className="text-terminal-green/50 text-[10px] mb-1">ENCRYPTED CHANNEL: STATECRAFT_V3_<span className="cursor-help border-b border-dashed border-terminal-green/30" title="SIGINT: Signals Intelligence (Intercepted Communications)">SIGINT</span></p>
+                  <p className="text-terminal-green/50 text-[10px] mb-1">ENCRYPTED CHANNEL: STATECRAFT_V3_SIGINT</p>
                   <p className="text-terminal-green font-bold">MESSAGE TYPE: DIPLOMATIC CABLE // URGENT</p>
                 </div>
 
@@ -113,8 +113,8 @@ const AIFirewall = () => {
                   <div className="flex gap-4">
                     <span className="text-terminal-green/40 shrink-0">08:14</span>
                     <p className="text-terminal-green">
-                      <span className="font-bold">[SENATE_MAJORITY_LEADER]</span>: 
-                      If you veto the Education Bill, we have the votes to override. The midterms are in 6 months. Do you really want this fight?
+                      <span className="font-bold">[REBEL_LEADER_PLAYER_2]</span>: 
+                      If you sanction my oil exports, I will fund the insurgency in Region 4. Your domestic approval won&apos;t survive a proxy war.
                     </p>
                   </div>
 
@@ -122,7 +122,7 @@ const AIFirewall = () => {
                     <span className="text-terminal-green/40 shrink-0">08:16</span>
                     <p className="text-white bg-terminal-green/10 p-2 rounded border border-terminal-green/20">
                       <span className="font-bold text-terminal-green">[PRESIDENT_PLAYER_1]</span>: 
-                      Go ahead and override. I&apos;ll campaign on fiscal responsibility in every swing district you hold.
+                      I have three carriers moving into the Gulf. Try me. I&apos;ll trade my approval for your total collapse.
                     </p>
                   </div>
 
@@ -130,7 +130,7 @@ const AIFirewall = () => {
                     <span className="text-terminal-green/40 shrink-0">08:17</span>
                     <div className="flex flex-col gap-1">
                       <p className="text-terminal-green/80 italic">
-                        SYSTEM: Intelligence reports show Player 1&apos;s approval rating dropping in swing states. <span className="cursor-help border-b border-dashed border-terminal-green/30" title="Brinkmanship: The practice of pushing dangerous events to the verge of disaster in order to achieve the most advantageous outcome.">Brinkmanship</span> risk: CRITICAL.
+                        SYSTEM: Intelligence reports show Player 1&apos;s trade deficit is widening. Brinkmanship risk: SEVERE.
                       </p>
                     </div>
                   </div>
