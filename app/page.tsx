@@ -6,6 +6,7 @@ import CrisisSimulator from "@/components/CrisisSimulator";
 import AIFirewall from "@/components/AIFirewall";
 import StandardsMapper from "@/components/StandardsMapper";
 import DocumentDocket from "@/components/DocumentDocket";
+import MockExamSection from "@/components/MockExamSection";
 
 export default function Home() {
   return (
@@ -122,6 +123,9 @@ export default function Home() {
 
       {/* Document Docket Section */}
       <DocumentDocket />
+
+      {/* Mock Exam Section */}
+      <MockExamSection />
     </div>
   );
 }
