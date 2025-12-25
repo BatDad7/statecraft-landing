@@ -163,14 +163,14 @@ export default function Home() {
                   ease: "easeInOut"
                 }}
                 onClick={handleRequestAccess}
-                className="w-full sm:w-auto flex flex-col items-center justify-center gap-1 rounded-md bg-[#00ff41] px-12 py-6 transition-all hover:bg-[#00cc33] text-black shadow-[0_0_60px_rgba(0,255,65,0.4)] border-4 border-black/10 group scale-110 md:scale-125"
+                className="w-full sm:w-auto flex flex-col items-center justify-center gap-1 rounded-md bg-amber-500 px-12 py-6 transition-all hover:bg-amber-400 text-black shadow-[0_0_60px_rgba(245,158,11,0.4)] border-4 border-black/10 group scale-110 md:scale-125"
               >
                 <div className="flex items-center gap-3 text-2xl font-black uppercase tracking-tighter">
                   <Lock className="h-7 w-7" />
-                  START FREE TEACHER TRIAL
+                  AUTHORIZE MISSION ACCESS
                 </div>
                 <span className="text-[12px] font-bold text-black/80 uppercase tracking-widest border-t border-black/10 pt-1 mt-1">
-                  Instant Download: Syllabus & Implementation Kit
+                  (Secure Download: Syllabus Kit)
                 </span>
               </motion.button>
               <motion.button
