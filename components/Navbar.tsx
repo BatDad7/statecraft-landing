@@ -2,18 +2,23 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Shield } from "lucide-react";
 
 const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center space-x-2 shrink-0">
-          <Shield className="h-8 w-8 text-green-500" />
-          <span className="text-xl font-bold tracking-tighter uppercase italic text-white">
-            Statecraft
-          </span>
+          <div className="relative h-10 w-40">
+            <Image 
+              src="/brand-logo.png" 
+              alt="Statecraft Logo" 
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </div>
         </Link>
 
         <div className="flex items-center space-x-4">
