@@ -28,44 +28,41 @@ const CrisisSimulator = () => {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="flex flex-col items-center text-center space-y-6"
           >
-            <div className="flex items-center gap-2 text-alert-red animate-pulse">
+            <div className="flex items-center gap-2 text-amber-500 animate-pulse">
               <AlertTriangle className="h-6 w-6" />
-              <span className="font-mono text-sm tracking-widest uppercase">Crisis Alert</span>
+              <span className="font-mono text-sm tracking-widest uppercase">Domestic Policy Simulator</span>
             </div>
             <h2 className="text-2xl font-bold text-white max-w-md">
-              The Supreme Court just struck down your Executive Order. Polls are crashing.
+              The Speaker of the House is threatening a government shutdown.
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 w-full">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(30, 41, 59, 1)" }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setStep("legislation")}
-                className="flex-1 group relative flex items-center justify-center gap-3 rounded-lg border border-terminal-green/30 bg-terminal-green/10 px-6 py-4 transition-all hover:bg-terminal-green/20"
+                className="flex-1 group relative flex flex-col items-center justify-center gap-1 rounded-lg border border-slate-700 bg-slate-800/50 px-6 py-4 transition-all hover:border-blue-500/50"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="absolute inset-0 rounded-lg ring-2 ring-terminal-green/50 pointer-events-none"
-                />
-                <FileText className="h-5 w-5 text-terminal-green" />
-                <span className="text-sm font-bold text-white uppercase tracking-tight">
-                  Draft Emergency Legislation
+                <div className="flex items-center gap-2 text-blue-400">
+                  <FileText className="h-5 w-5" />
+                  <span className="text-sm font-bold uppercase tracking-tight">Action: Veto Bill</span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest group-hover:text-blue-400/70 transition-colors">
+                  [ Simulate Unit 2 ]
                 </span>
               </motion.button>
+              
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(30, 41, 59, 1)" }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setStep("leak")}
-                className="flex-1 group relative flex items-center justify-center gap-3 rounded-lg border border-alert-red/30 bg-alert-red/10 px-6 py-4 transition-all hover:bg-alert-red/20"
+                className="flex-1 group relative flex flex-col items-center justify-center gap-1 rounded-lg border border-slate-700 bg-slate-800/50 px-6 py-4 transition-all hover:border-red-500/50"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ repeat: Infinity, duration: 2, delay: 1 }}
-                  className="absolute inset-0 rounded-lg ring-2 ring-alert-red/50 pointer-events-none"
-                />
-                <Share2 className="h-5 w-5 text-alert-red" />
-                <span className="text-sm font-bold text-white uppercase tracking-tight">
-                  Leak Statement to Press
+                <div className="flex items-center gap-2 text-red-400">
+                  <Share2 className="h-5 w-5" />
+                  <span className="text-sm font-bold uppercase tracking-tight">Action: Leak Memo</span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest group-hover:text-red-400/70 transition-colors">
+                  [ Simulate Unit 5 ]
                 </span>
               </motion.button>
             </div>
@@ -96,7 +93,7 @@ const CrisisSimulator = () => {
                 {isLegislation ? 'GRIDLOCK.' : 'SCANDAL.'}
               </h2>
               <p className="text-slate-400 text-lg">
-                {isLegislation ? 'Bill stalled in Committee.' : 'Approval rating drops 5%.'}
+                {isLegislation ? 'The Speaker of the House just blocked your Budget Veto.' : 'Your Supreme Court nominee just leaked a controversial opinion.'}
               </p>
               <p className="text-terminal-green/80 font-mono text-xs uppercase tracking-widest mt-4">
                 {isLegislation ? '(AP Unit 2: Interactions Among Branches)' : '(AP Unit 5: Political Participation)'}

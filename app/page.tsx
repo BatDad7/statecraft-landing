@@ -5,6 +5,7 @@ import { AlertCircle, ChevronRight, Terminal } from "lucide-react";
 import CrisisSimulator from "@/components/CrisisSimulator";
 import AIFirewall from "@/components/AIFirewall";
 import StandardsMapper from "@/components/StandardsMapper";
+import DocumentDocket from "@/components/DocumentDocket";
 
 export default function Home() {
   return (
@@ -95,6 +96,9 @@ export default function Home() {
 
       {/* Standards Mapper Section */}
       <StandardsMapper />
+
+      {/* Document Docket Section */}
+      <DocumentDocket />
     </div>
   );
 }
