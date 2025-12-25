@@ -163,7 +163,7 @@ export default function Home() {
                   ease: "easeInOut"
                 }}
                 onClick={handleRequestAccess}
-                className="w-full sm:w-auto flex flex-col items-center justify-center gap-1 rounded-md bg-amber-500 px-12 py-6 transition-all hover:bg-amber-400 text-black shadow-[0_0_60px_rgba(245,158,11,0.4)] border-4 border-black/10 group scale-110 md:scale-125"
+                className="w-full sm:w-auto flex flex-col items-center justify-center gap-1 rounded-md bg-amber-500 px-12 py-6 transition-all hover:bg-amber-400 text-black shadow-[0_0_60px_rgba(245,158,11,0.4)] border-4 border-black/10 group md:hover:scale-105"
               >
                 <div className="flex items-center gap-3 text-2xl font-black uppercase tracking-tighter">
                   <Lock className="h-7 w-7" />
