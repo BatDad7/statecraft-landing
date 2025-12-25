@@ -20,7 +20,7 @@ const StatecraftTA = () => {
 
   const toggleAssistant = () => {
     if (isMobile) {
-      window.open("https://statecraftapp.azurewebsites.net/", "_blank");
+      window.open("https://statecraftapp-staging.azurewebsites.net/ap-gov", "_blank");
     } else {
       setIsOpen(!isOpen);
     }
@@ -76,7 +76,7 @@ const StatecraftTA = () => {
             {/* Iframe Content */}
             <div className="flex-1 w-full bg-slate-900 relative">
               <iframe 
-                src="https://statecraftapp.azurewebsites.net/"
+                src="https://statecraftapp-staging.azurewebsites.net/ap-gov"
                 className="w-full h-full border-none"
                 title="Statecraft AI Assistant"
               />
