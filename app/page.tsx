@@ -66,9 +66,8 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
-                // Handle click - ideally scroll to form or open modal
-                const element = document.getElementById('pricing');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                // Direct download of the Syllabus PDF
+                window.open('/assets/Statecraft_Syllabus_2025.pdf', '_blank');
               }}
               className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-amber-500 px-8 py-4 text-lg font-black text-slate-900 transition-all hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)]"
             >
