@@ -60,32 +60,39 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex justify-center mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
           >
+            <div className="relative group">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  window.open('/assets/Statecraft_Syllabus_2025.pdf', '_blank');
+                }}
+                className="relative z-10 flex items-center justify-center gap-3 rounded-full bg-amber-500 px-8 py-4 text-lg font-black text-slate-900 transition-all hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)]"
+              >
+                AUTHORIZE MISSION ACCESS
+                <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </motion.button>
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center whitespace-nowrap">
+                <a 
+                  href="/assets/Statecraft_Syllabus_2025.docx" 
+                  className="text-xs text-slate-500 hover:text-amber-500 underline underline-offset-4 transition-colors font-mono"
+                  download
+                >
+                  [ Need .DOCX? ]
+                </a>
+              </div>
+            </div>
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                // Direct download of the Syllabus PDF
-                window.open('/assets/Statecraft_Syllabus_2025.pdf', '_blank');
-              }}
-              className="group relative inline-flex items-center justify-center gap-3 rounded-full bg-amber-500 px-8 py-4 text-lg font-black text-slate-900 transition-all hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)]"
+              className="flex items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-slate-800 backdrop-blur-sm hover:border-slate-500"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                AUTHORIZE MISSION ACCESS
-                <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </span>
-              <div className="absolute inset-0 -z-10 rounded-full bg-amber-400 opacity-0 blur-lg transition-opacity group-hover:opacity-50" />
+              Watch Trailer
+              <ChevronRight className="h-5 w-5 text-slate-500" />
             </motion.button>
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center">
-              <a 
-                href="/assets/Statecraft_Syllabus_2025.docx" 
-                className="text-xs text-slate-500 hover:text-amber-500 underline underline-offset-4 transition-colors font-mono"
-                download
-              >
-                [ Need an editable version? Download .DOCX ]
-              </a>
-            </div>
           </motion.div>
 
           <motion.div
@@ -95,30 +102,6 @@ export default function Home() {
             className="w-full flex justify-center mb-16"
           >
             <CrisisSimulator />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-md bg-terminal-green px-10 py-5 text-lg font-bold text-slate-900 transition-all hover:bg-terminal-green/90 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]"
-            >
-              <Terminal className="h-6 w-6" />
-              Request Curriculum Access
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-md border border-slate-700 bg-slate-800/30 px-10 py-5 text-lg font-bold text-white transition-all hover:bg-slate-800 backdrop-blur-sm"
-            >
-              Watch Trailer
-              <ChevronRight className="h-6 w-6 text-slate-500" />
-            </motion.button>
           </motion.div>
         </div>
       </section>
