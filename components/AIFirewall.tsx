@@ -110,27 +110,27 @@ const AIFirewall = () => {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <span className="text-terminal-green/40 shrink-0">08:14</span>
+                  <div className="flex gap-4 items-start">
+                    <span className="text-terminal-green/40 shrink-0">09:00</span>
                     <p className="text-terminal-green">
-                      <span className="font-bold">[REBEL_LEADER_PLAYER_2]</span>: 
-                      If you sanction my oil exports, I will fund the insurgency in Region 4. Your domestic approval won&apos;t survive a proxy war.
+                      <span className="font-bold">[SENATE_MAJORITY_LEADER]</span>:
+                      If you don't compromise on this budget, we will force a veto override. Your party will pay in the midterms.
                     </p>
                   </div>
 
-                  <div className="flex gap-4">
-                    <span className="text-terminal-green/40 shrink-0">08:16</span>
+                  <div className="flex gap-4 items-start">
+                    <span className="text-terminal-green/40 shrink-0">09:05</span>
                     <p className="text-white bg-terminal-green/10 p-2 rounded border border-terminal-green/20">
-                      <span className="font-bold text-terminal-green">[PRESIDENT_PLAYER_1]</span>: 
-                      I have three carriers moving into the Gulf. Try me. I&apos;ll trade my approval for your total collapse.
+                      <span className="font-bold text-terminal-green">[PRESIDENT]</span>:
+                      My base expects me to hold the line. A shutdown is a risk I'm willing to take for this policy.
                     </p>
                   </div>
 
-                  <div className="flex gap-4">
-                    <span className="text-terminal-green/40 shrink-0">08:17</span>
+                  <div className="flex gap-4 items-start">
+                    <span className="text-terminal-green/40 shrink-0">09:07</span>
                     <div className="flex flex-col gap-1">
                       <p className="text-terminal-green/80 italic">
-                        SYSTEM: Intelligence reports show Player 1&apos;s trade deficit is widening. Brinkmanship risk: SEVERE.
+                        SYSTEM: Public opinion polls show a divided electorate. <span className="cursor-help border-b border-dashed border-terminal-green/30" title="Brinkmanship: The art of pushing dangerous situations to the edge of conflict to force an opponent to back down.">Brinkmanship</span> risk: HIGH.
                       </p>
                     </div>
                   </div>
