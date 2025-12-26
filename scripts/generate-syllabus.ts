@@ -152,7 +152,38 @@ const generatePDF = () => {
     y += 25;
   });
 
-  // --- PAGE 3: Funding Letter ---
+  // --- PAGE 3: Class Implementation Info (NEW) ---
+  doc.addPage();
+  y = margin;
+
+  addHeader("Classroom Implementation Guide");
+  
+  addText("Length of Simulation & Class Time", 12, "bold");
+  addText("The Statecraft Gov 2.0 U.S. Government Simulation is organized into five periods (0-4). Each period covers different topics such as national security, environmental policy, federal budget, and AI regulation. We recommend a 1-2 week timeframe per period for optimal engagement, allowing the sim to run for 5-10 weeks based on your preferred schedule.", 10);
+  y += 5;
+
+  addText("Period Structure:", 11, "bold");
+  addText("• Period 0: A tutorial week to familiarize students with their roles, profiles, and basic abilities. Low-stakes introduction.", 10);
+  addText("• Periods 1-4: Each period begins with a briefing based on student roles, providing key information and grading incentives. These briefings facilitate collaboration and problem-solving.", 10);
+  y += 5;
+
+  addText("Class Assignments & Grading", 12, "bold");
+  addText("• Role Research (5%): Students research and submit their top 5 role choices.", 10);
+  addText("• Simulation Performance (5%): Based on achieving in-game goals (e.g., reelection, policy success).", 10);
+  addText("• Weekly Memos (10%): Reflection prompts connecting course materials to sim experiences.", 10);
+  addText("• Debrief Presentation (15-25%): Team presentation highlighting key concepts after the simulation.", 10);
+  addText("• Debrief Paper (10-25%): Deeper written analysis of the simulation experience.", 10);
+  y += 5;
+
+  addText("Why Use Statecraft Gov 2.0?", 12, "bold");
+  addText("Statecraft is a comprehensive engine covering over 50 topics, including how a bill becomes a law, the role of interest groups, media relations, checks and balances, and AI regulation. It promotes active learning and critical thinking.", 10);
+  y += 5;
+
+  addText("Support & Customer Service", 12, "bold");
+  addText("We provide you with your own virtual Statecraft teaching assistant. Instructors have a '3-minute rule' for contacting support—if you can't figure it out in 3 minutes, email us! Students should also use the 'Contact Us' button for any questions.", 10);
+  addText("Contact Info: help@statecraftsims.com", 10, "italic");
+
+  // --- PAGE 4: Funding Letter ---
   doc.addPage();
   y = margin;
 
@@ -264,6 +295,28 @@ const generateDOCX = async () => {
           ]).flat(),
 
           new Paragraph({
+            text: "Classroom Implementation Guide",
+            heading: HeadingLevel.HEADING_1,
+            pageBreakBefore: true,
+          }),
+          new Paragraph({ text: "Length of Simulation & Class Time", heading: HeadingLevel.HEADING_3 }),
+          new Paragraph({ text: "The Statecraft Gov 2.0 U.S. Government Simulation is organized into five periods (0-4). We recommend a 1-2 week timeframe per period for optimal engagement, allowing the sim to run for 5-10 weeks based on your preferred schedule." }),
+          new Paragraph({ text: "" }),
+          
+          new Paragraph({ text: "Period Structure:", heading: HeadingLevel.HEADING_3 }),
+          new Paragraph({ text: "• Period 0: A tutorial week to familiarize students with their roles. Low-stakes introduction.", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Periods 1-4: Each period begins with a briefing based on student roles, providing key information and grading incentives.", bullet: { level: 0 } }),
+          new Paragraph({ text: "" }),
+
+          new Paragraph({ text: "Class Assignments & Grading", heading: HeadingLevel.HEADING_3 }),
+          new Paragraph({ text: "• Role Research (5%): Students research and submit their top 5 role choices.", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Simulation Performance (5%): Based on achieving in-game goals (e.g., reelection).", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Weekly Memos (10%): Reflection prompts connecting course materials to sim experiences.", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Debrief Presentation (15-25%): Team presentation highlighting key concepts.", bullet: { level: 0 } }),
+          new Paragraph({ text: "• Debrief Paper (10-25%): Deeper written analysis of the simulation experience.", bullet: { level: 0 } }),
+          new Paragraph({ text: "" }),
+
+          new Paragraph({
             text: "Funding Proposal / Purchase Justification",
             heading: HeadingLevel.HEADING_1,
             pageBreakBefore: true,
@@ -277,7 +330,7 @@ const generateDOCX = async () => {
           new Paragraph({ text: "" }),
           new Paragraph({ text: "Dear Administrator," }),
           new Paragraph({ text: "I am writing to request approval to adopt the Statecraft US Government simulation..." }),
-          new Paragraph({ text: "[Full text included in PDF version...]" }), // Abbreviated for DOCX demo
+          new Paragraph({ text: "[Full text included in PDF version...]" }),
           new Paragraph({ text: "" }),
           new Paragraph({ text: "Sincerely," }),
           new Paragraph({ text: "[Instructor Signature]" }),

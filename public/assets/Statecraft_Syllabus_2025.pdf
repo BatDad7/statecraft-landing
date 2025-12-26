@@ -532,6 +532,151 @@ endobj
 endobj
 10 0 obj
 <<
+/Length 3329
+>>
+stream
+0.5670000000000001 w
+0.78 G
+BT
+/F2 14 Tf
+16.0999999999999979 TL
+0.145 0.388 0.922 rg
+56.6929133858267775 771.0238582677164914 Td
+(Classroom Implementation Guide) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+56.6929133858267775 745.7955118110236299 Td
+(Length of Simulation & Class Time) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 728.2207086614173477 Td
+(The Statecraft Gov 2.0 U.S. Government Simulation is organized into five periods \(0-4\). Each period covers) Tj
+T* (different topics such as national security, environmental policy, federal budget, and AI regulation. We) Tj
+T* (recommend a 1-2 week timeframe per period for optimal engagement, allowing the sim to run for 5-10 weeks) Tj
+T* (based on your preferred schedule.) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0. g
+56.6929133858267775 668.69314960629913 Td
+(Period Structure:) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 652.1104724409449318 Td
+(• Period 0: A tutorial week to familiarize students with their roles, profiles, and basic abilities. Low-stakes) Tj
+T* (introduction.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 626.5986614173227736 Td
+(• Periods 1-4: Each period begins with a briefing based on student roles, providing key information and) Tj
+T* (grading incentives. These briefings facilitate collaboration and problem-solving.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+56.6929133858267775 586.9136220472440755 Td
+(Class Assignments & Grading) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 569.3388188976377933 Td
+(• Role Research \(5%\): Students research and submit their top 5 role choices.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 553.748267716535338 Td
+(• Simulation Performance \(5%\): Based on achieving in-game goals \(e.g., reelection, policy success\).) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 538.15771653543311 Td
+(• Weekly Memos \(10%\): Reflection prompts connecting course materials to sim experiences.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 522.5671653543306547 Td
+(• Debrief Presentation \(15-25%\): Team presentation highlighting key concepts after the simulation.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 506.9766141732283131 Td
+(• Debrief Paper \(10-25%\): Deeper written analysis of the simulation experience.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+56.6929133858267775 477.212834645669318 Td
+(Why Use Statecraft Gov 2.0?) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 459.6380314960630358 Td
+(Statecraft is a comprehensive engine covering over 50 topics, including how a bill becomes a law, the role of) Tj
+T* (interest groups, media relations, checks and balances, and AI regulation. It promotes active learning and) Tj
+T* (critical thinking.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+56.6929133858267775 410.0317322834645779 Td
+(Support & Customer Service) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 392.4569291338583525 Td
+(We provide you with your own virtual Statecraft teaching assistant. Instructors have a '3-minute rule' for) Tj
+T* (contacting support—if you can't figure it out in 3 minutes, email us! Students should also use the 'Contact Us') Tj
+T* (button for any questions.) Tj
+ET
+BT
+/F3 10 Tf
+11.5 TL
+0. g
+56.6929133858267775 357.023858267716605 Td
+(Contact Info: help@statecraftsims.com) Tj
+ET
+endstream
+endobj
+11 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 12 0 R
+>>
+endobj
+12 0 obj
+<<
 /Length 3382
 >>
 stream
@@ -680,11 +825,11 @@ endstream
 endobj
 1 0 obj
 <</Type /Pages
-/Kids [3 0 R 5 0 R 7 0 R 9 0 R ]
-/Count 4
+/Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R ]
+/Count 5
 >>
 endobj
-11 0 obj
+13 0 obj
 <<
 /Type /Font
 /BaseFont /Helvetica
@@ -694,7 +839,7 @@ endobj
 /LastChar 255
 >>
 endobj
-12 0 obj
+14 0 obj
 <<
 /Type /Font
 /BaseFont /Helvetica-Bold
@@ -704,7 +849,7 @@ endobj
 /LastChar 255
 >>
 endobj
-13 0 obj
+15 0 obj
 <<
 /Type /Font
 /BaseFont /Helvetica-Oblique
@@ -714,7 +859,7 @@ endobj
 /LastChar 255
 >>
 endobj
-14 0 obj
+16 0 obj
 <<
 /Type /Font
 /BaseFont /Helvetica-BoldOblique
@@ -724,7 +869,7 @@ endobj
 /LastChar 255
 >>
 endobj
-15 0 obj
+17 0 obj
 <<
 /Type /Font
 /BaseFont /Courier
@@ -734,7 +879,7 @@ endobj
 /LastChar 255
 >>
 endobj
-16 0 obj
+18 0 obj
 <<
 /Type /Font
 /BaseFont /Courier-Bold
@@ -744,7 +889,7 @@ endobj
 /LastChar 255
 >>
 endobj
-17 0 obj
+19 0 obj
 <<
 /Type /Font
 /BaseFont /Courier-Oblique
@@ -754,7 +899,7 @@ endobj
 /LastChar 255
 >>
 endobj
-18 0 obj
+20 0 obj
 <<
 /Type /Font
 /BaseFont /Courier-BoldOblique
@@ -764,7 +909,7 @@ endobj
 /LastChar 255
 >>
 endobj
-19 0 obj
+21 0 obj
 <<
 /Type /Font
 /BaseFont /Times-Roman
@@ -774,7 +919,7 @@ endobj
 /LastChar 255
 >>
 endobj
-20 0 obj
+22 0 obj
 <<
 /Type /Font
 /BaseFont /Times-Bold
@@ -784,7 +929,7 @@ endobj
 /LastChar 255
 >>
 endobj
-21 0 obj
+23 0 obj
 <<
 /Type /Font
 /BaseFont /Times-Italic
@@ -794,7 +939,7 @@ endobj
 /LastChar 255
 >>
 endobj
-22 0 obj
+24 0 obj
 <<
 /Type /Font
 /BaseFont /Times-BoldItalic
@@ -804,7 +949,7 @@ endobj
 /LastChar 255
 >>
 endobj
-23 0 obj
+25 0 obj
 <<
 /Type /Font
 /BaseFont /ZapfDingbats
@@ -813,7 +958,7 @@ endobj
 /LastChar 255
 >>
 endobj
-24 0 obj
+26 0 obj
 <<
 /Type /Font
 /BaseFont /Symbol
@@ -826,32 +971,32 @@ endobj
 <<
 /ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
 /Font <<
-/F1 11 0 R
-/F2 12 0 R
-/F3 13 0 R
-/F4 14 0 R
-/F5 15 0 R
-/F6 16 0 R
-/F7 17 0 R
-/F8 18 0 R
-/F9 19 0 R
-/F10 20 0 R
-/F11 21 0 R
-/F12 22 0 R
-/F13 23 0 R
-/F14 24 0 R
+/F1 13 0 R
+/F2 14 0 R
+/F3 15 0 R
+/F4 16 0 R
+/F5 17 0 R
+/F6 18 0 R
+/F7 19 0 R
+/F8 20 0 R
+/F9 21 0 R
+/F10 22 0 R
+/F11 23 0 R
+/F12 24 0 R
+/F13 25 0 R
+/F14 26 0 R
 >>
 /XObject <<
 >>
 >>
 endobj
-25 0 obj
+27 0 obj
 <<
 /Producer (jsPDF 3.0.4)
-/CreationDate (D:20251225152931-06'00')
+/CreationDate (D:20251226152843-06'00')
 >>
 endobj
-26 0 obj
+28 0 obj
 <<
 /Type /Catalog
 /Pages 1 0 R
@@ -860,10 +1005,10 @@ endobj
 >>
 endobj
 xref
-0 27
+0 29
 0000000000 65535 f 
-0000016860 00000 n 
-0000018700 00000 n 
+0000020381 00000 n 
+0000022228 00000 n 
 0000000015 00000 n 
 0000000152 00000 n 
 0000005140 00000 n 
@@ -872,29 +1017,31 @@ xref
 0000006219 00000 n 
 0000013287 00000 n 
 0000013425 00000 n 
-0000016935 00000 n 
-0000017061 00000 n 
-0000017192 00000 n 
-0000017326 00000 n 
-0000017464 00000 n 
-0000017588 00000 n 
-0000017717 00000 n 
-0000017849 00000 n 
-0000017985 00000 n 
-0000018113 00000 n 
-0000018240 00000 n 
-0000018369 00000 n 
-0000018502 00000 n 
-0000018604 00000 n 
-0000018953 00000 n 
-0000019039 00000 n 
+0000016807 00000 n 
+0000016946 00000 n 
+0000020463 00000 n 
+0000020589 00000 n 
+0000020720 00000 n 
+0000020854 00000 n 
+0000020992 00000 n 
+0000021116 00000 n 
+0000021245 00000 n 
+0000021377 00000 n 
+0000021513 00000 n 
+0000021641 00000 n 
+0000021768 00000 n 
+0000021897 00000 n 
+0000022030 00000 n 
+0000022132 00000 n 
+0000022481 00000 n 
+0000022567 00000 n 
 trailer
 <<
-/Size 27
-/Root 26 0 R
-/Info 25 0 R
-/ID [ <AE7B1E7EBE387246F990D57E1204C1D5> <AE7B1E7EBE387246F990D57E1204C1D5> ]
+/Size 29
+/Root 28 0 R
+/Info 27 0 R
+/ID [ <B8AF0FE340A07D7250D096B729F3A7E2> <B8AF0FE340A07D7250D096B729F3A7E2> ]
 >>
 startxref
-19143
+22671
 %%EOF
