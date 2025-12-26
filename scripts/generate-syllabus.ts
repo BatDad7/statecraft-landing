@@ -117,12 +117,12 @@ const generatePDF = () => {
   y += 5;
 
   const months = [
-    { name: "SEPTEMBER", unit: "Unit 1: Foundations", sim: "Orientation + Sim Period 0", focus: "Login, Role Selection, Federalism Dispute" },
-    { name: "OCTOBER", unit: "Unit 2: Branches", sim: "Sim Period 1 & 2", focus: "Legislative Gridlock, Vetoes, Appointments" },
-    { name: "NOVEMBER", unit: "Unit 3: Civil Liberties", sim: "Sim Period 3 (Crisis)", focus: "National Security Crisis vs. Bill of Rights" },
-    { name: "DECEMBER", unit: "Review & Midterms", sim: "Sim Period 4 (Budget)", focus: "Power of the Purse, Shutdown Threats" },
-    { name: "JANUARY", unit: "Unit 4: Ideologies", sim: "Sim Period 5 (Polling)", focus: "Public Opinion Data, Ad Buys, Approval Ratings" },
-    { name: "FEBRUARY", unit: "Unit 5: Participation", sim: "Sim Period 6 (Election)", focus: "Voter Turnout, Media Leaks, Final Vote" }
+    { name: "SEPTEMBER", unit: "Unit 1: Foundations", sim: "Period 0: Foundations & Basics", focus: "Login, Role Selection, Basic Playthrough" },
+    { name: "OCTOBER", unit: "Unit 3: Civil Liberties", sim: "Period 1: National Security Crisis", focus: "Civil Liberties vs. National Security, 4th Amendment" },
+    { name: "NOVEMBER", unit: "Unit 2: Interactions", sim: "Period 2: Environmental Politics", focus: "Regulatory Agencies, Interest Group Lobbying" },
+    { name: "DECEMBER", unit: "Unit 5: Participation", sim: "Period 3: AI Regulation Policy", focus: "Media Influence, Tech Lobbying, Public Opinion" },
+    { name: "JANUARY", unit: "Unit 4: Ideologies", sim: "Period 4: Federal Budget Crisis", focus: "Fiscal Policy, Deficits, Political Ideologies" },
+    { name: "FEBRUARY", unit: "Review & Exam Prep", sim: "Post-Sim Debrief", focus: "Presentations, FRQ Practice, Final Analysis" }
   ];
 
   months.forEach(m => {
