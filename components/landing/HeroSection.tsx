@@ -74,7 +74,7 @@ export default function HeroSection({
           </span>
         </div>
 
-        <h1 className={`text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl uppercase italic mb-8 animate-fade-in-up delay-100 ${
+        <h1 className={`text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl uppercase mb-8 animate-fade-in-up delay-100 ${
           isAcademic ? 'font-serif tracking-tight normal-case' : ''
         } ${isLight ? 'text-slate-900' : 'text-white'}`}>
           {mainHeading}

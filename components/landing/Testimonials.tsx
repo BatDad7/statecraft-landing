@@ -22,7 +22,7 @@ export default function Testimonials({ heading, items, theme = 'dark' }: Testimo
     <section className={`py-24 relative overflow-hidden ${isLight ? 'bg-white' : 'bg-slate-950'}`}>
       <div className="container mx-auto px-4 relative z-10">
         <div className={`text-center max-w-4xl mx-auto mb-16 ${isLight ? 'text-slate-900' : 'text-white'}`}>
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase italic mb-6 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-extrabold uppercase mb-6 leading-tight">
             {heading}
           </h2>
         </div>

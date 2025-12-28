@@ -23,7 +23,7 @@ export default function FeatureGrid({ title, subtitle, features, theme = 'dark' 
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className={`text-3xl md:text-4xl font-extrabold uppercase italic mb-4 ${isLight ? 'text-slate-900' : 'text-white'}`}>
+          <h2 className={`text-3xl md:text-4xl font-extrabold uppercase mb-4 ${isLight ? 'text-slate-900' : 'text-white'}`}>
             {title}
           </h2>
           <p className={`text-xl ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
