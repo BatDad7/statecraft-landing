@@ -5,6 +5,7 @@ import DocumentDocket from "@/components/DocumentDocket";
 import HeroSection from "@/components/landing/HeroSection";
 import TrustBar from "@/components/landing/TrustBar";
 import FeatureGrid from "@/components/landing/FeatureGrid";
+import Testimonials from "@/components/landing/Testimonials";
 import { redis } from '@/lib/redis';
 
 // Force revalidation every 60 seconds to pick up new Redis content
@@ -144,6 +145,25 @@ export default async function Home() {
           { icon: Settings, title: "Custom Scenarios", text: "Adjust difficulty, crisis frequency, and turn length to fit your schedule." },
           { icon: Eye, title: "Real-Time Monitoring", text: "Track every trade, treaty, and message in real-time." },
           { icon: FileText, title: "Instant Assessment", text: "One-click grading reports exportable to any LMS." }
+        ]}
+      />
+
+      <Testimonials 
+        heading={<>Simulated Politics. Real <span className="text-terminal-green">Addiction</span>.</>}
+        items={[
+          {
+            quote: "My students enter class asking 'What's happening in Statecraft today?' It's the first time they've cared about foreign policy.",
+            author: "Nadia Jiani-Hyler",
+            title: "Social Studies Dept Chair",
+            institution: "Westlake High School",
+            highlight: true
+          },
+          {
+            quote: "The engagement is night and day compared to textbook lectures. They actually read the textbook to win the game.",
+            author: "Sarah Thomas",
+            title: "AP Gov Teacher",
+            institution: "Austin High School"
+          }
         ]}
       />
 

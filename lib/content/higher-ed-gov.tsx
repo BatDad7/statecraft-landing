@@ -23,14 +23,22 @@ export const higherEdContent = {
       { icon: Database, title: "Data Export", text: "Download raw CSV logs for quantitative analysis assignments." }
     ]
   },
-  testimonials: [
-    { 
-      institution: 'Georgetown', 
-      quote: 'The Game Theory application is unparalleled. My students finally grasp the Prisoner\'s Dilemma in a visceral way.' 
-    },
-    { 
-      institution: 'UT Austin', 
-      quote: 'I used to spend weeks grading participation. Now Statecraft handles the metrics, and I focus on the debrief.' 
-    }
-  ]
+  testimonials: {
+    heading: <>From <span className="text-brand-blue">Lecture Hall</span> to Situation Room.</>,
+    items: [
+      {
+        quote: "My students used to sleep through the Realism lecture. Now they are applying it. It bridges the gap between theory and practice perfectly.",
+        author: "Dr. Sarah Miller",
+        title: "Senior Lecturer",
+        institution: "International Relations",
+        highlight: true
+      },
+      {
+        quote: "The auto-grading is a lifesaver for large sections. I get specific data points on student negotiation performance without grading 300 papers.",
+        author: "Prof. James Chen",
+        title: "Dept. of Political Science",
+        institution: "State University"
+      }
+    ]
+  }
 };

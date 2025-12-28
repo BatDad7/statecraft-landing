@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import HeroSection from "@/components/landing/HeroSection";
 import TrustBar from "@/components/landing/TrustBar";
 import FeatureGrid from "@/components/landing/FeatureGrid";
+import Testimonials from "@/components/landing/Testimonials";
 import { higherEdContent } from "@/lib/content/higher-ed-gov";
 
 export const metadata: Metadata = {
@@ -22,10 +23,7 @@ export default function HigherEdGov() {
       
       <FeatureGrid {...higherEdContent.featureGrid} />
       
-      {/* 
-        Phase 4: Implement Testimonials based on higherEdContent 
-        <Testimonials data={higherEdContent.testimonials} />
-      */}
+      <Testimonials {...higherEdContent.testimonials} />
     </div>
   );
 }
