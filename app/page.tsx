@@ -1,8 +1,10 @@
-import { Newspaper, Clock, MapPin } from "lucide-react";
+import { Newspaper, Clock, MapPin, Settings, Eye, FileText } from "lucide-react";
 import AIFirewall from "@/components/AIFirewall";
 import StandardsMapper from "@/components/StandardsMapper";
 import DocumentDocket from "@/components/DocumentDocket";
 import HeroSection from "@/components/landing/HeroSection";
+import TrustBar from "@/components/landing/TrustBar";
+import FeatureGrid from "@/components/landing/FeatureGrid";
 import { redis } from '@/lib/redis';
 
 // Force revalidation every 60 seconds to pick up new Redis content
@@ -82,6 +84,11 @@ export default async function Home() {
         techSpecs={["Browser Based", "No Install", "Chromebook Compatible"]}
       />
 
+      <TrustBar 
+        label="Trusted by 500+ High Schools"
+        logos={["Lake Travis HS", "Westlake HS", "Austin High", "Bowie HS", "Anderson HS"]}
+      />
+
       {/* Daily Intelligence Brief Section (Server Rendered) */}
       <section className="py-12 border-y border-slate-800 tactical-grid">
         <div id="daily-intel-brief" className="max-w-6xl mx-auto px-4">
@@ -129,6 +136,16 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <FeatureGrid 
+        title={<>Complete <span className="text-terminal-green">Simulation</span> Control</>}
+        subtitle="You are the Game Master. We handle the math."
+        features={[
+          { icon: Settings, title: "Custom Scenarios", text: "Adjust difficulty, crisis frequency, and turn length to fit your schedule." },
+          { icon: Eye, title: "Real-Time Monitoring", text: "Track every trade, treaty, and message in real-time." },
+          { icon: FileText, title: "Instant Assessment", text: "One-click grading reports exportable to any LMS." }
+        ]}
+      />
 
       {/* AI Firewall Section */}
       <div id="ai-firewall">

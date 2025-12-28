@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import HeroSection from "@/components/landing/HeroSection";
+import TrustBar from "@/components/landing/TrustBar";
+import FeatureGrid from "@/components/landing/FeatureGrid";
 import { higherEdContent } from "@/lib/content/higher-ed-gov";
 
 export const metadata: Metadata = {
@@ -16,9 +18,12 @@ export default function HigherEdGov() {
         secondaryCtaLink="https://www.youtube.com/watch?v=gameplay"
       />
       
+      <TrustBar {...higherEdContent.trustBar} />
+      
+      <FeatureGrid {...higherEdContent.featureGrid} />
+      
       {/* 
-        Phase 4: Implement Feature Grid and Testimonials based on higherEdContent 
-        <FeatureGrid features={higherEdContent.features} />
+        Phase 4: Implement Testimonials based on higherEdContent 
         <Testimonials data={higherEdContent.testimonials} />
       */}
     </div>

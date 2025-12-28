@@ -1,4 +1,5 @@
 import React from 'react';
+import { ClipboardCheck, ShieldCheck, Database } from "lucide-react";
 
 export const higherEdContent = {
   hero: {
@@ -9,24 +10,19 @@ export const higherEdContent = {
     secondaryCtaText: 'Watch Gameplay',
     techSpecs: ['Zero Grading Load', 'LMS Integration', 'Research Ready']
   },
-  trustLogos: ['Harvard', 'Yale', 'Georgetown', 'Stanford', 'LSE'],
-  features: [
-    { 
-      icon: 'ClipboardCheck', 
-      title: 'Zero Grading Load', 
-      text: 'Objective scores are calculated automatically based on treaty adherence and trade metrics.' 
-    },
-    { 
-      icon: 'ShieldCheck', 
-      title: 'Academic Integrity', 
-      text: 'Unique simulation seeds for every semester prevent test-bank cheating.' 
-    },
-    { 
-      icon: 'Terminal', 
-      title: 'Research Ready', 
-      text: 'Export raw simulation data (CSV) for quantitative analysis assignments.' 
-    }
-  ],
+  trustBar: {
+    label: "Adopting Departments Include:",
+    logos: ["Harvard", "Georgetown", "Yale", "Stanford", "LSE"]
+  },
+  featureGrid: {
+    title: <>Research-Grade <span className="text-brand-blue">Simulation</span></>,
+    subtitle: "Replace 20 hours of grading with automated data generation.",
+    features: [
+      { icon: ClipboardCheck, title: "Zero Grading Load", text: "Objective scores calculated automatically based on treaty adherence." },
+      { icon: ShieldCheck, title: "Academic Integrity", text: "Unique simulation seeds for every semester prevent test-bank cheating." },
+      { icon: Database, title: "Data Export", text: "Download raw CSV logs for quantitative analysis assignments." }
+    ]
+  },
   testimonials: [
     { 
       institution: 'Georgetown', 
@@ -38,4 +34,3 @@ export const higherEdContent = {
     }
   ]
 };
-
