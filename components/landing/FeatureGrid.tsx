@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
-import { LucideIcon } from "lucide-react";
 
 export interface Feature {
-  icon: LucideIcon;
+  icon: ReactNode;
   title: string;
   text: string;
 }
@@ -31,9 +30,9 @@ export default function FeatureGrid({ title, subtitle, features }: FeatureGridPr
 
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, i) => (
-            <div key={i} className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-colors group">
-              <div className="mb-6 inline-block p-4 rounded-lg bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                <feature.icon className="h-8 w-8" />
+            <div key={i} className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 hover:border-brand-blue/30 transition-colors group">
+              <div className="mb-6 inline-block p-3 rounded-lg bg-slate-900 border border-slate-700 group-hover:border-brand-blue/30 transition-colors">
+                {feature.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
               <p className="text-slate-400 leading-relaxed">{feature.text}</p>
@@ -44,4 +43,3 @@ export default function FeatureGrid({ title, subtitle, features }: FeatureGridPr
     </section>
   );
 }
-

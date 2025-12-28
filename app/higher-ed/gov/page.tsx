@@ -36,6 +36,19 @@ async function getDailyBrief(): Promise<DailyBrief | null> {
 export default async function HigherEdGov() {
   const brief = await getDailyBrief();
 
+  // Prefer dynamic brief, fallback to static content config
+  const policyData = brief ? {
+    topic: brief.headline,
+    analysis: brief.activity,
+    discussion: `Discussion: How does '${brief.topic_tag}' relate to the current news cycle?`,
+    source: "Statecraft Intelligence: Live Feed"
+  } : {
+    topic: higherEdContent.dailyIntel.headline,
+    analysis: higherEdContent.dailyIntel.brief,
+    discussion: higherEdContent.dailyIntel.actionItem,
+    source: higherEdContent.dailyIntel.source
+  };
+
   return (
     <div className="bg-slate-900 text-white min-h-screen">
       <CourseSchema 
@@ -50,10 +63,10 @@ export default async function HigherEdGov() {
       />
 
       <PolicyBrief 
-        topic={brief?.headline || "Executive Orders vs. Legislation"}
-        analysis={brief?.activity || "Analyzing the constitutional friction between Article II powers and Congressional oversight in the modern era."}
-        discussion={brief ? "How does this event illustrate the concept of Imperial Presidency?" : "Discuss: Does the War Powers Resolution actually constrain the President?"}
-        source={brief ? "Statecraft Intelligence: College Gov Feed" : "Mock Analysis"}
+        topic={policyData.topic}
+        analysis={policyData.analysis}
+        discussion={policyData.discussion}
+        source={policyData.source}
       />
       
       <TrustBar {...higherEdContent.trustBar} />

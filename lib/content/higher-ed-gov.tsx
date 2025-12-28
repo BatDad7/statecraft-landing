@@ -1,55 +1,61 @@
 import React from 'react';
-import { Bot, DollarSign, Scale, ScrollText, Users, Clock } from "lucide-react";
+import { Landmark, Scale, LineChart, ScrollText } from "lucide-react";
 
 export const higherEdContent = {
   hero: {
-    badgeText: 'Institutional Analysis Engine',
-    mainHeading: <>The <span className="text-brand-blue">Living Constitution</span> Simulation.</>,
-    subHeading: 'A 4-period simulation covering 50+ topics including AI Regulation, Federal Budget, and Civil Liberties. Flexible timing from one day to several weeks per period.',
-    primaryCtaText: 'VIEW SYLLABUS INTEGRATION',
-    secondaryCtaText: 'Watch Walkthrough',
-    techSpecs: ['4 Periods + Tutorial', '50+ Topics', 'Flexible Timing']
+    badgeText: "Institutional Analysis Engine",
+    mainHeading: <>Don't Just Teach the Constitution. <span className="text-brand-blue">Stress-Test It.</span></>,
+    subHeading: "The only simulation that forces students to navigate the friction of Separation of Powers, Federalism, and Partisan Gridlock in real-time.",
+    primaryCtaText: "View Syllabus Integration",
+    secondaryCtaText: "Watch Walkthrough",
+    techSpecs: ["Role-Based Scenarios", "LMS Integration", "FERPA Compliant", "Zero Grading Load"],
   },
   trustBar: {
-    label: "Adopting Departments Include:",
-    logos: ["Harvard", "Georgetown", "Yale", "Stanford", "LSE"]
+    label: "Deployed in Departments at:",
+    logos: ["Harvard", "Georgetown", "Yale", "Stanford", "LSE"],
+  },
+  dailyIntel: {
+    topic: "Administrative Law",
+    headline: "SCOTUS Overturns Chevron: Agency Power Curtailed",
+    brief: "In a 6-3 ruling, the Court has ended the 40-year precedent of deferring to agency interpretations of ambiguous statutes. Simulation Update: Students playing 'Agency Heads' will now face increased judicial scrutiny on rulemaking scores.",
+    actionItem: "Assign the 'Judicial Review' Module.",
+    source: "Analysis via Gemini 1.5 Pro"
   },
   featureGrid: {
-    title: <>Core <span className="text-brand-blue">Policy Modules</span></>,
-    subtitle: "Structured into four quarters covering critical modern governance challenges.",
+    title: <>From <span className="text-brand-blue">Textbook</span> to Committee Floor</>,
+    subtitle: "Move beyond theory. Give them the roles, the incentives, and the gridlock.",
     features: [
-      { 
-        icon: Bot, 
-        title: "AI Regulation", 
-        text: "Students grapple with emerging issues surrounding artificial intelligence, balancing innovation with safety and regulation." 
+      {
+        icon: <Landmark className="h-8 w-8 text-brand-blue" />,
+        title: "Legislative Gridlock",
+        text: "Students don't just pass bills; they face the filibuster, committee gatekeeping, and the whip count. Efficiency is the enemy."
       },
-      { 
-        icon: DollarSign, 
-        title: "Federal Budget", 
-        text: "Navigate the fiscal policy minefield. Students must pass a budget while managing interest groups and reelection pressures." 
+      {
+        icon: <Scale className="h-8 w-8 text-amber-500" />,
+        title: "Judicial Review",
+        text: "The Supreme Court player isn't a referee—they shape policy by ruling on the constitutionality of every student-passed act."
       },
-      { 
-        icon: Scale, 
-        title: "Civil Liberties vs. Security", 
-        text: "Balance the tension between protecting individual rights and ensuring national security in high-stakes scenarios." 
+      {
+        icon: <LineChart className="h-8 w-8 text-emerald-500" />,
+        title: "Public Opinion Tracking",
+        text: "Real-time polling data forces Representatives to balance their conscience against the 'median voter' in their simulated district."
       }
     ]
   },
   testimonials: {
-    heading: <>From <span className="text-brand-blue">Lecture Hall</span> to Floor Vote.</>,
+    heading: <>Academic Rigor Meets <span className="text-brand-blue">Political Reality.</span></>,
     items: [
       {
-        quote: "The 'Period 0' tutorial week was a game changer. My students entered the main simulation confident and ready to negotiate.",
-        author: "Dr. Sarah Miller",
-        title: "Senior Lecturer",
-        institution: "American Politics",
-        highlight: true
-      },
-      {
-        quote: "I use the Debrief Presentation as 25% of their grade. The insights they share about legislative gridlock are profound.",
+        quote: "I use the Debrief Presentation as 25% of their grade. The insights they share about the difficulty of coalition building are profound.",
         author: "Prof. James Chen",
         title: "Dept. of Political Science",
         institution: "State University"
+      },
+      {
+        quote: "It solves the 'Free Rider' problem in group work. The simulation incentives force every student to lobby, trade, and vote to survive.",
+        author: "Dr. Sarah Miller",
+        title: "Senior Lecturer, American Politics",
+        institution: "Research University"
       }
     ]
   }

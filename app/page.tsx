@@ -142,9 +142,21 @@ export default async function Home() {
         title={<>Complete <span className="text-terminal-green">Simulation</span> Control</>}
         subtitle="You are the Game Master. We handle the math."
         features={[
-          { icon: Settings, title: "Custom Scenarios", text: "Adjust difficulty, crisis frequency, and turn length to fit your schedule." },
-          { icon: Eye, title: "Real-Time Monitoring", text: "Track every trade, treaty, and message in real-time." },
-          { icon: FileText, title: "Instant Assessment", text: "One-click grading reports exportable to any LMS." }
+          { 
+            icon: <Settings className="h-8 w-8 text-brand-blue" />, 
+            title: "Custom Scenarios", 
+            text: "Adjust difficulty, crisis frequency, and turn length to fit your schedule." 
+          },
+          { 
+            icon: <Eye className="h-8 w-8 text-emerald-500" />, 
+            title: "Real-Time Monitoring", 
+            text: "Track every trade, treaty, and message in real-time." 
+          },
+          { 
+            icon: <FileText className="h-8 w-8 text-amber-500" />, 
+            title: "Instant Assessment", 
+            text: "One-click grading reports exportable to any LMS." 
+          }
         ]}
       />
 
