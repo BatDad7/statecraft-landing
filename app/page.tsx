@@ -2,7 +2,7 @@ import { Newspaper, Clock, MapPin } from "lucide-react";
 import AIFirewall from "@/components/AIFirewall";
 import StandardsMapper from "@/components/StandardsMapper";
 import DocumentDocket from "@/components/DocumentDocket";
-import HeroSection from "@/components/HeroSectionClient";
+import HeroSection from "@/components/landing/HeroSection";
 import { redis } from '@/lib/redis';
 
 // Force revalidation every 60 seconds to pick up new Redis content
@@ -71,8 +71,16 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Hero Section (Client Component) */}
-      <HeroSection />
+      
+      {/* Hero Section Configured for AP Gov */}
+      <HeroSection 
+        badgeText="College Board Aligned"
+        mainHeading={<>Teach <span className="text-terminal-green">Government</span> Through Action.</>}
+        subHeading="Stop lecturing about gridlock. Make them live it. The ultimate immersive simulation designed for AP Government classrooms."
+        primaryCtaText="AUTHORIZE MISSION ACCESS"
+        secondaryCtaText="Watch Trailer"
+        techSpecs={["Browser Based", "No Install", "Chromebook Compatible"]}
+      />
 
       {/* Daily Intelligence Brief Section (Server Rendered) */}
       <section className="py-12 border-y border-slate-800 tactical-grid">
