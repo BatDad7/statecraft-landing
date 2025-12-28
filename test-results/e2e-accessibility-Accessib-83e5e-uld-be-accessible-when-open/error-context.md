@@ -1,0 +1,219 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Statecraft Logo" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Statecraft Logo" [ref=e6]
+      - generic [ref=e7]:
+        - link "Book Demo" [ref=e8] [cursor=pointer]:
+          - /url: https://go.oncehub.com/Statecraft-Demo
+        - button "Open Tactical Menu" [active] [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]: // Classified Access
+      - button "Close Menu" [ref=e15] [cursor=pointer]:
+        - img [ref=e16]
+    - generic [ref=e19]:
+      - generic [ref=e20]: Intelligence Channels
+      - link "Daily Intel Brief" [ref=e21] [cursor=pointer]:
+        - /url: "#daily-intel-brief"
+        - img [ref=e22]
+        - generic [ref=e25]: Daily Intel Brief
+      - link "Curriculum Map" [ref=e26] [cursor=pointer]:
+        - /url: "#standards-mapper"
+        - img [ref=e27]
+        - generic [ref=e29]: Curriculum Map
+      - link "Required Documents" [ref=e30] [cursor=pointer]:
+        - /url: "#document-docket"
+        - img [ref=e31]
+        - generic [ref=e34]: Required Documents
+      - link "AI Policy Firewall" [ref=e35] [cursor=pointer]:
+        - /url: "#ai-firewall"
+        - img [ref=e36]
+        - generic [ref=e38]: AI Policy Firewall
+      - generic [ref=e40]: Operations
+      - link "Schedule Demo" [ref=e41] [cursor=pointer]:
+        - /url: https://go.oncehub.com/Statecraft-Demo
+        - img [ref=e42]
+        - generic [ref=e44]: Schedule Demo
+      - link "Get Instant Quote" [ref=e45] [cursor=pointer]:
+        - /url: https://statecraftapp-staging.azurewebsites.net/quote
+        - img [ref=e46]
+        - generic [ref=e48]: Get Instant Quote
+      - link "Contact Support" [ref=e49] [cursor=pointer]:
+        - /url: mailto:help@statecraftsims.com
+        - img [ref=e50]
+        - generic [ref=e57]: Contact Support
+      - link "Teacher Login" [ref=e59] [cursor=pointer]:
+        - /url: https://www.statecraftsims.com/login
+        - generic [ref=e60]:
+          - img [ref=e61]
+          - text: Teacher Login
+        - img [ref=e64]
+    - generic [ref=e69]: Secure Connection Active
+  - main [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic:
+          - generic:
+            - img
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]: Situation Room Active
+            - generic [ref=e77]:
+              - img [ref=e78]
+              - text: College Board Aligned
+          - heading "Teach Government Through Action." [level=1] [ref=e81]
+          - paragraph [ref=e82]: Stop lecturing about gridlock. Make them live it. The ultimate immersive simulation designed for AP Government classrooms.
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - button "AUTHORIZE MISSION ACCESS" [ref=e85] [cursor=pointer]:
+                - text: AUTHORIZE MISSION ACCESS
+                - img [ref=e86]
+              - link "[ Need .DOCX? ]" [ref=e89] [cursor=pointer]:
+                - /url: /assets/Statecraft_Syllabus_2025.docx
+            - button "Watch Trailer" [ref=e90] [cursor=pointer]:
+              - text: Watch Trailer
+              - img [ref=e91]
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - img [ref=e100]
+              - generic [ref=e102]: Domestic Policy Simulator
+            - heading "The Speaker of the House is threatening a government shutdown." [level=2] [ref=e103]
+            - generic [ref=e104]:
+              - 'button "Action: Veto Bill [ Simulate Unit 2 ]" [ref=e105] [cursor=pointer]':
+                - generic [ref=e106]:
+                  - img [ref=e107]
+                  - generic [ref=e110]: "Action: Veto Bill"
+                - generic [ref=e111]: "[ Simulate Unit 2 ]"
+              - 'button "Action: Leak Memo [ Simulate Unit 5 ]" [ref=e112] [cursor=pointer]':
+                - generic [ref=e113]:
+                  - img [ref=e114]
+                  - generic [ref=e120]: "Action: Leak Memo"
+                - generic [ref=e121]: "[ Simulate Unit 5 ]"
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - img [ref=e127]
+            - text: Daily Intelligence Brief
+          - 'heading "TARGET: BRONX RALLY / MEDIA FRAMING ANALYSIS" [level=2] [ref=e130]'
+          - generic [ref=e131]: Former President Trump's unprecedented rally in the South Bronx challenges historical polling data regarding minority voter alignment and Democratic party loyalty. Intelligence indicates a sharp divergence in media coverage, with rival outlets utilizing specific framing techniques to either amplify or diminish the event's impact on the electorate. Operatives must analyze this footage to identify partisan bias and evaluate how candidates manipulate 'earned media' to alter political participation.
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - img [ref=e134]
+            - generic [ref=e137]: Sunday, December 28, 2025
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e140]: Current Unit Alignment
+              - generic [ref=e141]: "Unit 5: Political Participation"
+            - generic [ref=e143]: Live Feed Active
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - img [ref=e150]
+            - generic [ref=e152]: "Protocol: Anti-Plagiarism"
+          - heading "The AI Firewall" [level=2] [ref=e153]
+          - paragraph [ref=e154]: The Essay is Dead. Long Live the Simulation.
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - img [ref=e158]
+              - generic [ref=e161]: What AI Can Fake
+            - generic [ref=e164]:
+              - generic [ref=e165]:
+                - img [ref=e167]
+                - paragraph [ref=e171]: Explain Madison's argument in Federalist No. 10.
+              - generic [ref=e172]:
+                - img [ref=e174]
+                - generic [ref=e177]:
+                  - paragraph [ref=e178]: Generating response...
+                  - paragraph [ref=e179]: In Federalist No. 10, James Madison argues that a strong central government can guard against the "factionalism" of smaller groups. He defines a faction as a number of citizens, whether amounting to a majority or a minority of the whole, who are united by some common impulse of passion...
+                  - paragraph [ref=e180]: Madison suggests that in a large republic, there will be so many different factions that no single one will be able to dominate the others. This plurality of interests helps protect the rights of the minority against the tyranny of the majority...
+          - generic [ref=e182]:
+            - generic [ref=e183]:
+              - img [ref=e184]
+              - generic [ref=e186]: What AI Can't Fake
+            - generic [ref=e189]:
+              - generic [ref=e190]:
+                - paragraph [ref=e191]: "SECURE CHANNEL: K_STREET_MONITOR"
+                - paragraph [ref=e192]: "ALERT: INTEREST GROUP ACTIVITY DETECTED"
+              - generic [ref=e193]:
+                - generic [ref=e194]:
+                  - generic [ref=e195]: 14:00
+                  - paragraph [ref=e196]: "[LOBBYIST_ENERGY_COALITION]: Senator, if you vote for this carbon tax, our PAC will primary you. We have 50,000 jobs in your district."
+                - generic [ref=e197]:
+                  - generic [ref=e198]: 14:05
+                  - paragraph [ref=e199]: "[SENATOR_OHIO]: I can't survive a primary challenge. Tell the President I need a carve-out for coal or I'm walking."
+                - generic [ref=e200]:
+                  - generic [ref=e201]: 14:07
+                  - paragraph [ref=e203]: "SYSTEM: Factional conflict detected. Pluralist Theory in action."
+              - generic [ref=e209]: Human intelligence required
+      - generic [ref=e213]:
+        - generic [ref=e214]:
+          - heading "AP Gov Standards Mapper" [level=2] [ref=e215]
+          - paragraph [ref=e216]: Align your curriculum with immersive simulations in seconds.
+        - generic [ref=e218]:
+          - generic [ref=e219]: Which Unit are you teaching next?
+          - generic [ref=e220]:
+            - combobox [ref=e221] [cursor=pointer]:
+              - option "Select an AP Unit..." [disabled] [selected]
+              - 'option "Unit 1: Foundations"'
+              - 'option "Unit 2: Branches"'
+              - 'option "Unit 3: Civil Liberties"'
+              - 'option "Unit 4: Ideologies"'
+            - generic:
+              - img
+      - generic [ref=e224]:
+        - generic [ref=e225]:
+          - generic [ref=e228]: Classified Archive
+          - heading "Required Foundational Documents" [level=2] [ref=e229]
+        - generic [ref=e230]:
+          - generic [ref=e231]:
+            - img [ref=e233]
+            - img [ref=e235]
+            - generic [ref=e238]: Federalist No. 10
+          - generic [ref=e239]:
+            - img [ref=e241]
+            - img [ref=e243]
+            - generic [ref=e246]: Brutus No. 1
+          - generic [ref=e247]:
+            - img [ref=e249]
+            - img [ref=e251]
+            - generic [ref=e254]: The Declaration of Independence
+          - generic [ref=e255]:
+            - img [ref=e257]
+            - img [ref=e259]
+            - generic [ref=e262]: Articles of Confederation
+          - generic [ref=e263]:
+            - img [ref=e265]
+            - img [ref=e267]
+            - generic [ref=e270]: The Constitution
+          - generic [ref=e271]:
+            - img [ref=e273]
+            - img [ref=e275]
+            - generic [ref=e278]: Federalist No. 51
+          - generic [ref=e279]:
+            - img [ref=e281]
+            - img [ref=e283]
+            - generic [ref=e286]: Letter from Birmingham Jail
+          - generic [ref=e287]:
+            - img [ref=e289]
+            - img [ref=e291]
+            - generic [ref=e294]: Federalist No. 70
+          - generic [ref=e295]:
+            - img [ref=e297]
+            - img [ref=e299]
+            - generic [ref=e302]: Federalist No. 78
+        - generic [ref=e304]:
+          - img [ref=e305]
+          - text: Integrated Curriculum Asset // 100% Coverage Verified
+  - button "Toggle Syllabus Architect Assistant" [ref=e308] [cursor=pointer]:
+    - generic [ref=e310]:
+      - img [ref=e311]
+      - img [ref=e316]
+  - alert [ref=e318]
+```

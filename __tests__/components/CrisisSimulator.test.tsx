@@ -28,29 +28,29 @@ describe('CrisisSimulator Component', () => {
     // expect(screen.getByText(/Speaker of the House is threatening/i)).toBeInTheDocument();
     
     // Check for new Action Buttons
-    expect(screen.getByText('Draft Emergency Legislation')).toBeInTheDocument();
-    expect(screen.getByText('Leak Statement to Press')).toBeInTheDocument();
+    expect(screen.getByText('Action: Veto Bill')).toBeInTheDocument();
+    expect(screen.getByText('Action: Leak Memo')).toBeInTheDocument();
   });
 
-  it('transitions to "legislation" state when Draft Emergency Legislation is clicked', () => {
+  it('transitions to "legislation" state when Veto Bill is clicked', () => {
     render(<CrisisSimulator />);
     
-    const vetoBtn = screen.getByText('Draft Emergency Legislation');
+    const vetoBtn = screen.getByText('Action: Veto Bill');
     fireEvent.click(vetoBtn);
     
     expect(screen.getByText('GRIDLOCK.')).toBeInTheDocument();
-    expect(screen.getByText(/Bill stalled in Committee/i)).toBeInTheDocument();
+    expect(screen.getByText(/The Speaker of the House just blocked your Budget Veto/i)).toBeInTheDocument();
     expect(screen.getByText('(AP Unit 2: Interactions Among Branches)')).toBeInTheDocument();
   });
 
-  it('transitions to "leak" state when Leak Statement to Press is clicked', () => {
+  it('transitions to "leak" state when Leak Memo is clicked', () => {
     render(<CrisisSimulator />);
     
-    const leakBtn = screen.getByText('Leak Statement to Press');
+    const leakBtn = screen.getByText('Action: Leak Memo');
     fireEvent.click(leakBtn);
     
     expect(screen.getByText('SCANDAL.')).toBeInTheDocument();
-    expect(screen.getByText(/Approval rating drops 5%/i)).toBeInTheDocument();
+    expect(screen.getByText(/Your Supreme Court nominee just leaked a controversial opinion/i)).toBeInTheDocument();
     expect(screen.getByText('(AP Unit 5: Political Participation)')).toBeInTheDocument();
   });
 

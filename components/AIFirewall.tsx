@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Bot, User, ShieldAlert, Cpu, Zap } from "lucide-react";
 
 const AIFirewall = () => {
@@ -7,51 +6,29 @@ const AIFirewall = () => {
     <section className="relative py-24 px-4 border-t border-slate-800 bg-slate-900 overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex justify-center items-center gap-2 text-terminal-green"
-          >
+        <div className="text-center mb-16 space-y-4 animate-fade-in-up">
+          <div className="flex justify-center items-center gap-2 text-terminal-green">
             <ShieldAlert className="h-5 w-5" />
             <span className="font-mono text-xs uppercase tracking-[0.3em] font-bold">Protocol: Anti-Plagiarism</span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold tracking-tight uppercase italic text-white"
-          >
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight uppercase italic text-white">
             The <span className="text-terminal-green">AI Firewall</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-2xl md:text-3xl font-bold text-slate-400 max-w-3xl mx-auto tracking-tight"
-          >
+          </h2>
+          <p className="text-2xl md:text-3xl font-bold text-slate-400 max-w-3xl mx-auto tracking-tight">
             The Essay is Dead. Long Live the Simulation.
-          </motion.p>
+          </p>
         </div>
 
         {/* Split Screen Comparison */}
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
           
           {/* Left Side: The Problem */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col h-full"
-          >
+          <div className="flex flex-col h-full animate-fade-in-left delay-100">
             <div className="mb-4 flex items-center gap-2 px-2">
               <Cpu className="h-4 w-4 text-slate-500" />
               <span className="text-xs font-bold uppercase tracking-widest text-slate-500">What AI Can Fake</span>
             </div>
-            <div className="flex-1 rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-inner relative overflow-hidden group">
+            <div className="flex-1 rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-inner relative overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="absolute top-0 left-0 w-full h-1 bg-slate-700 opacity-20" />
               
               {/* ChatGPT Interface Mockup */}
@@ -61,7 +38,7 @@ const AIFirewall = () => {
                     <User className="h-5 w-5 text-slate-400" />
                   </div>
                   <div className="bg-slate-900 rounded-lg px-4 py-2 border border-slate-800">
-                    <p className="text-sm text-slate-300">Write a 500-word essay on Political Realism for AP Gov.</p>
+                    <p className="text-sm text-slate-300">Explain Madison&apos;s argument in Federalist No. 10.</p>
                   </div>
                 </div>
 
@@ -72,10 +49,10 @@ const AIFirewall = () => {
                   <div className="space-y-4 text-slate-400 font-serif leading-relaxed text-sm">
                     <p className="border-b border-slate-800 pb-2 italic text-slate-500">Generating response...</p>
                     <p>
-                      Political realism is a theory of international relations that focuses on the role of the state and the pursuit of national interest. Realists argue that the international system is anarchic, meaning there is no central authority to govern the behavior of states...
+                      In Federalist No. 10, James Madison argues that a strong central government can guard against the &quot;factionalism&quot; of smaller groups. He defines a faction as a number of citizens, whether amounting to a majority or a minority of the whole, who are united by some common impulse of passion...
                     </p>
                     <p>
-                      States must therefore rely on themselves to ensure their survival, often leading to a focus on military power and strategic alliances. This perspective emphasizes that ethics and morality have little place in the pragmatic world of global politics...
+                      Madison suggests that in a large republic, there will be so many different factions that no single one will be able to dominate the others. This plurality of interests helps protect the rights of the minority against the tyranny of the majority...
                     </p>
                     <div className="h-4 w-1 bg-slate-600 animate-pulse" />
                   </div>
@@ -86,51 +63,46 @@ const AIFirewall = () => {
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none" />
               <div className="absolute inset-0 border-2 border-red-900/0 group-hover:border-red-900/20 transition-colors pointer-events-none rounded-xl" />
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Side: The Solution */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col h-full"
-          >
+          <div className="flex flex-col h-full animate-fade-in-right delay-200">
             <div className="mb-4 flex items-center gap-2 px-2">
               <Zap className="h-4 w-4 text-terminal-green" />
               <span className="text-xs font-bold uppercase tracking-widest text-terminal-green">What AI Can&apos;t Fake</span>
             </div>
-            <div className="flex-1 rounded-xl border border-terminal-green/30 bg-black p-6 shadow-[0_0_30px_rgba(34,197,94,0.1)] relative overflow-hidden group">
+            <div className="flex-1 rounded-xl border border-terminal-green/30 bg-black p-6 shadow-[0_0_30px_rgba(34,197,94,0.1)] relative overflow-hidden group hover:shadow-[0_0_40px_rgba(34,197,94,0.2)] transition-shadow">
               <div className="absolute top-0 left-0 w-full h-1 bg-terminal-green/50" />
               
               {/* Diplomatic Cable Mockup */}
               <div className="font-mono text-sm space-y-8">
                 <div className="border-b border-terminal-green/20 pb-4">
-                  <p className="text-terminal-green/50 text-[10px] mb-1">ENCRYPTED CHANNEL: STATECRAFT_V3_SIGINT</p>
-                  <p className="text-terminal-green font-bold">MESSAGE TYPE: DIPLOMATIC CABLE // URGENT</p>
+                  <p className="text-terminal-green/50 text-[10px] mb-1">SECURE CHANNEL: K_STREET_MONITOR</p>
+                  <p className="text-terminal-green font-bold">ALERT: INTEREST GROUP ACTIVITY DETECTED</p>
                 </div>
 
                 <div className="space-y-6">
                   <div className="flex gap-4 items-start">
-                    <span className="text-terminal-green/40 shrink-0">09:00</span>
+                    <span className="text-terminal-green/40 shrink-0">14:00</span>
                     <p className="text-terminal-green">
-                      <span className="font-bold">[SENATE_MAJORITY_LEADER]</span>:
-                      If you don't compromise on this budget, we will force a veto override. Your party will pay in the midterms.
+                      <span className="font-bold">[LOBBYIST_ENERGY_COALITION]</span>:
+                      Senator, if you vote for this carbon tax, our PAC will primary you. We have 50,000 jobs in your district.
                     </p>
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <span className="text-terminal-green/40 shrink-0">09:05</span>
+                    <span className="text-terminal-green/40 shrink-0">14:05</span>
                     <p className="text-white bg-terminal-green/10 p-2 rounded border border-terminal-green/20">
-                      <span className="font-bold text-terminal-green">[PRESIDENT]</span>:
-                      My base expects me to hold the line. A shutdown is a risk I'm willing to take for this policy.
+                      <span className="font-bold text-terminal-green">[SENATOR_OHIO]</span>:
+                      I can't survive a primary challenge. Tell the President I need a carve-out for coal or I'm walking.
                     </p>
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <span className="text-terminal-green/40 shrink-0">09:07</span>
+                    <span className="text-terminal-green/40 shrink-0">14:07</span>
                     <div className="flex flex-col gap-1">
                       <p className="text-terminal-green/80 italic">
-                        SYSTEM: Public opinion polls show a divided electorate. <span className="cursor-help border-b border-dashed border-terminal-green/30" title="Brinkmanship: The art of pushing dangerous situations to the edge of conflict to force an opponent to back down.">Brinkmanship</span> risk: HIGH.
+                        SYSTEM: Factional conflict detected. <span className="cursor-help border-b border-dashed border-terminal-green/30" title="Pluralist Theory: The theory that open, multiple, and competing groups can check the asserted power by any one group.">Pluralist Theory</span> in action.
                       </p>
                     </div>
                   </div>
@@ -146,7 +118,7 @@ const AIFirewall = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
@@ -158,4 +130,3 @@ const AIFirewall = () => {
 };
 
 export default AIFirewall;
-

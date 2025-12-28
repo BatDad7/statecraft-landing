@@ -67,6 +67,7 @@ const StatecraftTA = () => {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
+                aria-label="Close Assistant"
                 className="p-1 rounded-full hover:bg-slate-700 transition-colors text-slate-400 hover:text-white"
               >
                 <X className="h-5 w-5" />
@@ -92,6 +93,7 @@ const StatecraftTA = () => {
         onMouseLeave={() => setIsHovered(false)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        aria-label="Toggle Syllabus Architect Assistant"
         className={`group relative flex items-center justify-center h-16 w-16 rounded-full bg-slate-900 border transition-all duration-300 shadow-2xl ${
           isOpen 
             ? 'border-brand-blue shadow-[0_0_20px_rgba(37,99,235,0.4)]' 

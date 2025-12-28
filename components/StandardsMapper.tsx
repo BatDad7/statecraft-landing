@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, ChevronDown, Download, FileCheck, Target } from "lucide-react";
 
 type UnitKey = "Unit 1" | "Unit 2" | "Unit 3" | "Unit 4";
@@ -49,14 +48,14 @@ const StandardsMapper = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-terminal-green/50 to-transparent" />
       
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase italic mb-4">
             AP Gov <span className="text-terminal-green">Standards Mapper</span>
           </h2>
           <p className="text-slate-400">Align your curriculum with immersive simulations in seconds.</p>
         </div>
 
-        <div className="relative z-10 space-y-8">
+        <div className="relative z-10 space-y-8 animate-fade-in-up delay-100">
           {/* Dropdown Menu */}
           <div className="max-w-md mx-auto relative">
             <label className="block text-xs font-bold uppercase tracking-[0.2em] text-terminal-green/70 mb-2 px-1">
@@ -81,72 +80,64 @@ const StandardsMapper = () => {
           </div>
 
           {/* Dynamic Mission Brief Card */}
-          <AnimatePresence mode="wait">
-            {selectedUnit && (
-              <motion.div
-                key={selectedUnit}
-                initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.98 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="max-w-2xl mx-auto"
-              >
-                <div className="relative rounded-2xl border border-terminal-green/30 bg-slate-950 p-8 shadow-[0_0_40px_rgba(34,197,94,0.05)] overflow-hidden">
-                  {/* Card Background Pattern */}
-                  <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#22c55e_1px,transparent_1px)] bg-[size:20px_20px]" />
-                  
-                  <div className="relative space-y-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-terminal-green/10 border border-terminal-green/20">
-                        <Target className="h-4 w-4 text-terminal-green" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-terminal-green">
-                          Mission Brief: {selectedUnit}
-                        </span>
-                      </div>
-                      <BookOpen className="h-5 w-5 text-slate-600" />
+          {selectedUnit && (
+            <div className="max-w-2xl mx-auto animate-fade-in-up">
+              <div className="relative rounded-2xl border border-terminal-green/30 bg-slate-950 p-8 shadow-[0_0_40px_rgba(34,197,94,0.05)] overflow-hidden">
+                {/* Card Background Pattern */}
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#22c55e_1px,transparent_1px)] bg-[size:20px_20px]" />
+                
+                <div className="relative space-y-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-terminal-green/10 border border-terminal-green/20">
+                      <Target className="h-4 w-4 text-terminal-green" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-terminal-green">
+                        Mission Brief: {selectedUnit}
+                      </span>
                     </div>
+                    <BookOpen className="h-5 w-5 text-slate-600" />
+                  </div>
 
-                    <div className="space-y-4">
-                      <h3 className="text-2xl font-bold text-white tracking-tight">
-                        {unitData[selectedUnit].title}
-                      </h3>
-                      
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div className="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
-                          <p className="text-[10px] font-bold uppercase text-slate-500 mb-1">Recommended Sim</p>
-                          <p className="text-terminal-green font-bold">{unitData[selectedUnit].simName}</p>
-                        </div>
-                        <div className="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
-                          <p className="text-[10px] font-bold uppercase text-slate-500 mb-1">Key Concept</p>
-                          <p className="text-white font-bold">{unitData[selectedUnit].keyConcept}</p>
-                        </div>
-                      </div>
-
-                      <p className="text-slate-400 text-sm leading-relaxed italic">
-                        &quot;{unitData[selectedUnit].description}&quot;
-                      </p>
-                    </div>
-
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full mt-4 flex items-center justify-center gap-3 rounded-lg bg-terminal-green px-6 py-4 text-sm font-bold text-slate-900 transition-all hover:bg-terminal-green/90 shadow-lg shadow-terminal-green/10"
-                    >
-                      <Download className="h-4 w-4" />
-                      Download Syllabus Blurb for this Unit
-                    </motion.button>
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-white tracking-tight">
+                      {unitData[selectedUnit].title}
+                    </h3>
                     
-                    <div className="flex justify-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
-                      <div className="flex items-center gap-1">
-                        <FileCheck className="h-3 w-3" />
-                        College Board Aligned
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
+                        <p className="text-[10px] font-bold uppercase text-slate-500 mb-1">Recommended Sim</p>
+                        <p className="text-terminal-green font-bold">{unitData[selectedUnit].simName}</p>
                       </div>
+                      <div className="bg-slate-900/80 p-4 rounded-lg border border-slate-800">
+                        <p className="text-[10px] font-bold uppercase text-slate-500 mb-1">Key Concept</p>
+                        <p className="text-white font-bold">{unitData[selectedUnit].keyConcept}</p>
+                      </div>
+                    </div>
+
+                    <p className="text-slate-400 text-sm leading-relaxed italic">
+                      &quot;{unitData[selectedUnit].description}&quot;
+                    </p>
+                  </div>
+
+                  <a
+                    href="/assets/Statecraft_Syllabus_2025.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full mt-4 flex items-center justify-center gap-3 rounded-lg bg-terminal-green px-6 py-4 text-sm font-bold text-slate-900 transition-all hover:bg-terminal-green/90 shadow-lg shadow-terminal-green/10 transform hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download Syllabus Blurb for this Unit
+                  </a>
+                  
+                  <div className="flex justify-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
+                    <div className="flex items-center gap-1">
+                      <FileCheck className="h-3 w-3" />
+                      College Board Aligned
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -154,4 +145,3 @@ const StandardsMapper = () => {
 };
 
 export default StandardsMapper;
-

@@ -1,0 +1,96 @@
+
+> statecraft-landing@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3001
+
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+ ⨯ Failed to load env from .env.local Error: EPERM: operation not permitted, open '/Users/joejaeger/statecraft-landing/.env.local'
+    at Object.readFileSync (node:fs:440:20)
+    at loadEnvConfig (/Users/joejaeger/statecraft-landing/node_modules/@next/env/dist/index.js:1:9649)
+    at Watchpack.<anonymous> (/Users/joejaeger/statecraft-landing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js:1450:44)
+    at Watchpack.emit (node:events:508:28)
+    at Watchpack._onTimeout (/Users/joejaeger/statecraft-landing/node_modules/next/dist/compiled/watchpack/watchpack.js:1:37727)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'open',
+  path: '/Users/joejaeger/statecraft-landing/.env.local'
+}
+ ✓ Ready in 1141ms
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+ ⚠ Port 3000 is in use, trying 3001 instead.
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3001
+
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+ ⨯ Failed to load env from .env.local Error: EPERM: operation not permitted, open '/Users/joejaeger/statecraft-landing/.env.local'
+    at Object.readFileSync (node:fs:440:20)
+    at loadEnvConfig (/Users/joejaeger/statecraft-landing/node_modules/@next/env/dist/index.js:1:9649)
+    at Watchpack.<anonymous> (/Users/joejaeger/statecraft-landing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js:1450:44)
+    at Watchpack.emit (node:events:508:28)
+    at Watchpack._onTimeout (/Users/joejaeger/statecraft-landing/node_modules/next/dist/compiled/watchpack/watchpack.js:1:37727)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'open',
+  path: '/Users/joejaeger/statecraft-landing/.env.local'
+}
+ ✓ Ready in 1089ms
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+ ⚠ Port 3000 is in use, trying 3001 instead.
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3001
+
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+ ⨯ Failed to load env from .env.local Error: EPERM: operation not permitted, open '/Users/joejaeger/statecraft-landing/.env.local'
+    at Object.readFileSync (node:fs:440:20)
+    at loadEnvConfig (/Users/joejaeger/statecraft-landing/node_modules/@next/env/dist/index.js:1:9649)
+    at Watchpack.<anonymous> (/Users/joejaeger/statecraft-landing/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js:1450:44)
+    at Watchpack.emit (node:events:508:28)
+    at Watchpack._onTimeout (/Users/joejaeger/statecraft-landing/node_modules/next/dist/compiled/watchpack/watchpack.js:1:37727)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'open',
+  path: '/Users/joejaeger/statecraft-landing/.env.local'
+}
+ ✓ Ready in 1235ms
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch
+Watchpack Error (watcher): Error: EMFILE: too many open files, watch

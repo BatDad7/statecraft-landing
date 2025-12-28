@@ -1,13 +1,12 @@
-import { JSDOM } from 'jsdom';
+import { chromium } from 'playwright';
 import * as fs from 'fs';
 import * as path from 'path';
 
 /**
- * Agentic QA Audit Script
+ * Agentic QA Audit Script (Visual Edition)
  * 
- * This script performs an AI-powered audit of the Statecraft landing page
- * to ensure it maintains the "Situation Room" immersion and aligns with
- * AP Government curriculum standards.
+ * This script uses Playwright to capture a screenshot of the landing page
+ * and sends it to Gemini for a multimodal audit (Visuals + Content).
  */
 
 // Simple .env.local loader
@@ -44,6 +43,9 @@ if (fs.existsSync(envPath)) {
 
 const BASE_URL = process.argv[2] || 'http://localhost:3000';
 
+// Default to Gemini 3 Pro for reliable Vision capabilities
+const MODEL_ID = process.env.MODEL_ID || "gemini-3-pro-preview"; 
+
 export {};
 
 async function runAgenticQA() {
@@ -54,83 +56,87 @@ async function runAgenticQA() {
     process.exit(1);
   }
 
-  console.log(`🚀 Starting Agentic QA Audit for: ${BASE_URL}`);
+  console.log(`🚀 Starting Visual Agentic QA Audit for: ${BASE_URL}`);
 
+  let browser;
   try {
-    // 1. Fetch the page content (with cache-busting)
-    console.log('📡 Fetching page content (Cache-Busted)...');
-    const cacheBuster = `?t=${new Date().getTime()}`;
-    const response = await fetch(`${BASE_URL}${cacheBuster}`, {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-      }
-    });
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${BASE_URL}: ${response.statusText}`);
-    }
-    const html = await response.text();
-
-    // 2. Extract meaningful text using JSDOM
-    const dom = new JSDOM(html);
-    const doc = dom.window.document;
+    // 1. Launch Browser & Take Screenshot
+    console.log('📸 Launching Headless Browser...');
+    browser = await chromium.launch();
+    const page = await browser.newPage();
     
-    // Remove non-content elements
-    doc.querySelectorAll('script, style, nav, footer').forEach(el => el.remove());
+    // Set viewport to a standard desktop size
+    await page.setViewportSize({ width: 1280, height: 800 });
     
-    const content = doc.body.textContent?.replace(/\s+/g, ' ').trim() || '';
-    const title = doc.title;
+    console.log(`📡 Navigating to ${BASE_URL}...`);
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    
+    // Wait a moment for animations to settle
+    await page.waitForTimeout(2000);
 
-    const MODEL_ID = process.env.MODEL_ID || "gemini-3-pro-preview";
-    console.log(`🧠 Sending content to ${MODEL_ID} for reasoning...`);
+    console.log('🖼️  Capturing Screenshot...');
+    const screenshotBuffer = await page.screenshot({ fullPage: false }); // Single fold or fullPage: true
+    const base64Image = screenshotBuffer.toString('base64');
+    
+    // Get text content as backup/context
+    const textContent = await page.innerText('body');
+    const cleanedText = textContent.replace(/\s+/g, ' ').trim().substring(0, 2000);
 
-    // 3. Construct the prompt for Gemini
-    const prompt = `
-      You are an expert QA Automation Agent specializing in Educational Technology and "Statecraft: The Situation Room".
+    await browser.close();
+    browser = null;
+
+    console.log(`🧠 Sending visual data to ${MODEL_ID} for analysis...`);
+
+    // 2. Construct the Multimodal Prompt
+    const promptText = `
+      You are an expert QA Automation Agent specializing in UI/UX and Educational Technology.
       
       CONTEXT:
-      Statecraft is a high-stakes simulation for AP Government students. The landing page must feel immersive, 
-      like a US Government "Situation Room" or "Intelligence Briefing". It must also clearly communicate 
-      alignment with AP Gov curriculum (Federalist Papers, Constitution, civil liberties, etc.).
+      You are auditing the "Statecraft: The Situation Room" landing page. 
+      It is a high-stakes simulation for AP Government students.
       
-      AUDIT CRITERIA:
-      1. Immersion: Does the copy and structure feel like a government intelligence interface?
-      2. Curriculum Alignment: Are specific AP Gov concepts mentioned?
-      3. Tone: Is the tone professional, authoritative, and urgent?
-      4. Call to Action: Is it clear how a teacher starts the simulation? Look for "Ghost Buttons" (buttons that are hard to see or don't look clickable) or general UX flaws.
+      AUDIT TASK:
+      Analyze the attached SCREENSHOT and the text context provided.
       
-      PAGE DATA:
-      Title: ${title}
-      Content Snippet: ${content.substring(0, 5000)}
+      CRITERIA:
+      1. Visual Hierarchy: Is the "Primary Call to Action" (Request/Authorize Access) clearly distinct?
+      2. Ghost Buttons: Do any secondary buttons (like "Draft Legislation") look too much like the primary CTA?
+      3. Immersion: Does the visual style (colors, fonts, layout) feel like a government "Situation Room"?
+      4. Professionalism: Does it look trustworthy for a school administrator?
       
-      TASK:
-      Perform a critical audit and return a JSON object with the following structure:
+      TEXT CONTEXT:
+      ${cleanedText}
+      
+      RETURN JSON:
       {
-        "score": (number 0-100),
-        "immersion_rating": (number 0-10),
-        "curriculum_alignment": (number 0-10),
+        "score": (0-100),
+        "visual_hierarchy_rating": (0-10),
+        "ghost_button_risk": ("High" | "Medium" | "Low"),
         "strengths": ["string"],
         "weaknesses": ["string"],
         "critical_fix": "string or null"
       }
     `;
 
-    // 4. Call Gemini API
+    // 3. Call Gemini API with Image
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_ID}:generateContent?key=${GEMINI_API_KEY}`;
     
     const geminiResponse = await fetch(geminiUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{
-          parts: [{ text: prompt }]
+          parts: [
+            { text: promptText },
+            {
+              inline_data: {
+                mime_type: "image/png",
+                data: base64Image
+              }
+            }
+          ]
         }],
-        generationConfig: {
-          responseMimeType: 'application/json',
-        }
+        generationConfig: { responseMimeType: 'application/json' }
       })
     });
 
@@ -143,13 +149,13 @@ async function runAgenticQA() {
     const reportText = data.candidates[0].content.parts[0].text;
     const report = JSON.parse(reportText);
 
-    // 5. Output Results
+    // 4. Output Results
     console.log('\n' + '='.repeat(50));
-    console.log('📊 AGENTIC QA REPORT');
+    console.log('👁️  VISUAL QA REPORT');
     console.log('='.repeat(50));
     console.log(`OVERALL SCORE:      ${report.score}/100`);
-    console.log(`IMMERSION:          ${report.immersion_rating}/10`);
-    console.log(`CURRICULUM ALIGN:   ${report.curriculum_alignment}/10`);
+    console.log(`VISUAL HIERARCHY:   ${report.visual_hierarchy_rating}/10`);
+    console.log(`GHOST BUTTON RISK:  ${report.ghost_button_risk}`);
     console.log('-'.repeat(50));
     
     console.log('\n✅ STRENGTHS:');
@@ -166,7 +172,7 @@ async function runAgenticQA() {
     console.log('\n' + '='.repeat(50));
 
     if (report.score < 80) {
-      console.error('❌ Status: FAILED (Score below threshold)');
+      console.error('❌ Status: FAILED (Score below 80)');
       process.exit(1);
     } else {
       console.log('✨ Status: PASSED');
@@ -174,10 +180,10 @@ async function runAgenticQA() {
     }
 
   } catch (error: any) {
-    console.error(`\n❌ Agentic QA Execution Error: ${error.message}`);
+    console.error(`\n❌ Visual QA Execution Error: ${error.message}`);
+    if (browser) await browser.close();
     process.exit(1);
   }
 }
 
 runAgenticQA();
-
