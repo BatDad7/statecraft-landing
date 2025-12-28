@@ -1,6 +1,6 @@
 # Site Content Audit: HIGHER-ED
 URL: https://apgov.statecraftsims.com/higher-ed/gov
-Generated: 12/28/2025, 4:54:50 PM
+Generated: 12/28/2025, 5:19:40 PM
 
 ## 🔗 Navigation & Link Analysis
 | Link Text | Destination | Type |
@@ -20,11 +20,11 @@ Generated: 12/28/2025, 4:54:50 PM
 
 ## 📄 Page Content Structure
 
-# THE LIVING CONSTITUTION SIMULATION.
+# Don't Just Teach the Constitution. Stress-Test It.
 
-A 4-period simulation covering 50+ topics including AI Regulation, Federal Budget, and Civil Liberties. Flexible timing from one day to several weeks per period.
+The only simulation that forces students to navigate the friction of Separation of Powers, Federalism, and Partisan Gridlock in real-time.
 
-> [Button: VIEW SYLLABUS INTEGRATION]
+> [Button: View Syllabus Integration]
 > [Button: Watch Walkthrough]
 
 ## The Speaker of the House is threatening a government shutdown.
@@ -37,42 +37,42 @@ Prime Minister Rishi Sunak has exercised executive prerogative to dissolve Parli
 
 DISCUSSION PROMPT
 
-"How does this event illustrate the concept of Imperial Presidency?"
+"Discussion: How does 'Summer Session: Global Events' relate to the current news cycle?"
 
-ADOPTING DEPARTMENTS INCLUDE:
-
-
-## CORE POLICY MODULES
-
-Structured into four quarters covering critical modern governance challenges.
+DEPLOYED IN DEPARTMENTS AT:
 
 
-### AI Regulation
+## FROM TEXTBOOK TO COMMITTEE FLOOR
 
-Students grapple with emerging issues surrounding artificial intelligence, balancing innovation with safety and regulation.
-
-
-### Federal Budget
-
-Navigate the fiscal policy minefield. Students must pass a budget while managing interest groups and reelection pressures.
+Move beyond theory. Give them the roles, the incentives, and the gridlock.
 
 
-### Civil Liberties vs. Security
+### Legislative Gridlock
 
-Balance the tension between protecting individual rights and ensuring national security in high-stakes scenarios.
+Students don't just pass bills; they face the filibuster, committee gatekeeping, and the whip count. Efficiency is the enemy.
 
 
-## FROM LECTURE HALL TO FLOOR VOTE.
+### Judicial Review
 
-"The 'Period 0' tutorial week was a game changer. My students entered the main simulation confident and ready to negotiate."
+The Supreme Court player isn't a referee—they shape policy by ruling on the constitutionality of every student-passed act.
 
-Dr. Sarah Miller
 
-SENIOR LECTURER, AMERICAN POLITICS
+### Public Opinion Tracking
 
-"I use the Debrief Presentation as 25% of their grade. The insights they share about legislative gridlock are profound."
+Real-time polling data forces Representatives to balance their conscience against the 'median voter' in their simulated district.
+
+
+## ACADEMIC RIGOR MEETS POLITICAL REALITY.
+
+"I use the Debrief Presentation as 25% of their grade. The insights they share about the difficulty of coalition building are profound."
 
 Prof. James Chen
 
 DEPT. OF POLITICAL SCIENCE, STATE UNIVERSITY
+
+"It solves the 'Free Rider' problem in group work. The simulation incentives force every student to lobby, trade, and vote to survive."
+
+Dr. Sarah Miller
+
+SENIOR LECTURER, AMERICAN POLITICS, RESEARCH UNIVERSITY
 

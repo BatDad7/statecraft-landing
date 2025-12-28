@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)"],
-        serif: ["var(--font-merriweather)"],
+        serif: ["var(--font-playfair)"],
       },
       colors: {
         slate: {
@@ -39,4 +39,3 @@ const config: Config = {
   plugins: [],
 };
 export default config;
-
