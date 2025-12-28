@@ -76,21 +76,34 @@ export const PACING_CALENDAR: PacingPeriod[] = [
   }
 ];
 
-export function getCurrentTopic(date: Date = new Date()): APUnit {
+export const COLLEGE_GOV_CALENDAR: PacingPeriod[] = [
+  // Fall Semester
+  { startMonth: 7, startDay: 20, endMonth: 8, endDay: 30, unit: { id: "INTRO_FALL", name: "Foundations & Constitution", focus: "Constitutional Design, Federalism", pain_point: "Theory vs. Practice" } },
+  { startMonth: 9, startDay: 1, endMonth: 9, endDay: 31, unit: { id: "INSTITUTIONS_FALL", name: "Legislative & Executive", focus: "Process, Gridlock, Powers", pain_point: "Institutional Friction" } },
+  { startMonth: 10, startDay: 1, endMonth: 10, endDay: 30, unit: { id: "COURTS_RIGHTS_FALL", name: "Judiciary & Civil Rights", focus: "Judicial Review, Liberties", pain_point: "Legal Interpretation" } },
+  { startMonth: 11, startDay: 1, endMonth: 11, endDay: 20, unit: { id: "BEHAVIOR_FALL", name: "Political Behavior", focus: "Voting, Parties, Media", pain_point: "Polarization" } },
+  
+  // Spring Semester
+  { startMonth: 0, startDay: 15, endMonth: 1, endDay: 28, unit: { id: "INTRO_SPRING", name: "Foundations & Constitution", focus: "Constitutional Design, Federalism", pain_point: "Theory vs. Practice" } },
+  { startMonth: 2, startDay: 1, endMonth: 2, endDay: 31, unit: { id: "INSTITUTIONS_SPRING", name: "Legislative & Executive", focus: "Process, Gridlock, Powers", pain_point: "Institutional Friction" } },
+  { startMonth: 3, startDay: 1, endMonth: 3, endDay: 30, unit: { id: "COURTS_RIGHTS_SPRING", name: "Judiciary & Civil Rights", focus: "Judicial Review, Liberties", pain_point: "Legal Interpretation" } },
+  { startMonth: 4, startDay: 1, endMonth: 4, endDay: 20, unit: { id: "BEHAVIOR_SPRING", name: "Political Behavior", focus: "Voting, Parties, Media", pain_point: "Polarization" } },
+];
+
+export function getTopicForCalendar(calendar: 'ap-gov' | 'college-gov' = 'ap-gov', date: Date = new Date()): APUnit {
+  const selectedCalendar = calendar === 'college-gov' ? COLLEGE_GOV_CALENDAR : PACING_CALENDAR;
+  
   const month = date.getMonth();
   const day = date.getDate();
 
-  // Simple current events fallback
   const defaultUnit: APUnit = {
     id: "CURRENT_EVENTS",
-    name: "Current Events",
-    focus: "General Political Context",
-    pain_point: "Keeping students engaged during off-season."
+    name: "Political Context",
+    focus: "Current Events Analysis",
+    pain_point: "Connecting theory to news."
   };
 
-  for (const period of PACING_CALENDAR) {
-    // Check if date falls within range
-    // Handle wrap-around year (Dec-Jan)
+  for (const period of selectedCalendar) {
     if (period.startMonth > period.endMonth) {
       if (
         (month === period.startMonth && day >= period.startDay) ||
@@ -101,7 +114,6 @@ export function getCurrentTopic(date: Date = new Date()): APUnit {
         return period.unit;
       }
     } else {
-      // Standard intra-year range
       const isAfterStart = month > period.startMonth || (month === period.startMonth && day >= period.startDay);
       const isBeforeEnd = month < period.endMonth || (month === period.endMonth && day <= period.endDay);
       
@@ -112,4 +124,9 @@ export function getCurrentTopic(date: Date = new Date()): APUnit {
   }
 
   return defaultUnit;
+}
+
+// Backward compatibility wrapper
+export function getCurrentTopic(date: Date = new Date()): APUnit {
+  return getTopicForCalendar('ap-gov', date);
 }

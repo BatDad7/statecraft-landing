@@ -3,7 +3,28 @@
 import { ChevronRight, Award } from "lucide-react";
 import CrisisSimulator from "@/components/CrisisSimulator";
 
-export default function HeroSectionClient() {
+interface HeroProps {
+  title?: React.ReactNode;
+  subtitle?: string;
+  badge?: string;
+  ctaPrimary?: string;
+  ctaSecondary?: string;
+  onCtaPrimary?: () => void;
+  onCtaSecondary?: () => void;
+}
+
+export default function HeroSectionClient({
+  title,
+  subtitle,
+  badge = "College Board Aligned",
+  ctaPrimary = "AUTHORIZE MISSION ACCESS",
+  ctaSecondary = "Watch Trailer",
+  onCtaPrimary,
+  onCtaSecondary
+}: HeroProps) {
+  const handlePrimary = onCtaPrimary || (() => window.open('/assets/Statecraft_Syllabus_2025.pdf', '_blank'));
+  const handleSecondary = onCtaSecondary || (() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'));
+
   return (
     <section className="relative flex min-h-[calc(100vh-64px)] flex-col items-center justify-center overflow-hidden px-4 py-20">
       {/* Background Decorative Elements */}
@@ -26,28 +47,25 @@ export default function HeroSectionClient() {
           </span>
           <span className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-bold text-blue-400 uppercase tracking-widest cursor-default border border-slate-700">
             <Award className="h-4 w-4" />
-            College Board Aligned
+            {badge}
           </span>
         </div>
 
         <h1 className="text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl uppercase italic mb-8 animate-fade-in-up delay-100">
-          Teach <span className="text-terminal-green">Government</span> Through Action.
+          {title || <>Teach <span className="text-terminal-green">Government</span> Through Action.</>}
         </h1>
 
         <p className="mb-12 text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
-          Stop lecturing about gridlock. Make them live it. 
-          The ultimate immersive simulation designed for AP Government classrooms.
+          {subtitle || "Stop lecturing about gridlock. Make them live it. The ultimate immersive simulation designed for AP Government classrooms."}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 animate-fade-in-up delay-300">
           <div className="relative group">
             <button
-              onClick={() => {
-                window.open('/assets/Statecraft_Syllabus_2025.pdf', '_blank');
-              }}
+              onClick={handlePrimary}
               className="relative z-10 flex items-center justify-center gap-3 rounded-full bg-amber-500 px-8 py-4 text-lg font-black text-slate-900 transition-all hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] transform hover:scale-105 active:scale-95"
             >
-              AUTHORIZE MISSION ACCESS
+              {ctaPrimary}
               <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center whitespace-nowrap">
@@ -62,10 +80,10 @@ export default function HeroSectionClient() {
           </div>
 
           <button
-            onClick={() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')} // Placeholder Trailer Link
+            onClick={handleSecondary}
             className="flex items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-slate-800 backdrop-blur-sm hover:border-slate-500 transform hover:scale-105 active:scale-95"
           >
-            Watch Trailer
+            {ctaSecondary}
             <ChevronRight className="h-5 w-5 text-slate-500" />
           </button>
         </div>

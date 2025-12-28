@@ -7,6 +7,6 @@ const HeroSectionClient = dynamic(() => import('./HeroSectionClient'), {
   loading: () => <div className="min-h-[calc(100vh-64px)]" /> // Prevent layout shift
 });
 
-export default function HeroSection() {
-  return <HeroSectionClient />;
+export default function HeroSection(props: any) {
+  return <HeroSectionClient {...props} />;
 }

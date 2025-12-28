@@ -1,12 +1,12 @@
 import { Redis } from '@upstash/redis';
-import { getCurrentTopic } from './pacing';
+import { getTopicForCalendar } from './pacing';
 
 const MODEL_ID = "gemini-3-pro-preview";
 
-export async function generateDailyBrief() {
+export async function generateDailyBrief(verticalId: 'ap-gov' | 'college-gov' = 'ap-gov') {
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-  const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL;
-  const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
 
   if (!GEMINI_API_KEY) throw new Error('Missing GEMINI_API_KEY');
   if (!UPSTASH_URL || !UPSTASH_TOKEN) throw new Error('Missing UPSTASH_REDIS_REST_URL/TOKEN');
@@ -14,22 +14,22 @@ export async function generateDailyBrief() {
   const redis = new Redis({ url: UPSTASH_URL, token: UPSTASH_TOKEN });
 
   // A. Get Current Topic based on Academic Calendar
-  const topic = getCurrentTopic(new Date());
+  const topic = getTopicForCalendar(verticalId, new Date());
   
   // B. Construct Context-Aware Prompt
   const isSummer = topic.id === 'CURRENT_EVENTS';
   
   const contextInstruction = isSummer 
     ? `Since it is summer break, focus on MAJOR structural political events (SCOTUS rulings, Conventions, significant Legislation) rather than specific unit minutiae.`
-    : `The teacher is currently covering Unit: '${topic.name}' with a focus on '${topic.focus}'. Find a news event that illustrates THIS specific concept.`;
+    : `The instructor is currently covering: '${topic.name}' with a focus on '${topic.focus}'. Find a news event that illustrates THIS specific concept.`;
 
   const prompt = `
-    Act as a high-level intelligence analyst and news aggregator.
+    Act as a high-level intelligence analyst and news aggregator for a ${verticalId === 'college-gov' ? 'University Political Science' : 'AP Government'} audience.
     Your mission: Scan global news feeds from the last 24 HOURS.
     
     ${contextInstruction}
     
-    Task: Write a 3-sentence 'Intelligence Brief' connecting a REAL news event from the last 24-48 hours to the AP Government concept above.
+    Task: Write a 3-sentence 'Intelligence Brief' connecting a REAL news event from the last 24-48 hours to the political science concept above.
     
     Style Guidelines:
     - Tone: Classified Memo / Situation Room.
@@ -40,7 +40,7 @@ export async function generateDailyBrief() {
     { 
       "headline": "string (Short, Punchy, All-Caps optional)", 
       "activity": "string (The 3-sentence brief)", 
-      "topic_tag": "string (Strict Format: 'Unit [Number]: [Topic Name]') or 'Summer Session: Global Events'" 
+      "topic_tag": "string (Strict Format: 'Unit/Topic: [Topic Name]') or 'Summer Session: Global Events'" 
     }
   `;
 
@@ -71,14 +71,17 @@ export async function generateDailyBrief() {
   // Add metadata
   brief.date = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
   brief.generated_at = new Date().toISOString();
+  brief.vertical = verticalId;
 
   // D. Save to Redis
-  // Store for 25 hours to ensure overlap
-  await redis.set('daily_brief', JSON.stringify(brief), { ex: 90000 }); 
+  // Key strategy: 'daily_brief' (legacy/default) AND 'daily_brief:college-gov'
+  const redisKey = verticalId === 'ap-gov' ? 'daily_brief' : `daily_brief:${verticalId}`;
+  
+  await redis.set(redisKey, JSON.stringify(brief), { ex: 90000 }); 
   
   // E. Dispatch Email Report
   try {
-    await sendEmailReport(brief);
+    await sendEmailReport(brief, verticalId);
   } catch (emailErr) {
     console.error('Failed to send email report:', emailErr);
     // Don't fail the job if email fails
@@ -87,7 +90,7 @@ export async function generateDailyBrief() {
   return brief;
 }
 
-async function sendEmailReport(brief: any) {
+async function sendEmailReport(brief: any, verticalId: string) {
   if (!process.env.POSTMARK_SERVER_TOKEN) {
     console.log('Skipping email report: No POSTMARK_SERVER_TOKEN');
     return;
@@ -103,11 +106,12 @@ async function sendEmailReport(brief: any) {
     body: JSON.stringify({
       "From": process.env.EMAIL_FROM || "joe.jaeger@statecraftsims.com",
       "To": process.env.EMAIL_TO || "joe.jaeger@statecraftsims.com",
-      "Subject": `Daily Intel Brief: ${brief.headline}`,
+      "Subject": `[${verticalId.toUpperCase()}] Daily Intel Brief: ${brief.headline}`,
       "HtmlBody": `
         <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #0f172a; padding: 20px; text-align: center;">
             <h2 style="color: #22c55e; margin: 0; font-family: monospace; letter-spacing: 2px;">// STATECRAFT INTEL</h2>
+            <div style="color: #64748b; font-size: 10px; text-transform: uppercase; margin-top: 5px;">CHANNEL: ${verticalId}</div>
           </div>
           <div style="padding: 30px;">
             <div style="margin-bottom: 20px;">
