@@ -13,6 +13,7 @@ export interface HeroProps {
   techSpecs: string[];
   primaryCtaLink?: string;
   secondaryCtaLink?: string;
+  variant?: 'tactical' | 'academic';
 }
 
 export default function HeroSection({
@@ -23,10 +24,13 @@ export default function HeroSection({
   secondaryCtaText,
   techSpecs,
   primaryCtaLink = '/assets/Statecraft_Syllabus_2025.pdf',
-  secondaryCtaLink = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  secondaryCtaLink = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  variant = 'tactical'
 }: HeroProps) {
   const handlePrimary = () => window.open(primaryCtaLink, '_blank');
   const handleSecondary = () => window.open(secondaryCtaLink, '_blank');
+
+  const isAcademic = variant === 'academic';
 
   return (
     <section className="relative flex min-h-[calc(100vh-64px)] flex-col items-center justify-center overflow-hidden px-4 py-20">
@@ -44,17 +48,28 @@ export default function HeroSection({
 
       <div className="z-10 text-center max-w-5xl mx-auto flex flex-col items-center">
         <div className="mb-8 flex flex-wrap justify-center gap-4 animate-fade-in-up">
-          <span className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-bold text-alert-red uppercase tracking-widest cursor-default border border-slate-700">
-            <div className="h-2 w-2 rounded-full bg-alert-red animate-pulse" />
-            Situation Room Active
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-bold text-blue-400 uppercase tracking-widest cursor-default border border-slate-700">
+          {/* Situation Room Badge - Only for Tactical */}
+          {!isAcademic && (
+            <span className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-bold text-alert-red uppercase tracking-widest cursor-default border border-slate-700">
+              <div className="h-2 w-2 rounded-full bg-alert-red animate-pulse" />
+              Situation Room Active
+            </span>
+          )}
+          
+          {/* Main Badge */}
+          <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest cursor-default border ${
+            isAcademic 
+              ? 'bg-brand-blue/10 text-brand-blue border-brand-blue/20' 
+              : 'bg-slate-800 text-blue-400 border-slate-700'
+          }`}>
             <Award className="h-4 w-4" />
             {badgeText}
           </span>
         </div>
 
-        <h1 className="text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl uppercase italic mb-8 animate-fade-in-up delay-100">
+        <h1 className={`text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl uppercase italic mb-8 animate-fade-in-up delay-100 ${
+          isAcademic ? 'font-serif tracking-tight normal-case' : '' // Serif for Academic, Sans/Uppercase for Tactical
+        }`}>
           {mainHeading}
         </h1>
 

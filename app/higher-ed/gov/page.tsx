@@ -50,7 +50,10 @@ export default async function HigherEdGov() {
   };
 
   return (
-    <div className="bg-slate-900 text-white min-h-screen">
+    <div className="bg-slate-900 text-white min-h-screen font-serif">
+      {/* Overlay to hide global tactical-grid */}
+      <div className="fixed inset-0 bg-slate-900 z-[-5]" />
+
       <CourseSchema 
         courseName="Statecraft: International Relations & Comparative Politics"
         description="A semester-long immersive simulation for higher education political science departments. Covers realism, liberalism, and constructivism."
@@ -58,6 +61,7 @@ export default async function HigherEdGov() {
       
       <HeroSection 
         {...higherEdContent.hero} 
+        variant="academic"
         primaryCtaLink="/syllabus/higher-ed"
         secondaryCtaLink="https://www.youtube.com/watch?v=gameplay"
       />

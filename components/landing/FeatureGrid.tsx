@@ -30,11 +30,11 @@ export default function FeatureGrid({ title, subtitle, features }: FeatureGridPr
 
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, i) => (
-            <div key={i} className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 hover:border-brand-blue/30 transition-colors group">
+            <div key={i} className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 hover:border-brand-blue/30 transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl">
               <div className="mb-6 inline-block p-3 rounded-lg bg-slate-900 border border-slate-700 group-hover:border-brand-blue/30 transition-colors">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+              <h3 className="text-xl font-bold font-serif text-white mb-3">{feature.title}</h3>
               <p className="text-slate-400 leading-relaxed">{feature.text}</p>
             </div>
           ))}

@@ -11,7 +11,7 @@ export default function PolicyBrief({ topic, analysis, discussion, source = "Ana
   return (
     <section className="py-12 border-y border-slate-800 bg-slate-900">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="flex items-start gap-6 bg-slate-800/50 p-8 rounded-r-lg border-l-4 border-brand-blue backdrop-blur-sm">
+        <div className="flex items-start gap-6 bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-r-lg border-l-4 border-amber-500 shadow-lg backdrop-blur-sm">
           <div className="hidden md:block p-3 bg-brand-blue/10 rounded-full">
             <ScrollText className="h-6 w-6 text-brand-blue" />
           </div>
@@ -54,4 +54,3 @@ export default function PolicyBrief({ topic, analysis, discussion, source = "Ana
     </section>
   );
 }
-
