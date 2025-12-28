@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronRight, Lock, ExternalLink, FileText, Calendar, Shield, Map, LifeBuoy, Calculator } from "lucide-react";
+import { Menu, X, ChevronRight, Lock, ExternalLink, FileText, Calendar, Shield, Map, LifeBuoy, Calculator, GraduationCap } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -116,11 +116,24 @@ const Navbar = () => {
               href="https://www.statecraftsims.com/login" 
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 rounded-md bg-terminal-green/10 border border-terminal-green/20 text-terminal-green hover:bg-terminal-green/20 transition-all group"
+              className="flex items-center justify-between w-full p-3 rounded-md bg-terminal-green/10 border border-terminal-green/20 text-terminal-green hover:bg-terminal-green/20 transition-all group mb-2"
             >
               <span className="flex items-center gap-3 font-bold text-sm">
                 <Lock className="h-4 w-4" />
                 Teacher Login
+              </span>
+              <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <a 
+              href="https://www.statecraftsims.com/login" 
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between w-full p-3 rounded-md border border-slate-700 bg-slate-800 text-slate-300 hover:text-white hover:border-slate-500 transition-all group"
+            >
+              <span className="flex items-center gap-3 font-bold text-sm">
+                <GraduationCap className="h-4 w-4" />
+                Student Login
               </span>
               <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
             </a>
