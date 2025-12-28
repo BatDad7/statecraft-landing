@@ -59,7 +59,7 @@ export default function HeroSection({
           {/* Main Badge */}
           <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest cursor-default border ${
             isAcademic 
-              ? 'bg-brand-blue/10 text-brand-blue border-brand-blue/20' 
+              ? 'bg-amber-900/20 text-amber-500 border-amber-500/30' // Legislative Gold
               : 'bg-slate-800 text-blue-400 border-slate-700'
           }`}>
             <Award className="h-4 w-4" />
@@ -68,7 +68,7 @@ export default function HeroSection({
         </div>
 
         <h1 className={`text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl uppercase italic mb-8 animate-fade-in-up delay-100 ${
-          isAcademic ? 'font-serif tracking-tight normal-case' : '' // Serif for Academic, Sans/Uppercase for Tactical
+          isAcademic ? 'font-serif tracking-tight normal-case' : ''
         }`}>
           {mainHeading}
         </h1>
@@ -82,7 +82,11 @@ export default function HeroSection({
             <div className="relative group">
               <button
                 onClick={handlePrimary}
-                className="relative z-10 flex items-center justify-center gap-3 rounded-full bg-amber-500 px-8 py-4 text-lg font-black text-slate-900 transition-all hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] transform hover:scale-105 active:scale-95"
+                className={`relative z-10 flex items-center justify-center gap-3 rounded-full px-8 py-4 text-lg font-black transition-all transform hover:scale-105 active:scale-95 ${
+                  isAcademic 
+                    ? 'bg-amber-600 text-white hover:bg-amber-500 hover:shadow-[0_0_30px_rgba(217,119,6,0.4)]' 
+                    : 'bg-amber-500 text-slate-900 hover:bg-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)]'
+                }`}
               >
                 {primaryCtaText}
                 <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

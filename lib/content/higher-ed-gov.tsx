@@ -1,10 +1,11 @@
 import React from 'react';
-import { Landmark, Scale, LineChart, ScrollText } from "lucide-react";
+import { Landmark, Scale, LineChart, ScrollText, Users, DollarSign, Bot } from "lucide-react";
 
 export const higherEdContent = {
   hero: {
+    variant: 'academic' as const, // Force academic style
     badgeText: "Institutional Analysis Engine",
-    mainHeading: <>Don't Just Teach the Constitution. <span className="text-brand-blue">Stress-Test It.</span></>,
+    mainHeading: <>Don't Just Teach the Constitution. <span className="text-amber-500">Stress-Test It.</span></>,
     subHeading: "The only simulation that forces students to navigate the friction of Separation of Powers, Federalism, and Partisan Gridlock in real-time.",
     primaryCtaText: "View Syllabus Integration",
     secondaryCtaText: "Watch Walkthrough",
@@ -22,11 +23,11 @@ export const higherEdContent = {
     source: "Analysis via Gemini 1.5 Pro"
   },
   featureGrid: {
-    title: <>From <span className="text-brand-blue">Textbook</span> to Committee Floor</>,
+    title: <>From <span className="text-amber-500">Textbook</span> to Committee Floor</>,
     subtitle: "Move beyond theory. Give them the roles, the incentives, and the gridlock.",
     features: [
       {
-        icon: <Landmark className="h-8 w-8 text-brand-blue" />,
+        icon: <Landmark className="h-8 w-8 text-sky-400" />,
         title: "Legislative Gridlock",
         text: "Students don't just pass bills; they face the filibuster, committee gatekeeping, and the whip count. Efficiency is the enemy."
       },
@@ -43,7 +44,7 @@ export const higherEdContent = {
     ]
   },
   testimonials: {
-    heading: <>Academic Rigor Meets <span className="text-brand-blue">Political Reality.</span></>,
+    heading: <>Academic Rigor Meets <span className="text-amber-500">Political Reality.</span></>,
     items: [
       {
         quote: "I use the Debrief Presentation as 25% of their grade. The insights they share about the difficulty of coalition building are profound.",

@@ -11,14 +11,14 @@ export default function PolicyBrief({ topic, analysis, discussion, source = "Ana
   return (
     <section className="py-12 border-y border-slate-800 bg-slate-900">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="flex items-start gap-6 bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-r-lg border-l-4 border-amber-500 shadow-lg backdrop-blur-sm">
-          <div className="hidden md:block p-3 bg-brand-blue/10 rounded-full">
-            <ScrollText className="h-6 w-6 text-brand-blue" />
+        <div className="flex items-start gap-6 bg-gradient-to-r from-slate-800 to-slate-900 p-8 rounded-r-lg border-l-4 border-amber-600 shadow-lg backdrop-blur-sm">
+          <div className="hidden md:block p-3 bg-amber-900/20 rounded-full">
+            <ScrollText className="h-6 w-6 text-amber-500" />
           </div>
           
           <div className="space-y-4 w-full">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-brand-blue uppercase tracking-widest">
+              <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">
                 Daily Policy Briefing
               </span>
               <span className="text-xs text-slate-500 font-mono">
