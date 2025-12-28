@@ -11,8 +11,8 @@ export interface HeroProps {
   primaryCtaText: string;
   secondaryCtaText: string;
   techSpecs: string[];
-  onCtaPrimary?: () => void;
-  onCtaSecondary?: () => void;
+  primaryCtaLink?: string;
+  secondaryCtaLink?: string;
 }
 
 export default function HeroSection({
@@ -22,11 +22,11 @@ export default function HeroSection({
   primaryCtaText,
   secondaryCtaText,
   techSpecs,
-  onCtaPrimary,
-  onCtaSecondary
+  primaryCtaLink = '/assets/Statecraft_Syllabus_2025.pdf',
+  secondaryCtaLink = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 }: HeroProps) {
-  const handlePrimary = onCtaPrimary || (() => window.open('/assets/Statecraft_Syllabus_2025.pdf', '_blank'));
-  const handleSecondary = onCtaSecondary || (() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'));
+  const handlePrimary = () => window.open(primaryCtaLink, '_blank');
+  const handleSecondary = () => window.open(secondaryCtaLink, '_blank');
 
   return (
     <section className="relative flex min-h-[calc(100vh-64px)] flex-col items-center justify-center overflow-hidden px-4 py-20">
@@ -112,4 +112,3 @@ export default function HeroSection({
     </section>
   );
 }
-

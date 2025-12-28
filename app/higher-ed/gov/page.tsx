@@ -12,8 +12,8 @@ export default function HigherEdGov() {
     <div className="bg-slate-900 text-white min-h-screen">
       <HeroSection 
         {...higherEdContent.hero} 
-        onCtaPrimary={() => window.open('/syllabus/higher-ed', '_blank')}
-        onCtaSecondary={() => window.open('https://www.youtube.com/watch?v=gameplay', '_blank')}
+        primaryCtaLink="/syllabus/higher-ed"
+        secondaryCtaLink="https://www.youtube.com/watch?v=gameplay"
       />
       
       {/* 
