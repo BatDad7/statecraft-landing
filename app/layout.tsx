@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -7,9 +7,10 @@ import Navbar from "@/components/Navbar";
 import StatecraftTA from "@/components/StatecraftTA";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ 
+const merriweather = Merriweather({ 
+  weight: ["300", "400", "700", "900"],
   subsets: ["latin"], 
-  variable: "--font-playfair" 
+  variable: "--font-merriweather" 
 });
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${merriweather.variable}`}>
       <body className={`${inter.className} bg-slate-900 text-white antialiased`}>
         <div className="fixed inset-0 tactical-grid pointer-events-none -z-10" />
         <Navbar />

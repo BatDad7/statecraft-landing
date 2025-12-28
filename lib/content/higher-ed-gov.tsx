@@ -5,7 +5,7 @@ export const higherEdContent = {
   hero: {
     variant: 'academic' as const, // Force academic style
     badgeText: "Institutional Analysis Engine",
-    mainHeading: <>Don't Just Teach the Constitution. <span className="text-amber-500">Stress-Test It.</span></>,
+    mainHeading: <>Don't Just Teach the Constitution. <span className="text-red-600">Stress-Test It.</span></>,
     subHeading: "The only simulation that forces students to navigate the friction of Separation of Powers, Federalism, and Partisan Gridlock in real-time.",
     primaryCtaText: "View Syllabus Integration",
     secondaryCtaText: "Watch Walkthrough",
@@ -23,28 +23,28 @@ export const higherEdContent = {
     source: "Analysis via Gemini 1.5 Pro"
   },
   featureGrid: {
-    title: <>From <span className="text-amber-500">Textbook</span> to Committee Floor</>,
+    title: <>From <span className="text-blue-700">Textbook</span> to Committee Floor</>,
     subtitle: "Move beyond theory. Give them the roles, the incentives, and the gridlock.",
     features: [
       {
-        icon: <Landmark className="h-8 w-8 text-sky-400" />,
+        icon: <Landmark className="h-8 w-8 text-blue-800" />,
         title: "Legislative Gridlock",
         text: "Students don't just pass bills; they face the filibuster, committee gatekeeping, and the whip count. Efficiency is the enemy."
       },
       {
-        icon: <Scale className="h-8 w-8 text-amber-500" />,
+        icon: <Scale className="h-8 w-8 text-red-700" />,
         title: "Judicial Review",
         text: "The Supreme Court player isn't a referee—they shape policy by ruling on the constitutionality of every student-passed act."
       },
       {
-        icon: <LineChart className="h-8 w-8 text-emerald-500" />,
+        icon: <LineChart className="h-8 w-8 text-slate-600" />,
         title: "Public Opinion Tracking",
         text: "Real-time polling data forces Representatives to balance their conscience against the 'median voter' in their simulated district."
       }
     ]
   },
   testimonials: {
-    heading: <>Academic Rigor Meets <span className="text-amber-500">Political Reality.</span></>,
+    heading: <>Academic Rigor Meets <span className="text-blue-700">Political Reality.</span></>,
     items: [
       {
         quote: "I use the Debrief Presentation as 25% of their grade. The insights they share about the difficulty of coalition building are profound.",

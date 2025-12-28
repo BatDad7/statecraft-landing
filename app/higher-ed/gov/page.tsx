@@ -50,9 +50,9 @@ export default async function HigherEdGov() {
   };
 
   return (
-    <div className="bg-slate-900 text-white min-h-screen font-serif">
+    <div className="bg-white text-slate-900 min-h-screen font-serif">
       {/* Overlay to hide global tactical-grid */}
-      <div className="fixed inset-0 bg-slate-900 z-[-5]" />
+      <div className="fixed inset-0 bg-white z-[-5]" />
 
       <CourseSchema 
         courseName="Statecraft: International Relations & Comparative Politics"
@@ -62,6 +62,7 @@ export default async function HigherEdGov() {
       <HeroSection 
         {...higherEdContent.hero} 
         variant="academic"
+        theme="light"
         primaryCtaLink="/syllabus/higher-ed"
         secondaryCtaLink="https://www.youtube.com/watch?v=gameplay"
       />
@@ -71,13 +72,14 @@ export default async function HigherEdGov() {
         analysis={policyData.analysis}
         discussion={policyData.discussion}
         source={policyData.source}
+        theme="light"
       />
       
-      <TrustBar {...higherEdContent.trustBar} />
+      <TrustBar {...higherEdContent.trustBar} theme="light" />
       
-      <FeatureGrid {...higherEdContent.featureGrid} />
+      <FeatureGrid {...higherEdContent.featureGrid} theme="light" />
       
-      <Testimonials {...higherEdContent.testimonials} />
+      <Testimonials {...higherEdContent.testimonials} theme="light" />
     </div>
   );
 }

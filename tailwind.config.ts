@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)"],
-        serif: ["var(--font-playfair)"],
+        serif: ["var(--font-merriweather)"],
       },
       colors: {
         slate: {
