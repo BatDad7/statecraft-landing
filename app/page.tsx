@@ -183,7 +183,7 @@ export default async function Home() {
       />
 
       <Testimonials 
-        heading={<>Simulated Politics. Real <span className="text-terminal-green">Addiction</span>.</>}
+        heading={<>Simulated Politics. Real <span className="text-terminal-green">Stakes</span>.</>}
         items={[
           {
             quote: "My students enter class asking 'What's happening in Statecraft today?' It's the first time they've cared about foreign policy.",
