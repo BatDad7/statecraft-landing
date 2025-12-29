@@ -10,13 +10,15 @@ interface TacticalBriefingProps {
 }
 
 export default function TacticalBriefing({ 
-  headline = "AWAITING SATELLITE UPLINK...", 
-  date, 
-  activity = "System scanning for College Board curriculum alignment...",
+  headline = "FLASH INTEL: HALEY ENDORSEMENT & VOTER CONSOLIDATION",
+  date,
+  activity = "In a strategic shift reported within the last 24 hours, former candidate Nikki Haley announced she will vote for Donald Trump... [Truncate remaining text slightly for space if needed]",
   topicTag
 }: TacticalBriefingProps) {
   
-  const displayDate = date || new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const defaultDate = "Sunday, December 28, 2025";
+  const displayDate = date || defaultDate;
+  const alignmentBadgeText = topicTag || "AP UNIT ALIGNMENT: American Political Ideologies";
 
   return (
     <motion.div 
@@ -47,16 +49,22 @@ export default function TacticalBriefing({
             <div className="md:col-span-8 space-y-6">
               <h2 
                 id="dynamic-headline" 
-                className="font-mono text-3xl md:text-4xl font-bold leading-tight text-white/90"
+                className="font-mono text-3xl md:text-4xl font-bold leading-tight text-green-400"
               >
                 {headline}
               </h2>
               
               <div 
                 id="dynamic-activity" 
-                className="font-mono text-sm md:text-base leading-relaxed text-slate-400"
+                className="font-mono text-sm md:text-base leading-relaxed text-emerald-300 whitespace-pre-wrap"
               >
                 {activity}
+              </div>
+
+              <div className="pt-2">
+                <span className="inline-flex items-center rounded border border-slate-700 bg-slate-950/40 px-3 py-1 font-mono text-xs text-emerald-300">
+                  {alignmentBadgeText}
+                </span>
               </div>
             </div>
 
@@ -72,16 +80,6 @@ export default function TacticalBriefing({
                 >
                   {displayDate}
                 </time>
-                {topicTag && (
-                  <div className="mt-4">
-                    <span className="mb-2 block font-mono text-[10px] uppercase tracking-widest text-slate-500">
-                      AP Unit Alignment
-                    </span>
-                    <div className="inline-flex items-center rounded border border-slate-700 bg-slate-950/40 px-2 py-1 font-mono text-xs text-slate-200">
-                      {topicTag}
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="mt-8 md:mt-0">
