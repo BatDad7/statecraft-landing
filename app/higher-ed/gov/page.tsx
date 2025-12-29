@@ -63,7 +63,7 @@ export default async function HigherEdGov() {
         {...higherEdContent.hero} 
         variant="academic"
         theme="light"
-        primaryCtaLink="/assets/Statecraft_Syllabus_2025.pdf"
+        primaryCtaLink="/assets/Statecraft_HigherEd_Syllabus_2025.pdf"
         secondaryCtaLink="https://www.youtube.com/watch?v=N4y2Wk1R2mU"
       />
 
