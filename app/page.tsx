@@ -107,6 +107,7 @@ export default async function Home() {
           headline={brief.headline}
           date={displayDate}
           activity={brief.activity}
+          topicTag={brief.topic_tag}
         />
       </div>
 

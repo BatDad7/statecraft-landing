@@ -3,6 +3,77 @@ import { getTopicForCalendar } from './pacing';
 
 const MODEL_ID = "gemini-3-pro-preview";
 
+type GdeltArticle = {
+  title: string;
+  url: string;
+  seendate?: string;
+  domain?: string;
+  sourceCountry?: string;
+};
+
+function toGdeltDate(d: Date) {
+  // YYYYMMDDHHMMSS
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return [
+    d.getUTCFullYear(),
+    pad(d.getUTCMonth() + 1),
+    pad(d.getUTCDate()),
+    pad(d.getUTCHours()),
+    pad(d.getUTCMinutes()),
+    pad(d.getUTCSeconds()),
+  ].join('');
+}
+
+function unitTagForApGov(topic: { id: string; name: string }) {
+  // Stable/visible tag we can require Gemini to return
+  switch (topic.id) {
+    case 'UNIT_1': return `Unit 1: ${topic.name}`;
+    case 'UNIT_2': return `Unit 2: ${topic.name}`;
+    case 'UNIT_3': return `Unit 3: ${topic.name}`;
+    case 'UNIT_4_5': return `Unit 4/5: ${topic.name}`;
+    case 'REVIEW': return `Review: ${topic.name}`;
+    default: return `Current Events: ${topic.name}`;
+  }
+}
+
+async function fetchGdeltTopStories(opts: {
+  query: string;
+  hoursBack: number;
+  maxRecords?: number;
+}): Promise<GdeltArticle[]> {
+  const maxRecords = opts.maxRecords ?? 8;
+  const end = new Date();
+  const start = new Date(end.getTime() - opts.hoursBack * 60 * 60 * 1000);
+  const startdatetime = toGdeltDate(start);
+  const enddatetime = toGdeltDate(end);
+
+  const params = new URLSearchParams({
+    query: opts.query,
+    mode: 'ArtList',
+    format: 'json',
+    maxrecords: String(maxRecords),
+    sort: 'HybridRel',
+    startdatetime,
+    enddatetime,
+  });
+
+  const url = `https://api.gdeltproject.org/api/v2/doc/doc?${params.toString()}`;
+  const res = await fetch(url, { method: 'GET' });
+  if (!res.ok) return [];
+
+  const json: any = await res.json();
+  const articles = Array.isArray(json?.articles) ? json.articles : [];
+  return articles
+    .map((a: any) => ({
+      title: String(a?.title || '').trim(),
+      url: String(a?.url || '').trim(),
+      seendate: a?.seendate,
+      domain: a?.domain,
+      sourceCountry: a?.sourceCountry,
+    }))
+    .filter((a: GdeltArticle) => a.title && a.url);
+}
+
 export async function generateDailyBrief(verticalId: 'ap-gov' | 'college-gov' = 'ap-gov') {
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
   const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
@@ -23,13 +94,42 @@ export async function generateDailyBrief(verticalId: 'ap-gov' | 'college-gov' = 
     ? `Since it is summer break, focus on MAJOR structural political events (SCOTUS rulings, Conventions, significant Legislation) rather than specific unit minutiae.`
     : `The instructor is currently covering: '${topic.name}' with a focus on '${topic.focus}'. Find a news event that illustrates THIS specific concept.`;
 
+  // Pull real headlines from the last 24 hours (best-effort) so the brief isn't “outdated”.
+  // NOTE: This is not “Google News”, but it gives us real, timestamped sources to anchor the model.
+  const unitTag = verticalId === 'ap-gov' ? unitTagForApGov(topic) : `Topic: ${topic.name}`;
+  const gdeltQueryBase = verticalId === 'ap-gov'
+    ? `(United States OR U.S. OR Congress OR Supreme Court OR election OR voting OR polling OR federalism OR executive order OR bureaucracy OR civil liberties OR civil rights OR media) (${topic.focus})`
+    : `(United States OR U.S. government OR Congress OR Supreme Court OR presidency OR elections OR bureaucracy OR public opinion) (${topic.focus})`;
+
+  let recentArticles: GdeltArticle[] = [];
+  try {
+    recentArticles = await fetchGdeltTopStories({ query: gdeltQueryBase, hoursBack: 24, maxRecords: 8 });
+  } catch (e) {
+    // Non-fatal: we still generate, but the prompt will fall back to model-only.
+    recentArticles = [];
+  }
+
+  const articlesBlock = recentArticles.length
+    ? recentArticles
+        .slice(0, 6)
+        .map((a, i) => `${i + 1}. ${a.title}${a.seendate ? ` (${a.seendate})` : ''}\n   ${a.url}`)
+        .join('\n')
+    : '';
+
   const prompt = `
     Act as a high-level intelligence analyst and news aggregator for a ${verticalId === 'college-gov' ? 'University Political Science' : 'AP Government'} audience.
-    Your mission: Scan global news feeds from the last 24 HOURS.
+    Your mission: produce a briefing anchored to REAL news from the last 24 HOURS.
     
     ${contextInstruction}
     
-    Task: Write a 3-sentence 'Intelligence Brief' connecting a REAL news event from the last 24-48 hours to the political science concept above.
+    AP Unit Alignment (must use exactly): "${unitTag}"
+
+    ${recentArticles.length ? `RECENT NEWS (last 24h). You MUST pick ONE of these items and ONLY these items—do not invent an event:\n${articlesBlock}\n` : `If you cannot verify a specific real event, write an evergreen “news-style” brief that still maps clearly to the unit focus (no fake dates, no fake quotes).`}
+
+    Task: Write a 3-sentence 'Intelligence Brief' connecting the chosen news item to the concept above.
+    - Sentence 1: What happened (concrete, factual, 1 clause).
+    - Sentence 2: Why it matters for the unit focus (explicitly connect to the concept).
+    - Sentence 3: A teacher-facing “class move” (discussion prompt or mini-activity) AND include the source URL (if provided) at the end.
     
     Style Guidelines:
     - Tone: Classified Memo / Situation Room.
@@ -40,7 +140,7 @@ export async function generateDailyBrief(verticalId: 'ap-gov' | 'college-gov' = 
     { 
       "headline": "string (Short, Punchy, All-Caps optional)", 
       "activity": "string (The 3-sentence brief)", 
-      "topic_tag": "string (Strict Format: 'Unit/Topic: [Topic Name]') or 'Summer Session: Global Events'" 
+      "topic_tag": "string (must equal exactly: '${unitTag}')" 
     }
   `;
 

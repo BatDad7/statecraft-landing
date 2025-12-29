@@ -6,12 +6,14 @@ interface TacticalBriefingProps {
   headline?: string;
   date?: string;
   activity?: string;
+  topicTag?: string;
 }
 
 export default function TacticalBriefing({ 
   headline = "AWAITING SATELLITE UPLINK...", 
   date, 
-  activity = "System scanning for College Board curriculum alignment..."
+  activity = "System scanning for College Board curriculum alignment...",
+  topicTag
 }: TacticalBriefingProps) {
   
   const displayDate = date || new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
@@ -70,6 +72,16 @@ export default function TacticalBriefing({
                 >
                   {displayDate}
                 </time>
+                {topicTag && (
+                  <div className="mt-4">
+                    <span className="mb-2 block font-mono text-[10px] uppercase tracking-widest text-slate-500">
+                      AP Unit Alignment
+                    </span>
+                    <div className="inline-flex items-center rounded border border-slate-700 bg-slate-950/40 px-2 py-1 font-mono text-xs text-slate-200">
+                      {topicTag}
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="mt-8 md:mt-0">
