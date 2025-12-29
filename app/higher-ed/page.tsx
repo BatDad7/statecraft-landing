@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HigherEdHero from "@/components/higher-ed/Hero";
+import SyllabusMap from "@/components/higher-ed/SyllabusMap";
 import NewsTicker from "@/components/NewsTicker";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function HigherEdHubPage() {
 
       <main className="max-w-6xl mx-auto px-4 py-16">
         <HigherEdHero />
+        <SyllabusMap />
       </main>
 
       <Footer />
