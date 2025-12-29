@@ -1,6 +1,6 @@
 # Site Content Audit: HIGHER-ED
 URL: https://apgov.statecraftsims.com/higher-ed/gov
-Generated: 12/28/2025, 5:19:40 PM
+Generated: 12/29/2025, 9:00:51 AM
 
 ## 🔗 Navigation & Link Analysis
 | Link Text | Destination | Type |
@@ -8,9 +8,7 @@ Generated: 12/28/2025, 5:19:40 PM
 | [No Text/Image] | https://apgov.statecraftsims.com/ | Internal 🏠 |
 | Book Demo | https://go.oncehub.com/Statecraft-Demo | External 🌍 |
 | Daily Intel Brief | https://apgov.statecraftsims.com/higher-ed/gov#daily-intel-brief | Internal 🏠 |
-| Curriculum Map | https://apgov.statecraftsims.com/higher-ed/gov#standards-mapper | Internal 🏠 |
-| Required Documents | https://apgov.statecraftsims.com/higher-ed/gov#document-docket | Internal 🏠 |
-| AI Policy Firewall | https://apgov.statecraftsims.com/higher-ed/gov#ai-firewall | Internal 🏠 |
+| Download Syllabus | https://apgov.statecraftsims.com/assets/Statecraft_Syllabus_2025.pdf | Internal 🏠 |
 | Schedule Demo | https://go.oncehub.com/Statecraft-Demo | External 🌍 |
 | Get Instant Quote | https://statecraftapp-staging.azurewebsites.net/quote | External 🌍 |
 | Contact Support | mailto:help@statecraftsims.com | External 🌍 |

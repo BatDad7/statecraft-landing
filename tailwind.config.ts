@@ -13,6 +13,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)"],
         serif: ["var(--font-ibm-plex-serif)"],
+        mono: ["var(--font-mono)"],
       },
       colors: {
         slate: {

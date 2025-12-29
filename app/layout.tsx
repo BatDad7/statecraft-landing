@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Serif } from "next/font/google";
+import { Inter, IBM_Plex_Serif, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -11,6 +11,10 @@ const ibmPlexSerif = IBM_Plex_Serif({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"], 
   variable: "--font-ibm-plex-serif" 
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono"
 });
 
 export const metadata: Metadata = {
@@ -28,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${ibmPlexSerif.variable}`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${ibmPlexSerif.variable} ${jetbrainsMono.variable}`}>
       <body className={`${inter.className} bg-slate-900 text-white antialiased`}>
         <div className="fixed inset-0 tactical-grid pointer-events-none -z-10" />
         <Navbar />
