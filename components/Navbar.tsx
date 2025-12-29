@@ -3,10 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, Lock, ExternalLink, FileText, Calendar, Shield, Map, LifeBuoy, Calculator, GraduationCap } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHigherEd = pathname?.startsWith('/higher-ed');
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -80,17 +83,29 @@ const Navbar = () => {
               Daily Intel Brief
             </NavLink>
 
-            <NavLink href="/#standards-mapper" icon={Map} onClick={toggleMenu}>
-              Curriculum Map
-            </NavLink>
+            {/* AP Gov Specific Links - Hide on Higher Ed */}
+            {!isHigherEd && (
+              <>
+                <NavLink href="#standards-mapper" icon={Map} onClick={toggleMenu}>
+                  Curriculum Map
+                </NavLink>
 
-            <NavLink href="/#document-docket" icon={FileText} onClick={toggleMenu}>
-              Required Documents
-            </NavLink>
+                <NavLink href="#document-docket" icon={FileText} onClick={toggleMenu}>
+                  Required Documents
+                </NavLink>
 
-            <NavLink href="/#ai-firewall" icon={Shield} onClick={toggleMenu}>
-              AI Policy Firewall
-            </NavLink>
+                <NavLink href="#ai-firewall" icon={Shield} onClick={toggleMenu}>
+                  AI Policy Firewall
+                </NavLink>
+              </>
+            )}
+
+            {/* Higher Ed Specific Links - If we had any, we'd put them here */}
+            {isHigherEd && (
+              <NavLink href="/assets/Statecraft_Syllabus_2025.pdf" icon={FileText} onClick={toggleMenu}>
+                Download Syllabus
+              </NavLink>
+            )}
 
             <div className="my-6 border-t border-slate-800" />
 
