@@ -6,7 +6,6 @@ import HeroSection from "@/components/landing/HeroSection";
 import TrustBar from "@/components/landing/TrustBar";
 import FeatureGrid from "@/components/landing/FeatureGrid";
 import Testimonials from "@/components/landing/Testimonials";
-import TacticalBriefing from "@/components/TacticalBriefing";
 import { redis } from '@/lib/redis';
 
 // Force revalidation every 60 seconds to pick up new Redis content
@@ -45,6 +44,52 @@ const fallbackBrief: DailyBrief = {
   topic_tag: "SYSTEM_STANDBY",
   date: new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })
 };
+
+function IntelBriefing({
+  date,
+  headline,
+  activity,
+}: {
+  date: string;
+  headline: string;
+  activity: string;
+}) {
+  return (
+    <section className="tactical-grid">
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        <div
+          id="dynamic-intel-feed"
+          className="bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-xl p-6 md:p-8"
+        >
+          <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-4">
+            /// INCOMING INTELLIGENCE STREAM
+          </div>
+
+          <div
+            id="dynamic-date"
+            className="font-mono text-emerald-400 text-sm"
+          >
+            {date}
+          </div>
+
+          <h2
+            id="dynamic-headline"
+            className="font-sans text-xl font-bold text-white mt-3"
+          >
+            {headline}
+          </h2>
+
+          <div
+            id="dynamic-activity"
+            className="text-slate-300 text-sm mt-2"
+          >
+            {activity}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default async function Home() {
   const brief = await getDailyBrief();
@@ -101,13 +146,12 @@ export default async function Home() {
         techSpecs={["Browser Based", "No Install", "Chromebook Compatible"]}
       />
 
-      {/* Daily Intelligence Brief Section (Dynamic SEO Engine) */}
+      {/* Intel Briefing (Dynamic SEO Engine) */}
       <div id="daily-intel-brief">
-        <TacticalBriefing 
-          headline={brief.headline}
+        <IntelBriefing
           date={displayDate}
+          headline={brief.headline}
           activity={brief.activity}
-          topicTag={brief.topic_tag}
         />
       </div>
 
