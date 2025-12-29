@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HigherEdHero from "@/components/higher-ed/Hero";
 import SyllabusMap from "@/components/higher-ed/SyllabusMap";
+import PedagogicalEfficacy from "@/components/higher-ed/PedagogicalEfficacy";
 import NewsTicker from "@/components/NewsTicker";
 import CourseSchema from "@/components/seo/CourseSchema";
 
@@ -33,6 +34,7 @@ export default function HigherEdHubPage() {
       <main className="max-w-6xl mx-auto px-4 py-16">
         <HigherEdHero />
         <SyllabusMap />
+        <PedagogicalEfficacy />
       </main>
 
       <Footer />
