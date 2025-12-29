@@ -10,15 +10,14 @@ interface TacticalBriefingProps {
 }
 
 export default function TacticalBriefing({ 
-  headline = "FLASH INTEL: HALEY ENDORSEMENT & VOTER CONSOLIDATION",
+  headline = "AWAITING SATELLITE UPLINK...",
   date,
-  activity = "In a strategic shift reported within the last 24 hours, former candidate Nikki Haley announced she will vote for Donald Trump... [Truncate remaining text slightly for space if needed]",
+  activity = "System scanning for College Board curriculum alignment...",
   topicTag
 }: TacticalBriefingProps) {
   
-  const defaultDate = "Sunday, December 28, 2025";
-  const displayDate = date || defaultDate;
-  const alignmentBadgeText = topicTag || "AP UNIT ALIGNMENT: American Political Ideologies";
+  const displayDate = date || new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const alignmentBadgeText = topicTag || "AP UNIT ALIGNMENT: AWAITING UNIT MATCH...";
 
   return (
     <motion.div 
