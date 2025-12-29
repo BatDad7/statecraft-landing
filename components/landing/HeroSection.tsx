@@ -25,7 +25,7 @@ export default function HeroSection({
   secondaryCtaText,
   techSpecs,
   primaryCtaLink = '/assets/Statecraft_Syllabus_2025.pdf',
-  secondaryCtaLink = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  secondaryCtaLink = 'https://www.youtube.com/watch?v=N4y2Wk1R2mU', // Updated to valid video
   variant = 'tactical',
   theme = 'dark'
 }: HeroProps) {

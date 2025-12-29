@@ -82,6 +82,7 @@ export default async function Home() {
         subHeading="Stop lecturing about gridlock. Make them live it. The ultimate immersive simulation designed for AP Government classrooms."
         primaryCtaText="AUTHORIZE MISSION ACCESS"
         secondaryCtaText="Watch Trailer"
+        secondaryCtaLink="https://www.youtube.com/watch?v=N4y2Wk1R2mU"
         techSpecs={["Browser Based", "No Install", "Chromebook Compatible"]}
       />
 

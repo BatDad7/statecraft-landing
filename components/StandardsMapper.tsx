@@ -125,7 +125,7 @@ const StandardsMapper = () => {
                     className="w-full mt-4 flex items-center justify-center gap-3 rounded-lg bg-terminal-green px-6 py-4 text-sm font-bold text-slate-900 transition-all hover:bg-terminal-green/90 shadow-lg shadow-terminal-green/10 transform hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Download className="h-4 w-4" />
-                    Download Syllabus Blurb for this Unit
+                    Download 2025 Syllabus (PDF)
                   </a>
                   
                   <div className="flex justify-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
