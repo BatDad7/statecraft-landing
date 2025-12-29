@@ -61,67 +61,106 @@ export default function SyllabusMap() {
 
         {/* Timeline */}
         <div className="mt-10">
-          <div className="relative pl-6 md:pl-8 border-l border-slate-700/60">
+          {/* Mobile: stacked vertical timeline */}
+          <div className="md:hidden relative pl-6 border-l-2 border-terminal-green/70">
             {SEGMENTS.map((s, idx) => {
               const isLast = idx === SEGMENTS.length - 1;
               return (
-                <div key={s.weeks} className={`${!isLast ? "pb-10" : ""} relative`}>
-                  {/* Node */}
+                <div key={`m-${s.weeks}`} className={`${!isLast ? "pb-8" : ""} relative`}>
                   <div
                     className={`absolute -left-[9px] top-1 h-4 w-4 rounded-full border ${
                       s.highlight
-                        ? "bg-emerald-500 border-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.35)]"
-                        : "bg-slate-900 border-slate-500"
+                        ? "bg-terminal-green border-terminal-green shadow-[0_0_20px_rgba(34,197,94,0.35)]"
+                        : "bg-slate-900 border-terminal-green/60"
                     }`}
                   />
 
-                  {/* Card */}
                   <div
-                    className={`rounded-xl border p-5 md:p-6 ${
+                    className={`rounded-xl border p-5 ${
                       s.highlight
-                        ? "border-emerald-500/30 bg-slate-950/40 shadow-[0_0_35px_rgba(16,185,129,0.08)]"
+                        ? "border-terminal-green/30 bg-slate-950/40 shadow-[0_0_35px_rgba(34,197,94,0.08)]"
                         : "border-slate-700/50 bg-slate-950/30"
                     }`}
                   >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div className="flex flex-col gap-3">
                       <div className="font-mono text-xs uppercase tracking-widest text-slate-400">
                         {s.weeks}
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/50 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-slate-300">
                           {s.label}
                         </span>
                         {s.note && (
-                          <span className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-emerald-300">
+                          <span className="inline-flex items-center rounded-full border border-terminal-green/30 bg-terminal-green/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-terminal-green">
                             {s.note}
                           </span>
                         )}
                       </div>
-                    </div>
 
-                    <div className="mt-4 flex flex-col md:flex-row md:items-center gap-3">
                       <div className="font-mono text-sm text-white">
                         {s.tag}
                       </div>
-                      <div className="md:flex-1" />
+
                       <div className="text-xs text-slate-400 font-mono">
                         Evidence: negotiation logs • coalition moves • constraints
                       </div>
-                    </div>
-
-                    {/* Connector “track” hint */}
-                    <div className="mt-5 h-1 w-full rounded-full bg-slate-800 overflow-hidden">
-                      <div
-                        className={`h-full ${
-                          s.highlight ? "bg-emerald-500/70" : "bg-slate-600/40"
-                        }`}
-                        style={{ width: s.highlight ? "72%" : "45%" }}
-                      />
                     </div>
                   </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Desktop: horizontal timeline w/ connector line */}
+          <div className="hidden md:block">
+            <div className="relative">
+              <div className="absolute left-0 right-0 top-6 h-px bg-slate-700/60" />
+              <div className="grid md:grid-cols-4 gap-6">
+                {SEGMENTS.map((s) => (
+                  <div key={`d-${s.weeks}`} className="relative">
+                    <div
+                      className={`mx-auto h-4 w-4 rounded-full border ${
+                        s.highlight
+                          ? "bg-terminal-green border-terminal-green shadow-[0_0_20px_rgba(34,197,94,0.35)]"
+                          : "bg-slate-900 border-slate-500"
+                      }`}
+                      style={{ marginTop: "16px" }}
+                    />
+
+                    <div
+                      className={`mt-6 rounded-xl border p-5 ${
+                        s.highlight
+                          ? "border-terminal-green/30 bg-slate-950/40 shadow-[0_0_35px_rgba(34,197,94,0.08)]"
+                          : "border-slate-700/50 bg-slate-950/30"
+                      }`}
+                    >
+                      <div className="font-mono text-xs uppercase tracking-widest text-slate-400">
+                        {s.weeks}
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        <span className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/50 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-slate-300">
+                          {s.label}
+                        </span>
+                        {s.note && (
+                          <span className="inline-flex items-center rounded-full border border-terminal-green/30 bg-terminal-green/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-terminal-green">
+                            {s.note}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="mt-4 font-mono text-sm text-white">
+                        {s.tag}
+                      </div>
+
+                      <div className="mt-3 text-xs text-slate-400 font-mono">
+                        Evidence: negotiation logs • coalition moves • constraints
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
