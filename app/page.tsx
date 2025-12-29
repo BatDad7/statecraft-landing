@@ -1,4 +1,4 @@
-import { Newspaper, Clock, MapPin, Settings, Eye, FileText } from "lucide-react";
+import { Settings, Eye, FileText } from "lucide-react";
 import AIFirewall from "@/components/AIFirewall";
 import StandardsMapper from "@/components/StandardsMapper";
 import DocumentDocket from "@/components/DocumentDocket";
@@ -6,6 +6,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import TrustBar from "@/components/landing/TrustBar";
 import FeatureGrid from "@/components/landing/FeatureGrid";
 import Testimonials from "@/components/landing/Testimonials";
+import TacticalBriefing from "@/components/TacticalBriefing";
 import { redis } from '@/lib/redis';
 
 // Force revalidation every 60 seconds to pick up new Redis content
@@ -91,53 +92,14 @@ export default async function Home() {
         logos={["Lake Travis HS", "Westlake HS", "Austin High", "Bowie HS", "Anderson HS"]}
       />
 
-      {/* Daily Intelligence Brief Section (Server Rendered) */}
-      <section className="py-12 border-y border-slate-800 tactical-grid">
-        <div id="daily-intel-brief" className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-12 gap-8 items-start">
-            
-            {/* Col 1: Briefing Content (Span 8) */}
-            <div className="md:col-span-8">
-              <div className="flex items-center gap-2 mb-3 text-brand-blue font-bold uppercase tracking-widest text-xs">
-                <Newspaper size={16} /> 
-                Daily Intelligence Brief
-              </div>
-              <h2 id="dynamic-headline" className="text-3xl font-serif font-bold text-white mb-4 leading-tight min-h-[2.5rem]">
-                {brief.headline}
-              </h2>
-              <div id="dynamic-activity" className="prose prose-invert prose-sm text-slate-400 max-w-none min-h-[6rem]">
-                {brief.activity}
-              </div>
-            </div>
-
-            {/* Col 2: Metadata Sidebar (Span 4) */}
-            <div className="md:col-span-4 bg-slate-900/50 p-6 rounded-lg border border-slate-800 backdrop-blur-sm">
-              <div id="dynamic-date" className="flex items-center gap-2 text-emerald-500 font-mono text-sm mb-4">
-                <Clock size={14} /> 
-                <span>{displayDate}</span>
-              </div>
-              
-              <div className="space-y-4">
-                <div>
-                  <span className="text-xs text-slate-500 uppercase tracking-wider font-bold block mb-1">Current Unit Alignment</span>
-                  <div id="dynamic-topic" className="inline-block px-2 py-1 rounded bg-slate-800 border border-slate-700 text-xs text-slate-300 font-mono uppercase">
-                    {brief.topic_tag}
-                  </div>
-                </div>
-                
-                {/* Placeholder for future metadata */}
-                <div className="pt-4 border-t border-slate-800/50">
-                  <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Live Feed Active
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* Daily Intelligence Brief Section (Dynamic SEO Engine) */}
+      <div id="daily-intel-brief">
+        <TacticalBriefing 
+          headline={brief.headline}
+          date={displayDate}
+          activity={brief.activity}
+        />
+      </div>
 
       <FeatureGrid 
         title={<>Complete <span className="text-terminal-green">Simulation</span> Control</>}
