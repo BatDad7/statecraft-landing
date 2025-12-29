@@ -80,15 +80,15 @@ const Navbar = () => {
               Daily Intel Brief
             </NavLink>
 
-            <NavLink href="#standards-mapper" icon={Map} onClick={toggleMenu}>
+            <NavLink href="/#standards-mapper" icon={Map} onClick={toggleMenu}>
               Curriculum Map
             </NavLink>
 
-            <NavLink href="#document-docket" icon={FileText} onClick={toggleMenu}>
+            <NavLink href="/#document-docket" icon={FileText} onClick={toggleMenu}>
               Required Documents
             </NavLink>
 
-            <NavLink href="#ai-firewall" icon={Shield} onClick={toggleMenu}>
+            <NavLink href="/#ai-firewall" icon={Shield} onClick={toggleMenu}>
               AI Policy Firewall
             </NavLink>
 

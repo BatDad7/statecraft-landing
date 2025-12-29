@@ -12,7 +12,7 @@ export default function PolicyBrief({ topic, analysis, discussion, source = "Ana
   const isLight = theme === 'light';
 
   return (
-    <section className={`py-12 border-y ${isLight ? 'bg-white border-slate-200' : 'bg-slate-900 border-slate-800'}`}>
+    <section id="daily-intel-brief" className={`py-12 border-y ${isLight ? 'bg-white border-slate-200' : 'bg-slate-900 border-slate-800'}`}>
       <div className="container mx-auto px-4 max-w-4xl">
         <div className={`flex items-start gap-6 p-8 rounded-r-lg border-l-4 shadow-lg backdrop-blur-sm ${
           isLight 
