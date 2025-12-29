@@ -141,17 +141,29 @@ export default async function Home() {
         heading={<>Simulated Politics. Real <span className="text-terminal-green">Stakes</span>.</>}
         items={[
           {
-            quote: "My students enter class asking 'What's happening in Statecraft today?' It's the first time they've cared about foreign policy.",
-            author: "Nadia Jiani-Hyler",
-            title: "Social Studies Dept Chair",
-            institution: "Westlake High School",
+            quote: "Statecraft is the best tool I've ever used. Even my most passive students logged in voluntarily outside of class—because the simulation kept creating teachable moments.",
+            author: "Rory Simpson",
+            title: "Social Studies Teacher",
+            institution: "Griswold High School (OR)",
             highlight: true
           },
           {
-            quote: "The engagement is night and day compared to textbook lectures. They actually read the textbook to win the game.",
-            author: "Sarah Thomas",
-            title: "AP Gov Teacher",
-            institution: "Austin High School"
+            quote: "We use Statecraft U.S. Government 2.0 as the culminating assessment for our entire cohort. Students become executive officials, Congress, and media—turning the course into a living government.",
+            author: "Scott Pangrazzi",
+            title: "Upper School Social Studies Teacher",
+            institution: "University Liggett School (MI)"
+          },
+          {
+            quote: "It scaled to hundreds of students in a high-diversity context. They practiced decision-making under constraints and coalition building—exactly what textbooks struggle to measure.",
+            author: "John Sigren",
+            title: "Government & Public Administration CTE Teacher",
+            institution: "Houston ISD (TX)"
+          },
+          {
+            quote: "Very few worlds end up solving the common problems—it shows how difficult it is to put aside your own interest. Students remembered the lessons years later.",
+            author: "Tom Lavoie",
+            title: "Social Studies Department",
+            institution: "Bristol Eastern High School (CT)"
           }
         ]}
       />
