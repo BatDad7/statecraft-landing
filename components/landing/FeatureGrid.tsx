@@ -1,7 +1,7 @@
-\"use client\";
+"use client";
 
-import { ReactNode } from \"react\";
-import { usePathname } from \"next/navigation\";
+import { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
 export interface Feature {
   icon: ReactNode;
