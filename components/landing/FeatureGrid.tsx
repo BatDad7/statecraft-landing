@@ -21,7 +21,7 @@ function applyHigherEdTerminology(input: string): string {
   return input
     .replace(/\bGame Master Dashboard\b/gi, 'Instructor Analytics Suite')
     .replace(/\bGame Master\b/gi, 'Instructional Director')
-    .replace(/\bAP Prep\b/gi, 'Theory Application')
+    .replace(/\bAP Prep\b/gi, 'Analytical Application')
     .replace(/\bHigh School\b/gi, 'Undergraduate Research')
     .replace(/\bFun\b/gi, 'Engagement')
     .replace(/\bGame\b/gi, 'Simulation');
