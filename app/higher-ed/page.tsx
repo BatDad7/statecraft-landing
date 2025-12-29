@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HigherEdHero from "@/components/higher-ed/Hero";
+import NewsTicker from "@/components/NewsTicker";
 
 export const metadata: Metadata = {
   title: "Statecraft Higher Ed: AI-Proof Political Science Assessment Platform",
@@ -17,6 +18,7 @@ export default function HigherEdHubPage() {
       <div className="fixed inset-0 bg-slate-900 z-[-10]" />
       <div className="fixed inset-0 bg-slate-900/95 z-[-9]" />
 
+      <NewsTicker />
       <Navbar />
 
       <main className="max-w-6xl mx-auto px-4 py-16">
