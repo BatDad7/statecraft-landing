@@ -7,6 +7,7 @@ type ResearchCard = {
   citation: string;
   actionLabel: string;
   href: string;
+  abstractHref: string;
   highlight?: boolean;
 };
 
@@ -16,9 +17,11 @@ const CARDS: ResearchCard[] = [
     headline: "Plagiarism-Proof Assessment",
     body:
       "Research confirms Statecraft is virtually impossible to plagiarize. Unique, emergent scenarios mean no answer key exists for LLMs to scrape.",
-    citation: "Source: Dr. John Linantud, University of Houston-Downtown",
-    actionLabel: "The Ultimate Active Learning Tool",
-    href: "/higher-ed/research/the-ultimate-active-learning-tool",
+    citation:
+      "Citation: Linantud & Kaftan (2019) — “The Statecraft Effect: Assessment, Attitudes, and Academic Honesty”",
+    actionLabel: "Read Research",
+    href: "/higher-ed/research/the-statecraft-effect",
+    abstractHref: "/assets/research/the-statecraft-effect-abstract.txt",
     highlight: true,
   },
   {
@@ -26,18 +29,22 @@ const CARDS: ResearchCard[] = [
     headline: "Zero Negative Impact on Pedagogy",
     body:
       "A controlled study found that instruction can be effectively outsourced to the simulation with no negative change in outcomes, freeing faculty for research.",
-    citation: "Source: Prof. Chad Raymond, Salve Regina University (APSA Annual Meeting)",
-    actionLabel: "Outsourcing Learning",
-    href: "/higher-ed/research/outsourcing-learning",
+    citation:
+      "Citation: Eric Cox (2019) — “Does Statecraft Improve Student Learning Outcomes? A Controlled Comparison”",
+    actionLabel: "Read Research",
+    href: "/higher-ed/research/controlled-comparison",
+    abstractHref: "/assets/research/controlled-comparison-abstract.txt",
   },
   {
     kicker: "Ideological Challenge",
     headline: "Breaking Confirmation Bias",
     body:
       "Data shows the simulation forces students to confront their own 'Folk Realism' or 'Folk Idealism' when faced with structural constraints.",
-    citation: "Source: Kaftan & Linantud, Journal of Political Science Education",
-    actionLabel: "Ideologies and Competition",
-    href: "/higher-ed/research/ideologies-and-competition",
+    citation:
+      "Citation: Jennifer Epley (2016) — “Learning by Doing: Using an Online Simulation Game in an International Relations Course”",
+    actionLabel: "Read Research",
+    href: "/higher-ed/research/learning-by-doing",
+    abstractHref: "/assets/research/learning-by-doing-abstract.txt",
   },
 ];
 
@@ -82,13 +89,22 @@ export default function PedagogicalEfficacy() {
                 <div className="text-xs font-mono text-slate-400">
                   {c.citation}
                 </div>
-                <Link
-                  href={c.href}
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-terminal-green hover:text-terminal-green/80 transition-colors"
-                >
-                  Read: {c.actionLabel}
-                  <span aria-hidden="true">→</span>
-                </Link>
+                <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href={c.href}
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-terminal-green/30 bg-terminal-green/10 px-4 py-2 text-sm font-bold text-terminal-green hover:bg-terminal-green/15 transition-colors"
+                  >
+                    {c.actionLabel}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                  <a
+                    href={c.abstractHref}
+                    download
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-900/40 px-4 py-2 text-sm font-bold text-slate-200 hover:bg-slate-800 transition-colors"
+                  >
+                    Download Research Abstract
+                  </a>
+                </div>
               </div>
             </article>
           ))}
