@@ -1,4 +1,7 @@
-import { ReactNode } from "react";
+\"use client\";
+
+import { ReactNode } from \"react\";
+import { usePathname } from \"next/navigation\";
 
 export interface Feature {
   icon: ReactNode;
@@ -13,8 +16,30 @@ export interface FeatureGridProps {
   theme?: 'dark' | 'light';
 }
 
+function applyHigherEdTerminology(input: string): string {
+  // Guardrails for higher-ed only (professor-facing).
+  return input
+    .replace(/\bGame Master Dashboard\b/gi, 'Instructor Analytics Suite')
+    .replace(/\bGame Master\b/gi, 'Instructional Director')
+    .replace(/\bAP Prep\b/gi, 'Theory Application')
+    .replace(/\bHigh School\b/gi, 'Undergraduate Research')
+    .replace(/\bFun\b/gi, 'Engagement')
+    .replace(/\bGame\b/gi, 'Simulation');
+}
+
 export default function FeatureGrid({ title, subtitle, features, theme = 'dark' }: FeatureGridProps) {
+  const pathname = usePathname();
+  const isHigherEdRoute = pathname?.startsWith('/higher-ed');
   const isLight = theme === 'light';
+
+  const safeSubtitle = isHigherEdRoute ? applyHigherEdTerminology(subtitle) : subtitle;
+  const safeFeatures = isHigherEdRoute
+    ? features.map((f) => ({
+        ...f,
+        title: applyHigherEdTerminology(f.title),
+        text: applyHigherEdTerminology(f.text),
+      }))
+    : features;
 
   return (
     <section className={`py-24 relative overflow-hidden ${isLight ? 'bg-white' : 'bg-slate-900'}`}>
@@ -27,12 +52,12 @@ export default function FeatureGrid({ title, subtitle, features, theme = 'dark' 
             {title}
           </h2>
           <p className={`text-xl ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-            {subtitle}
+            {safeSubtitle}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, i) => (
+          {safeFeatures.map((feature, i) => (
             <div key={i} className={`p-8 rounded-xl border transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl ${
               isLight 
                 ? 'bg-slate-50 border-slate-200 hover:border-blue-200' 
