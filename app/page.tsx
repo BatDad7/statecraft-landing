@@ -69,11 +69,25 @@ export default async function Home() {
     }
   };
 
+  // LearningResource schema (AP Gov landing). Placeholder is intentionally a string so it survives JSON.stringify.
+  const learningResourceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Statecraft AP Gov Simulation",
+    "educationalAlignment": "AP United States Government and Politics",
+    // TODO: Replace this placeholder with the dynamic headline (e.g., from #dynamic-headline) later.
+    "headline": "__DYNAMIC_HEADLINE_PLACEHOLDER__",
+  };
+
   return (
     <div className="bg-slate-900 text-white min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(learningResourceJsonLd) }}
       />
       
       {/* Hero Section Configured for AP Gov */}
@@ -87,11 +101,6 @@ export default async function Home() {
         techSpecs={["Browser Based", "No Install", "Chromebook Compatible"]}
       />
 
-      <TrustBar 
-        label="Trusted by 500+ High Schools"
-        logos={["Lake Travis HS", "Westlake HS", "Austin High", "Bowie HS", "Anderson HS"]}
-      />
-
       {/* Daily Intelligence Brief Section (Dynamic SEO Engine) */}
       <div id="daily-intel-brief">
         <TacticalBriefing 
@@ -100,6 +109,11 @@ export default async function Home() {
           activity={brief.activity}
         />
       </div>
+
+      <TrustBar 
+        label="Trusted by 500+ High Schools"
+        logos={["Lake Travis HS", "Westlake HS", "Austin High", "Bowie HS", "Anderson HS"]}
+      />
 
       <FeatureGrid 
         title={<>Complete <span className="text-terminal-green">Simulation</span> Control</>}
