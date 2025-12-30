@@ -22,7 +22,7 @@ export function middleware(req: NextRequest) {
     !host.includes("apgov");
 
   if (isGovDomain) {
-    // Rewrite root to /higher-ed
+    // Rewrite root to the Higher Ed hub (the "new" page)
     if (url.pathname === "/") {
       return NextResponse.rewrite(new URL("/higher-ed", req.url));
     }

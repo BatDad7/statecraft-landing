@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HigherEdHero from "@/components/higher-ed/Hero";
 import TrustBar from "@/components/higher-ed/TrustBar";
 import SyllabusMap from "@/components/higher-ed/SyllabusMap";
-import PedagogicalEfficacy from "@/components/higher-ed/PedagogicalEfficacy";
+import PedagogicalEfficacy from "@/components/PedagogicalEfficacy";
 import NewsTicker from "@/components/NewsTicker";
 import CourseSchema from "@/components/seo/CourseSchema";
 
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function HigherEdHubPage() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-white text-slate-900">
       <CourseSchema
         courseName="Introduction to American Government: Simulation-Integrated"
         description="Undergraduate political science course utilizing Statecraft Gov 2.0 for rational choice theory application."
@@ -25,21 +24,16 @@ export default function HigherEdHubPage() {
         educationalLevel={["Higher Education", "Undergraduate"]}
       />
 
-      {/* Cleaner dark look: soften/hide the tactical grid behind this page */}
-      <div className="fixed inset-0 bg-slate-900 z-[-10]" />
-      <div className="fixed inset-0 bg-slate-900/95 z-[-9]" />
-
       <NewsTicker />
-      <Navbar />
 
       <main className="max-w-6xl mx-auto px-4 py-16">
-        <HigherEdHero />
-        <TrustBar />
-        <SyllabusMap />
-        <PedagogicalEfficacy />
+        <HigherEdHero variant="light" />
+        <TrustBar variant="light" />
+        <SyllabusMap variant="light" />
+        <PedagogicalEfficacy variant="light" />
       </main>
 
-      <Footer />
+      <Footer variant="light" />
     </div>
   );
 }
