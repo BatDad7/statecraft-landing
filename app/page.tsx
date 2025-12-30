@@ -106,7 +106,6 @@ export default async function Home() {
           "Norfolk Academy",
           "Houston ISD",
           "University Liggett School",
-          "Griswold High School (OR)",
           "Bristol Eastern High School (CT)"
         ]}
       />
