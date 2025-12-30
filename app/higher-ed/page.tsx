@@ -22,6 +22,7 @@ type DailyBrief = {
   activity: string;
   topic_tag: string;
   date?: string;
+  generated_at?: string;
 };
 
 const fallbackCollegeBrief: DailyBrief = {
@@ -34,8 +35,18 @@ const fallbackCollegeBrief: DailyBrief = {
 async function getCollegeGovBrief(): Promise<DailyBrief> {
   try {
     if (!process.env.UPSTASH_REDIS_REST_URL) return fallbackCollegeBrief;
-    const brief = await redis.get<DailyBrief>("daily_brief:college-gov");
-    return brief || fallbackCollegeBrief;
+    const raw = await redis.get("daily_brief:college-gov");
+    if (!raw) return fallbackCollegeBrief;
+
+    if (typeof raw === "string") {
+      try {
+        return JSON.parse(raw) as DailyBrief;
+      } catch {
+        return fallbackCollegeBrief;
+      }
+    }
+
+    return raw as DailyBrief;
   } catch {
     return fallbackCollegeBrief;
   }

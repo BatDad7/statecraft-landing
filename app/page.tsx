@@ -17,6 +17,7 @@ interface DailyBrief {
   activity: string;
   topic_tag: string;
   date?: string;
+  generated_at?: string;
 }
 
 async function getDailyBrief(): Promise<DailyBrief> {
@@ -26,13 +27,21 @@ async function getDailyBrief(): Promise<DailyBrief> {
       return fallbackBrief;
     }
     
-    const brief = await redis.get<DailyBrief>('daily_brief');
-    
-    if (!brief) {
+    const raw = await redis.get("daily_brief");
+    if (!raw) {
       return fallbackBrief;
     }
-    
-    return brief;
+
+    // Upstash GET returns a string when we store JSON.stringify(brief)
+    if (typeof raw === "string") {
+      try {
+        return JSON.parse(raw) as DailyBrief;
+      } catch {
+        return fallbackBrief;
+      }
+    }
+
+    return raw as DailyBrief;
   } catch (error) {
     console.error('Failed to fetch daily brief:', error);
     return fallbackBrief;
@@ -107,6 +116,7 @@ export default async function Home() {
           date={displayDate}
           headline={brief.headline}
           activity={brief.activity}
+          topicTag={brief.topic_tag}
         />
       </div>
 
