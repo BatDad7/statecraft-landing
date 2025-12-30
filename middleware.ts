@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getGovRewritePath } from "@/lib/routing";
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl;
@@ -15,18 +16,8 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Treat gov.* as the Higher Ed domain, but explicitly exclude apgov.*
-  // because "apgov.statecraftsims.com" contains "gov.statecraftsims.com".
-  const isGovDomain =
-    (host.includes("gov.statecraftsims.com") || host.includes("gov.statecraftsim.com")) &&
-    !host.includes("apgov");
-
-  if (isGovDomain) {
-    // Rewrite root to the Higher Ed hub (the "new" page)
-    if (url.pathname === "/") {
-      return NextResponse.rewrite(new URL("/higher-ed", req.url));
-    }
-  }
+  const rewritePath = getGovRewritePath(host, url.pathname);
+  if (rewritePath) return NextResponse.rewrite(new URL(rewritePath, req.url));
 
   return NextResponse.next();
 }

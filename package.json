@@ -12,9 +12,9 @@
     "test:agentic": "MODEL_ID=gemini-3-pro-preview ts-node scripts/agentic-qa.ts",
     "test:ux": "npm run test:agentic",
     "test:pacing": "jest __tests__/pacing.test.ts",
-    "test:e2e": "playwright test e2e/",
+    "test:e2e": "playwright test",
     "audit": "ts-node scripts/generate-audit.ts",
-    "test:full": "sh -c 'npm run build && npm run test:links -- \"$0\" && npm run test:ux -- \"$0\" && echo \"✅ MISSION READY\"'"
+    "test:full": "sh -c 'npm run build && npm test && npm run test:e2e && echo \"✅ MISSION READY\"'"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

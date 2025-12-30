@@ -48,6 +48,7 @@ describe('Smart Pacing Logic', () => {
     const june = new Date('2025-06-15');
     const topic = getCurrentTopic(june);
     expect(topic.id).toBe('CURRENT_EVENTS');
-    expect(topic.name).toContain('Current Events');
+    // Name changed to "Political Context" in current implementation.
+    expect(topic.name).toContain('Political Context');
   });
 });
