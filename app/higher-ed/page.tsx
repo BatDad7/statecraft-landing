@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HigherEdHero from "@/components/higher-ed/Hero";
+import TrustBar from "@/components/higher-ed/TrustBar";
 import SyllabusMap from "@/components/higher-ed/SyllabusMap";
 import PedagogicalEfficacy from "@/components/higher-ed/PedagogicalEfficacy";
 import NewsTicker from "@/components/NewsTicker";
@@ -33,6 +34,7 @@ export default function HigherEdHubPage() {
 
       <main className="max-w-6xl mx-auto px-4 py-16">
         <HigherEdHero />
+        <TrustBar />
         <SyllabusMap />
         <PedagogicalEfficacy />
       </main>
@@ -41,5 +43,3 @@ export default function HigherEdHubPage() {
     </div>
   );
 }
-
-
