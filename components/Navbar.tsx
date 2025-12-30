@@ -16,13 +16,14 @@ import {
   GraduationCap,
 } from "lucide-react";
 import clsx from "clsx";
-import { classifyHost } from "@/lib/routing";
+import { classifyHost, type DomainTarget } from "@/lib/routing";
 
-const Navbar = () => {
+const Navbar = ({ forcedDomain }: { forcedDomain?: DomainTarget }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const domain =
+  const windowDomain =
     typeof window !== "undefined" ? classifyHost(window.location.host) : "other";
+  const domain = forcedDomain && forcedDomain !== "other" ? forcedDomain : windowDomain;
   const isHigherEd = pathname?.startsWith("/higher-ed") || domain === "gov";
 
   useEffect(() => {
