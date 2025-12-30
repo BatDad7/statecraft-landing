@@ -5,7 +5,6 @@ import HigherEdHero from "@/components/higher-ed/Hero";
 import TrustBar from "@/components/higher-ed/TrustBar";
 import SyllabusMap from "@/components/higher-ed/SyllabusMap";
 import PedagogicalEfficacy from "@/components/PedagogicalEfficacy";
-import NewsTicker from "@/components/NewsTicker";
 import CourseSchema from "@/components/seo/CourseSchema";
 
 export const metadata: Metadata = {
@@ -23,8 +22,6 @@ export default function HigherEdHubPage() {
         provider="Statecraft Simulations"
         educationalLevel={["Higher Education", "Undergraduate"]}
       />
-
-      <NewsTicker />
 
       <main className="max-w-6xl mx-auto px-4 py-16">
         <HigherEdHero variant="light" />
