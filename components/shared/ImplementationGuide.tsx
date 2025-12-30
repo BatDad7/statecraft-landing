@@ -130,6 +130,63 @@ export default function ImplementationGuide({
             )}
           >
             <div className="flex items-center gap-2">
+              <ClipboardCheck className={clsx("h-5 w-5", isLight ? "text-blue-700" : "text-terminal-green")} />
+              <div
+                className={clsx(
+                  "font-mono text-xs uppercase tracking-widest",
+                  isLight ? "text-slate-600" : "text-slate-400"
+                )}
+              >
+                Quickstart cheat sheet (10 minutes)
+              </div>
+            </div>
+            <ol className={clsx("mt-4 grid gap-3 md:grid-cols-2 text-sm", isLight ? "text-slate-700" : "text-slate-300")}>
+              <li>
+                <span className="font-semibold">1) Choose pacing</span>: 1–2 weeks per period (or compress to a unit).
+              </li>
+              <li>
+                <span className="font-semibold">2) Assign roles</span>: have students submit top 5 role choices (Period 0).
+              </li>
+              <li>
+                <span className="font-semibold">3) Set grading weights</span>: performance + participation + debrief (copy the template
+                below).
+              </li>
+              <li>
+                <span className="font-semibold">4) Run Period 0</span>: tutorial + dashboards + “first decisions” low stakes.
+              </li>
+              <li>
+                <span className="font-semibold">5) Weekly routine</span>: memo prompt + 1 in-class debrief (10–15 min).
+              </li>
+              <li>
+                <span className="font-semibold">6) Monitor engagement</span>: instructor events tab + weekly emails.
+              </li>
+            </ol>
+            <div
+              className={clsx(
+                "mt-4 rounded-lg border p-4 font-mono text-xs leading-relaxed",
+                isLight ? "border-slate-200 bg-slate-50 text-slate-700" : "border-slate-700/50 bg-slate-950/30 text-slate-200"
+              )}
+            >
+              <div className={clsx("text-[10px] uppercase tracking-widest", isLight ? "text-slate-500" : "text-slate-400")}>
+                Copy/paste grading template
+              </div>
+              <div className="mt-2 whitespace-pre-wrap">
+                {`5% — Simulation Performance
+5% — Role Research Assignment
+10% — Weekly Memos (Participation)
+15–25% — Debrief Presentation
+10–25% — Debrief Paper`}
+              </div>
+            </div>
+          </div>
+
+          <div
+            className={clsx(
+              "mt-6 rounded-xl border p-5",
+              isLight ? "border-slate-200 bg-white" : "border-slate-700/50 bg-slate-950/20"
+            )}
+          >
+            <div className="flex items-center gap-2">
               <BarChart3 className={clsx("h-5 w-5", isLight ? "text-blue-700" : "text-terminal-green")} />
               <div className={clsx("font-mono text-xs uppercase tracking-widest", isLight ? "text-slate-600" : "text-slate-400")}>
                 Engagement tracking
