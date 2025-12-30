@@ -101,7 +101,7 @@ export default async function Home() {
       </div>
 
       <TrustBar 
-        label="Trusted by 500+ High Schools"
+        label="Trusted by 600+ education institutions"
         logos={[
           "Norfolk Academy",
           "Houston ISD",

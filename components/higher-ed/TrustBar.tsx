@@ -47,11 +47,11 @@ export default function TrustBar({
                 isLight ? "text-slate-900" : "text-white"
               )}
             >
-              Universities using Statecraft in live courses
+              Used in 450+ universities
             </h2>
           </div>
           <div className={clsx("text-sm max-w-xl", isLight ? "text-slate-600" : "text-slate-400")}>
-            These partners are verified via active users, documented case studies, and faculty super users.
+            Verified partners shown below are confirmed via active users, documented case studies, and faculty super users.
           </div>
         </div>
 
