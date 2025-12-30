@@ -165,6 +165,10 @@ const Navbar = ({ forcedDomain }: { forcedDomain?: DomainTarget }) => {
                           <FileText className={iconClass} />
                           <span className="font-medium">Daily Intel Brief</span>
                         </Link>
+                        <Link href="/#implementation" className={navLinkClass} onClick={closeMenu}>
+                          <GraduationCap className={iconClass} />
+                          <span className="font-medium">Implementation</span>
+                        </Link>
                         <Link href="/#standards-mapper" className={navLinkClass} onClick={closeMenu}>
                           <Map className={iconClass} />
                           <span className="font-medium">Curriculum Map</span>
@@ -191,6 +195,14 @@ const Navbar = ({ forcedDomain }: { forcedDomain?: DomainTarget }) => {
                         >
                           <FileText className={iconClass} />
                           <span className="font-medium">Daily Policy Brief</span>
+                        </Link>
+                        <Link
+                          href={domain === "gov" ? "/#implementation" : "/higher-ed#implementation"}
+                          className={navLinkClass}
+                          onClick={closeMenu}
+                        >
+                          <GraduationCap className={iconClass} />
+                          <span className="font-medium">Implementation</span>
                         </Link>
                         <Link
                           href="/assets/Statecraft_HigherEd_Syllabus_2025.pdf"

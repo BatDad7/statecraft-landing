@@ -9,6 +9,7 @@ import PolicyBrief from "@/components/dynamic/PolicyBrief";
 import CourseSchema from "@/components/seo/CourseSchema";
 import { redis } from "@/lib/redis";
 import { parseDailyBrief, type DailyBrief as ParsedBrief } from "@/lib/briefs";
+import ImplementationGuide from "@/components/shared/ImplementationGuide";
 
 export const metadata: Metadata = {
   title: "Statecraft Higher Ed: AI-Proof Political Science Assessment Platform",
@@ -57,6 +58,8 @@ export default async function HigherEdHubPage() {
           source="Statecraft Intelligence (College Gov)"
           theme="light"
         />
+
+        <ImplementationGuide theme="light" variant="college-gov" />
 
         <TrustBar variant="light" />
         <SyllabusMap variant="light" />

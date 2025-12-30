@@ -11,6 +11,16 @@ test.describe("Hamburger anchors (no-dead-links)", () => {
     ).toBeVisible();
   });
 
+  test("AP Gov: Implementation anchor exists", async ({ page }) => {
+    await page.goto("/");
+    await page.locator('button[aria-label="Toggle menu"]').click();
+    await page.getByText("Implementation", { exact: true }).click();
+    await expect(page).toHaveURL(/#implementation$/);
+    await expect(
+      page.getByRole("heading", { name: "Length of Simulation & Class Time", exact: true })
+    ).toBeVisible();
+  });
+
   test("Gov 2.0: Daily Policy Brief + Pedagogical Efficacy anchors exist", async ({
     page,
   }) => {
@@ -19,6 +29,13 @@ test.describe("Hamburger anchors (no-dead-links)", () => {
     await page.getByText("Daily Policy Brief", { exact: true }).click();
     await expect(page).toHaveURL(/#daily-intel-brief$/);
     await expect(page.getByText("Daily Policy Briefing")).toBeVisible();
+
+    await page.locator('button[aria-label="Toggle menu"]').click();
+    await page.getByText("Implementation", { exact: true }).click();
+    await expect(page).toHaveURL(/#implementation$/);
+    await expect(
+      page.getByRole("heading", { name: "Length of Simulation & Class Time", exact: true })
+    ).toBeVisible();
 
     await page.locator('button[aria-label="Toggle menu"]').click();
     await page

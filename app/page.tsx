@@ -9,6 +9,7 @@ import Testimonials from "@/components/landing/Testimonials";
 import IntelBriefing from "@/components/landing/intel-briefing";
 import { redis } from '@/lib/redis';
 import { parseDailyBrief, type DailyBrief as ParsedBrief } from "@/lib/briefs";
+import ImplementationGuide from "@/components/shared/ImplementationGuide";
 
 // Force revalidation every 60 seconds to pick up new Redis content
 export const revalidate = 60;
@@ -99,6 +100,8 @@ export default async function Home() {
           topicTag={brief.topic_tag}
         />
       </div>
+
+      <ImplementationGuide theme="dark" variant="ap-gov" />
 
       <TrustBar 
         label="Trusted by 600+ education institutions"
