@@ -1,181 +1,242 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, Lock, ExternalLink, FileText, Calendar, Shield, Map, LifeBuoy, Calculator, GraduationCap } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Shield,
+  Menu,
+  X,
+  FileText,
+  Map,
+  ShieldCheck,
+  User,
+  LogIn,
+  GraduationCap,
+} from "lucide-react";
+import clsx from "clsx";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const isHigherEd = pathname?.startsWith('/higher-ed');
+  const isHigherEd = pathname?.startsWith("/higher-ed");
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  return (
-    <>
-      <nav className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center space-x-2 shrink-0">
-            <div className="relative h-10 w-40">
-              <Image 
-                src="/brand-logo.png" 
-                alt="Statecraft Logo" 
-                fill
-                className="object-contain object-left"
-                priority
-              />
-            </div>
-          </Link>
+  // Dynamic Styles
+  const navClass = clsx(
+    "sticky top-0 z-50 w-full backdrop-blur-md transition-colors duration-300 border-b",
+    isHigherEd
+      ? "border-slate-200 bg-white/90 text-slate-900"
+      : "border-slate-800 bg-slate-900/80 text-white"
+  );
 
-          <div className="flex items-center gap-4">
-            {/* Desktop "Quick Action" - Book Demo */}
+  const navLinkClass = clsx(
+    "flex items-center gap-3 p-3 rounded-md transition-all group",
+    isHigherEd
+      ? "text-slate-600 hover:text-blue-700 hover:bg-blue-50"
+      : "text-slate-300 hover:text-white hover:bg-slate-800"
+  );
+
+  const iconClass = clsx(
+    "h-5 w-5 transition-colors",
+    isHigherEd
+      ? "text-slate-400 group-hover:text-blue-600"
+      : "text-slate-500 group-hover:text-terminal-green"
+  );
+
+  return (
+    <nav className={navClass}>
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2 z-50 relative">
+          {isHigherEd ? (
+            <>
+              <Image
+                src="/gov-logo.png"
+                alt="Statecraft Gov 2.0"
+                width={34}
+                height={34}
+                priority
+                className="h-[34px] w-[34px] rounded-full"
+              />
+              <div className="flex flex-col leading-tight">
+                <span className="text-lg font-black tracking-tight">Statecraft</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-blue-700">
+                  Gov 2.0 Higher Ed
+                </span>
+              </div>
+            </>
+          ) : (
+            <>
+              <Shield className="h-8 w-8 transition-colors text-terminal-green" />
+              <span className="text-xl font-bold tracking-tighter uppercase italic">
+                Statecraft
+              </span>
+            </>
+          )}
+        </Link>
+
+        {/* Desktop CTA & Hamburger */}
+        <div className="flex items-center gap-4 z-50 relative">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden sm:block"
+          >
             <Link
-              href="https://go.oncehub.com/Statecraft-Demo"
-              className="hidden sm:block rounded-md border border-slate-700 bg-slate-800/50 px-4 py-2 text-sm font-bold text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
+              href="/demo"
+              className={clsx(
+                "rounded-md px-4 py-2 text-sm font-semibold transition-colors block shadow-lg",
+                isHigherEd
+                  ? "bg-blue-700 text-white hover:bg-blue-600 shadow-blue-900/10"
+                  : "bg-terminal-green text-slate-900 hover:bg-terminal-green/90 shadow-terminal-green/20"
+              )}
             >
               Book Demo
             </Link>
+          </motion.div>
 
-            {/* Tactical Hamburger Button */}
-            <button
-              onClick={toggleMenu}
-              className="relative group p-2 rounded-md border border-transparent hover:border-slate-700 hover:bg-slate-800 transition-all"
-              aria-label="Open Tactical Menu"
-            >
-              <Menu className="h-6 w-6 text-slate-300 group-hover:text-terminal-green" />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Slide-out Drawer / Overlay */}
-      <div 
-        className={`fixed inset-0 z-[60] bg-slate-900/90 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        onClick={toggleMenu}
-      >
-        <div 
-          className={`absolute right-0 top-0 h-full w-80 bg-slate-950 border-l border-slate-800 shadow-2xl transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
-          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-        >
-          {/* Drawer Header */}
-          <div className="flex items-center justify-between p-6 border-b border-slate-800 bg-slate-900">
-            <span className="font-mono text-xs uppercase tracking-widest text-slate-500">
-              // Classified Access
-            </span>
-            <button 
-              onClick={toggleMenu}
-              className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
-              aria-label="Close Menu"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-
-          {/* Menu Items */}
-          <div className="p-6 space-y-2 overflow-y-auto max-h-[calc(100vh-140px)]">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-600 mb-4">
-              Intelligence Channels
-            </div>
-
-            <NavLink href="#daily-intel-brief" icon={FileText} onClick={toggleMenu}>
-              Daily Intel Brief
-            </NavLink>
-
-            {/* AP Gov Specific Links - Hide on Higher Ed */}
-            {!isHigherEd && (
-              <>
-                <NavLink href="#standards-mapper" icon={Map} onClick={toggleMenu}>
-                  Curriculum Map
-                </NavLink>
-
-                <NavLink href="#document-docket" icon={FileText} onClick={toggleMenu}>
-                  Required Documents
-                </NavLink>
-
-                <NavLink href="#ai-firewall" icon={Shield} onClick={toggleMenu}>
-                  AI Policy Firewall
-                </NavLink>
-              </>
+          <button
+            onClick={toggleMenu}
+            className={clsx(
+              "p-2 rounded-md transition-colors",
+              isHigherEd
+                ? "text-slate-600 hover:bg-slate-100"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
             )}
-
-            {/* Higher Ed Specific Links - If we had any, we'd put them here */}
-            {isHigherEd && (
-              <NavLink href="/assets/Statecraft_Syllabus_2025.pdf" icon={FileText} onClick={toggleMenu}>
-                Download Syllabus
-              </NavLink>
-            )}
-
-            <div className="my-6 border-t border-slate-800" />
-
-            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-600 mb-4">
-              Operations
-            </div>
-
-            <NavLink href="https://go.oncehub.com/Statecraft-Demo" icon={Calendar} onClick={toggleMenu}>
-              Schedule Demo
-            </NavLink>
-
-            <NavLink href="https://statecraftapp-staging.azurewebsites.net/quote" icon={Calculator} onClick={toggleMenu}>
-              Get Instant Quote
-            </NavLink>
-
-            <NavLink href="mailto:help@statecraftsims.com" icon={LifeBuoy} onClick={toggleMenu}>
-              Contact Support
-            </NavLink>
-
-            <div className="my-6 border-t border-slate-800" />
-
-            <a 
-              href="https://www.statecraftsims.com/login" 
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 rounded-md bg-terminal-green/10 border border-terminal-green/20 text-terminal-green hover:bg-terminal-green/20 transition-all group mb-2"
-            >
-              <span className="flex items-center gap-3 font-bold text-sm">
-                <Lock className="h-4 w-4" />
-                Teacher Login
-              </span>
-              <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            <a 
-              href="https://www.statecraftsims.com/login" 
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 rounded-md border border-slate-700 bg-slate-800 text-slate-300 hover:text-white hover:border-slate-500 transition-all group"
-            >
-              <span className="flex items-center gap-3 font-bold text-sm">
-                <GraduationCap className="h-4 w-4" />
-                Student Login
-              </span>
-              <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-            </a>
-          </div>
-
-          {/* Footer Decoration */}
-          <div className="absolute bottom-0 left-0 w-full p-6 border-t border-slate-800 bg-slate-900/50">
-            <div className="flex items-center gap-2 opacity-50">
-              <div className="h-2 w-2 rounded-full bg-terminal-green animate-pulse" />
-              <span className="font-mono text-[10px] uppercase">Secure Connection Active</span>
-            </div>
-          </div>
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className={clsx(
+                "absolute inset-x-0 top-16 h-[calc(100vh-64px)] overflow-y-auto border-b shadow-2xl backdrop-blur-xl",
+                isHigherEd
+                  ? "bg-white/95 border-slate-200"
+                  : "bg-slate-900/95 border-slate-800"
+              )}
+            >
+              <div className="p-6 space-y-6 max-w-lg mx-auto">
+                <div>
+                  <div
+                    className={clsx(
+                      "text-[10px] font-bold uppercase tracking-widest mb-4",
+                      isHigherEd ? "text-slate-500" : "text-slate-600"
+                    )}
+                  >
+                    {isHigherEd ? "Higher Ed Resources" : "Intelligence Channels"}
+                  </div>
+                  <div className="space-y-2">
+                    {!isHigherEd ? (
+                      <>
+                        <Link href="/#daily-intel-brief" className={navLinkClass}>
+                          <FileText className={iconClass} />
+                          <span className="font-medium">Daily Intel Brief</span>
+                        </Link>
+                        <Link href="/#standards-mapper" className={navLinkClass}>
+                          <Map className={iconClass} />
+                          <span className="font-medium">Curriculum Map</span>
+                        </Link>
+                        <Link href="/#ai-firewall" className={navLinkClass}>
+                          <ShieldCheck className={iconClass} />
+                          <span className="font-medium">AI Policy Firewall</span>
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <Link
+                          href="/assets/Statecraft_HigherEd_Syllabus_2025.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={navLinkClass}
+                        >
+                          <FileText className={iconClass} />
+                          <span className="font-medium">Download Syllabus (PDF)</span>
+                        </Link>
+                        <Link
+                          href="/higher-ed#pedagogical-efficacy"
+                          className={navLinkClass}
+                        >
+                          <GraduationCap className={iconClass} />
+                          <span className="font-medium">Pedagogical Efficacy</span>
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div
+                  className={clsx(
+                    "border-t my-6",
+                    isHigherEd ? "border-slate-100" : "border-slate-800"
+                  )}
+                />
+
+                {/* Operations */}
+                <div>
+                  <div
+                    className={clsx(
+                      "text-[10px] font-bold uppercase tracking-widest mb-4",
+                      isHigherEd ? "text-slate-500" : "text-slate-600"
+                    )}
+                  >
+                    Operations
+                  </div>
+                  <div className="space-y-2">
+                    <Link
+                      href="https://www.statecraftsims.com/login"
+                      className={navLinkClass}
+                    >
+                      <User className={iconClass} />
+                      <span className="font-medium">Instructor Login</span>
+                    </Link>
+                    <Link
+                      href="https://www.statecraftsims.com/login"
+                      className={navLinkClass}
+                    >
+                      <LogIn className={iconClass} />
+                      <span className="font-medium">Student Login</span>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Mobile CTA */}
+                <div className="pt-6 sm:hidden">
+                  <Link
+                    href="/demo"
+                    className={clsx(
+                      "flex w-full items-center justify-center rounded-lg px-4 py-4 text-base font-bold shadow-lg transition-all active:scale-95",
+                      isHigherEd
+                        ? "bg-blue-700 text-white hover:bg-blue-600 shadow-blue-900/20"
+                        : "bg-terminal-green text-slate-900 hover:bg-terminal-green/90 shadow-terminal-green/20"
+                    )}
+                  >
+                    Book Instructor Demo
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </>
+    </nav>
   );
 };
-
-const NavLink = ({ href, icon: Icon, children, onClick }: { href: string, icon: any, children: React.ReactNode, onClick: () => void }) => (
-  <Link 
-    href={href}
-    onClick={onClick}
-    className="flex items-center gap-3 p-3 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition-all group"
-  >
-    <Icon className="h-4 w-4 text-slate-500 group-hover:text-terminal-green transition-colors" />
-    <span className="text-sm font-medium">{children}</span>
-  </Link>
-);
 
 export default Navbar;
