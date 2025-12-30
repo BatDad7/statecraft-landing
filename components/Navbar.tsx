@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Shield,
   Menu,
   X,
   FileText,
@@ -79,10 +78,22 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Shield className="h-8 w-8 transition-colors text-terminal-green" />
-              <span className="text-xl font-bold tracking-tighter uppercase italic">
-                Statecraft
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Statecraft AP Gov"
+                width={34}
+                height={34}
+                priority
+                className="h-[34px] w-[34px] rounded-full"
+              />
+              <div className="flex flex-col leading-tight">
+                <span className="text-lg font-black tracking-tight uppercase italic">
+                  Statecraft
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-terminal-green">
+                  AP GOV • Situation Room
+                </span>
+              </div>
             </>
           )}
         </Link>
