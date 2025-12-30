@@ -65,6 +65,7 @@ const StandardsMapper = () => {
               <select
                 value={selectedUnit}
                 onChange={(e) => setSelectedUnit(e.target.value as UnitKey)}
+                aria-label="Select an AP unit"
                 className="w-full appearance-none bg-slate-800 border border-slate-700 text-white py-4 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-terminal-green/50 transition-all cursor-pointer font-bold"
               >
                 <option value="" disabled>Select an AP Unit...</option>

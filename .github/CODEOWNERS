@@ -1,0 +1,13 @@
+# Update these handles to your actual GitHub users/teams.
+# This file enables required-review workflows when branch protection is turned on.
+
+# Default owner for everything
+* @YOUR_GITHUB_HANDLE
+
+# High-risk routing / identity files
+middleware.ts @YOUR_GITHUB_HANDLE
+lib/routing.ts @YOUR_GITHUB_HANDLE
+components/Navbar.tsx @YOUR_GITHUB_HANDLE
+components/layout/* @YOUR_GITHUB_HANDLE
+
+

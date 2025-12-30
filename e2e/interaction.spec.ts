@@ -1,23 +1,23 @@
-import { test, expect } from '@playwright/test';
-
-const BASE_URL = process.env.BASE_URL || 'https://statecraft-landing.vercel.app';
+import { test, expect } from "@playwright/test";
 
 test.describe('Interactive Component Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(BASE_URL);
+    await page.goto("/");
   });
 
   test('Crisis Simulator vignette transitions correctly', async ({ page }) => {
-    const simulator = page.locator('.relative.rounded-xl.border.border-slate-700');
-    await expect(simulator).toContainText('Domestic Policy Simulator');
+    const simulator = page.getByText("Domestic Policy Simulator");
+    await expect(simulator).toBeVisible();
     
-    const vetoButton = simulator.locator('button', { hasText: 'Action: Veto Bill' });
+    const vetoButton = page.getByRole("button", { name: "Action: Veto Bill" });
     await expect(vetoButton).toBeVisible();
     await vetoButton.click();
 
-    await expect(simulator).toContainText('GRIDLOCK.');
+    await expect(page.getByRole("heading", { name: "GRIDLOCK." })).toBeVisible();
     
-    const ctaButton = simulator.locator('button', { hasText: 'See How Your Students Handle The Pressure' });
+    const ctaButton = page.getByRole("button", {
+      name: "See How Your Students Handle The Pressure",
+    });
     await expect(ctaButton).toBeVisible();
   });
 
@@ -30,23 +30,20 @@ test.describe('Interactive Component Tests', () => {
     await expect(card).toContainText('Civil Liberties and Civil Rights');
   });
 
-  test('Tactical Menu opens and contains critical links', async ({ page }) => {
+  test('Hamburger menu opens and contains critical links', async ({ page }) => {
     // 1. Find and click hamburger
-    const menuButton = page.locator('button[aria-label="Open Tactical Menu"]');
+    const menuButton = page.locator('button[aria-label="Toggle menu"]');
     await expect(menuButton).toBeVisible();
     await menuButton.click();
 
     // 2. Wait for drawer animation (optional, but good practice)
-    // We check for the header text inside the drawer
-    // Using getByText to avoid XPath confusion with the "//" characters
-    const drawerHeader = page.getByText('// Classified Access');
-    await expect(drawerHeader).toBeVisible();
+    await expect(page.getByText("Operations", { exact: true })).toBeVisible();
 
     // 3. Verify Links exist
-    await expect(page.locator('text=Daily Intel Brief')).toBeVisible();
+    await expect(page.getByText("Daily Intel Brief")).toBeVisible();
     
     // 4. Verify Teacher Login link structure
-    const loginLink = page.locator('a:has-text("Teacher Login")');
+    const loginLink = page.locator('a:has-text("Instructor Login")');
     await expect(loginLink).toBeVisible();
     await expect(loginLink).toHaveAttribute('href', 'https://www.statecraftsims.com/login');
   });
