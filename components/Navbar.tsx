@@ -21,7 +21,11 @@ import clsx from "clsx";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const isHigherEd = pathname?.startsWith("/higher-ed");
+  const host =
+    typeof window !== "undefined" ? window.location.host.toLowerCase() : "";
+  const isGovDomain =
+    host.includes("gov.statecraftsims.com") || host.includes("gov.statecraftsim.com");
+  const isHigherEd = pathname?.startsWith("/higher-ed") || isGovDomain;
 
   useEffect(() => {
     setIsOpen(false);
