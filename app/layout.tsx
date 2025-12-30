@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import GlobalChrome from "@/components/layout/GlobalChrome";
-import GlobalBackground from "@/components/layout/GlobalBackground";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const ibmPlexSerif = IBM_Plex_Serif({ 
@@ -33,10 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${ibmPlexSerif.variable} ${jetbrainsMono.variable}`}>
-      <body className={`${inter.className} bg-slate-900 text-white antialiased`}>
-        <GlobalBackground />
-        <GlobalChrome />
-        <main>{children}</main>
+      <body className={`${inter.className} antialiased`}>
+        <GlobalChrome>
+          {children}
+        </GlobalChrome>
         
         {/* Vercel Analytics & Speed Insights */}
         <Analytics />
