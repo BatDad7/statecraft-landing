@@ -30,6 +30,7 @@ const Navbar = () => {
   }, [pathname]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   // Dynamic Styles
   const navClass = clsx(
@@ -159,17 +160,21 @@ const Navbar = () => {
                   <div className="space-y-2">
                     {!isHigherEd ? (
                       <>
-                        <Link href="/#daily-intel-brief" className={navLinkClass}>
+                        <Link href="/#daily-intel-brief" className={navLinkClass} onClick={closeMenu}>
                           <FileText className={iconClass} />
                           <span className="font-medium">Daily Intel Brief</span>
                         </Link>
-                        <Link href="/#standards-mapper" className={navLinkClass}>
+                        <Link href="/#standards-mapper" className={navLinkClass} onClick={closeMenu}>
                           <Map className={iconClass} />
                           <span className="font-medium">Curriculum Map</span>
                         </Link>
-                        <Link href="/#ai-firewall" className={navLinkClass}>
+                        <Link href="/#ai-firewall" className={navLinkClass} onClick={closeMenu}>
                           <ShieldCheck className={iconClass} />
                           <span className="font-medium">AI Policy Firewall</span>
+                        </Link>
+                        <Link href="/#testimonials" className={navLinkClass} onClick={closeMenu}>
+                          <User className={iconClass} />
+                          <span className="font-medium">Testimonials</span>
                         </Link>
                       </>
                     ) : (
@@ -179,6 +184,7 @@ const Navbar = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={navLinkClass}
+                          onClick={closeMenu}
                         >
                           <FileText className={iconClass} />
                           <span className="font-medium">Download Syllabus (PDF)</span>
@@ -186,9 +192,18 @@ const Navbar = () => {
                         <Link
                           href="/higher-ed#pedagogical-efficacy"
                           className={navLinkClass}
+                          onClick={closeMenu}
                         >
                           <GraduationCap className={iconClass} />
                           <span className="font-medium">Pedagogical Efficacy</span>
+                        </Link>
+                        <Link
+                          href="/higher-ed/research/the-statecraft-effect"
+                          className={navLinkClass}
+                          onClick={closeMenu}
+                        >
+                          <FileText className={iconClass} />
+                          <span className="font-medium">Research Papers</span>
                         </Link>
                       </>
                     )}

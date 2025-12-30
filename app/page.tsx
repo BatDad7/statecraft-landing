@@ -143,7 +143,8 @@ export default async function Home() {
         ]}
       />
 
-      <Testimonials 
+      <div id="testimonials">
+        <Testimonials 
         heading={<>Simulated Politics. Real <span className="text-terminal-green">Stakes</span>.</>}
         items={[
           {
@@ -172,7 +173,8 @@ export default async function Home() {
             institution: "Bristol Eastern High School (CT)"
           }
         ]}
-      />
+        />
+      </div>
 
       {/* AI Firewall Section */}
       <div id="ai-firewall">
