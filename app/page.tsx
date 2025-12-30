@@ -8,19 +8,12 @@ import FeatureGrid from "@/components/landing/FeatureGrid";
 import Testimonials from "@/components/landing/Testimonials";
 import IntelBriefing from "@/components/landing/intel-briefing";
 import { redis } from '@/lib/redis';
+import { parseDailyBrief, type DailyBrief as ParsedBrief } from "@/lib/briefs";
 
 // Force revalidation every 60 seconds to pick up new Redis content
 export const revalidate = 60;
 
-interface DailyBrief {
-  headline: string;
-  activity: string;
-  topic_tag: string;
-  date?: string;
-  generated_at?: string;
-}
-
-async function getDailyBrief(): Promise<DailyBrief> {
+async function getDailyBrief(): Promise<ParsedBrief> {
   try {
     // If env vars are missing (build time), return fallback immediately
     if (!process.env.UPSTASH_REDIS_REST_URL) {
@@ -28,27 +21,14 @@ async function getDailyBrief(): Promise<DailyBrief> {
     }
     
     const raw = await redis.get("daily_brief");
-    if (!raw) {
-      return fallbackBrief;
-    }
-
-    // Upstash GET returns a string when we store JSON.stringify(brief)
-    if (typeof raw === "string") {
-      try {
-        return JSON.parse(raw) as DailyBrief;
-      } catch {
-        return fallbackBrief;
-      }
-    }
-
-    return raw as DailyBrief;
+    return parseDailyBrief(raw, fallbackBrief);
   } catch (error) {
     console.error('Failed to fetch daily brief:', error);
     return fallbackBrief;
   }
 }
 
-const fallbackBrief: DailyBrief = {
+const fallbackBrief: ParsedBrief = {
   headline: "Intelligence Channels Silent",
   activity: "Secure connection established. Waiting for daily briefing upload from HQ.",
   topic_tag: "SYSTEM_STANDBY",
