@@ -15,9 +15,11 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Treat gov.* as the Higher Ed domain
+  // Treat gov.* as the Higher Ed domain, but explicitly exclude apgov.*
+  // because "apgov.statecraftsims.com" contains "gov.statecraftsims.com".
   const isGovDomain =
-    host.includes("gov.statecraftsims.com") || host.includes("gov.statecraftsim.com");
+    (host.includes("gov.statecraftsims.com") || host.includes("gov.statecraftsim.com")) &&
+    !host.includes("apgov");
 
   if (isGovDomain) {
     // Rewrite root to /higher-ed
