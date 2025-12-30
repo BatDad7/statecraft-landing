@@ -4,10 +4,13 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import StatecraftTA from "@/components/StatecraftTA";
+import { classifyHost } from "@/lib/routing";
 
 export default function GlobalChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isHigherEd = pathname?.startsWith("/higher-ed");
+  const domain =
+    typeof window !== "undefined" ? classifyHost(window.location.host) : "other";
+  const isHigherEd = pathname?.startsWith("/higher-ed") || domain === "gov";
 
   return (
     <>

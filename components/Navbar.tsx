@@ -190,7 +190,7 @@ const Navbar = () => {
                           <span className="font-medium">Download Syllabus (PDF)</span>
                         </Link>
                         <Link
-                          href="/higher-ed#pedagogical-efficacy"
+                          href={domain === "gov" ? "/#pedagogical-efficacy" : "/higher-ed#pedagogical-efficacy"}
                           className={navLinkClass}
                           onClick={closeMenu}
                         >

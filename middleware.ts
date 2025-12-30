@@ -18,10 +18,9 @@ export function middleware(req: NextRequest) {
 
   const rewritePath = getGovRewritePath(host, url.pathname);
   if (rewritePath) {
-    // IMPORTANT: Redirect (not rewrite) so the browser URL becomes /higher-ed.
-    // This prevents hydration flicker where the server renders Higher Ed but the
-    // client sees pathname "/" and flips the navbar theme.
-    return NextResponse.redirect(new URL(rewritePath, req.url));
+    // IMPORTANT: Use rewrite so the browser URL stays on gov.statecraftsims.com/
+    // while serving the Higher Ed content.
+    return NextResponse.rewrite(new URL(rewritePath, req.url));
   }
 
   return NextResponse.next();
