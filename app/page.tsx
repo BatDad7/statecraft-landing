@@ -112,7 +112,13 @@ export default async function Home() {
 
       <TrustBar 
         label="Trusted by 500+ High Schools"
-        logos={["Lake Travis HS", "Westlake HS", "Austin High", "Bowie HS", "Anderson HS"]}
+        logos={[
+          "Norfolk Academy",
+          "Houston ISD",
+          "University Liggett School",
+          "Griswold High School (OR)",
+          "Bristol Eastern High School (CT)"
+        ]}
       />
 
       <FeatureGrid 
