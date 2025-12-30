@@ -180,6 +180,18 @@ const Navbar = () => {
                     ) : (
                       <>
                         <Link
+                          href={
+                            domain === "gov"
+                              ? "/#daily-intel-brief"
+                              : "/higher-ed#daily-intel-brief"
+                          }
+                          className={navLinkClass}
+                          onClick={closeMenu}
+                        >
+                          <FileText className={iconClass} />
+                          <span className="font-medium">Daily Policy Brief</span>
+                        </Link>
+                        <Link
                           href="/assets/Statecraft_HigherEd_Syllabus_2025.pdf"
                           target="_blank"
                           rel="noopener noreferrer"
