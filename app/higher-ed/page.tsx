@@ -59,11 +59,11 @@ export default async function HigherEdHubPage() {
           theme="light"
         />
 
-        <ImplementationGuide theme="light" variant="college-gov" />
-
         <TrustBar variant="light" />
         <SyllabusMap variant="light" />
         <PedagogicalEfficacy variant="light" />
+
+        <ImplementationGuide theme="light" variant="college-gov" />
       </main>
 
       <Footer variant="light" />

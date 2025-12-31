@@ -101,8 +101,6 @@ export default async function Home() {
         />
       </div>
 
-      <ImplementationGuide theme="dark" variant="ap-gov" />
-
       <TrustBar 
         label="Trusted by 600+ education institutions"
         logos={[
@@ -182,6 +180,8 @@ export default async function Home() {
       <div id="document-docket">
         <DocumentDocket />
       </div>
+
+      <ImplementationGuide theme="dark" variant="ap-gov" />
     </div>
   );
 }
