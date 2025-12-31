@@ -111,7 +111,7 @@ export default function HigherEdHero({
                       isLight ? "text-blue-700" : "text-emerald-500/80"
                     )}
                   >
-                    Live Integrity Check
+                    Integrity signals (illustrative)
                   </div>
                   <div
                     className={clsx(
@@ -134,7 +134,7 @@ export default function HigherEdHero({
                       isLight ? "bg-blue-600" : "bg-emerald-500"
                     )}
                   />
-                  Monitoring
+                  Example visualization
                 </div>
               </div>
 
@@ -186,7 +186,7 @@ export default function HigherEdHero({
                       isLight ? "text-slate-500" : "text-slate-500"
                     )}
                   >
-                    baseline
+                    static-text baseline
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function HigherEdHero({
                       isLight ? "text-slate-500" : "text-slate-500"
                     )}
                   >
-                    Integrity Score
+                    Integrity signal
                   </div>
                   <div
                     className={clsx(
@@ -214,15 +214,15 @@ export default function HigherEdHero({
                       isLight ? "text-slate-900" : "text-white"
                     )}
                   >
-                    94
+                    High
                   </div>
                   <div
                     className={clsx(
                       "mt-1 text-xs font-mono",
-                      isLight ? "text-blue-600" : "text-emerald-400"
+                      isLight ? "text-slate-600" : "text-slate-300"
                     )}
                   >
-                    +12 vs essays
+                    Built from decision logs + role-based actions
                   </div>
                 </div>
                 <div
@@ -239,7 +239,7 @@ export default function HigherEdHero({
                       isLight ? "text-slate-500" : "text-slate-500"
                     )}
                   >
-                    AI Exposure
+                    AI exposure (static text)
                   </div>
                   <div
                     className={clsx(
@@ -247,7 +247,7 @@ export default function HigherEdHero({
                       isLight ? "text-slate-900" : "text-white"
                     )}
                   >
-                    Low
+                    Lower
                   </div>
                   <div
                     className={clsx(
@@ -255,9 +255,14 @@ export default function HigherEdHero({
                       isLight ? "text-slate-500" : "text-slate-400"
                     )}
                   >
-                    behavioral evidence
+                    Less dependent on prose-only outputs
                   </div>
                 </div>
+              </div>
+
+              <div className={clsx("mt-4 text-xs leading-relaxed", isLight ? "text-slate-500" : "text-slate-400")}>
+                Illustration only — this landing page does not analyze student submissions. In product, instructors can review
+                participation traces and decision logs to support academic integrity.
               </div>
             </div>
           </motion.div>
