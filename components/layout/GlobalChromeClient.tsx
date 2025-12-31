@@ -29,7 +29,7 @@ export default function GlobalChromeClient({
 
       <Navbar forcedDomain={domain} />
       <main>{children}</main>
-      {!isHigherEd && <StatecraftTA />}
+      <StatecraftTA vertical={isHigherEd ? "college-gov" : "ap-gov"} />
     </>
   );
 }

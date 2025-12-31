@@ -8,6 +8,8 @@ import PedagogicalEfficacy from "@/components/PedagogicalEfficacy";
 import PolicyBrief from "@/components/dynamic/PolicyBrief";
 import CourseSchema from "@/components/seo/CourseSchema";
 import { redis } from "@/lib/redis";
+import { parseDailyBrief, type DailyBrief as ParsedBrief } from "@/lib/briefs";
+import ImplementationGuide from "@/components/shared/ImplementationGuide";
 
 export const metadata: Metadata = {
   title: "Statecraft Higher Ed: AI-Proof Political Science Assessment Platform",
@@ -17,25 +19,18 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-type DailyBrief = {
-  headline: string;
-  activity: string;
-  topic_tag: string;
-  date?: string;
-};
-
-const fallbackCollegeBrief: DailyBrief = {
+const fallbackCollegeBrief: ParsedBrief = {
   headline: "Policy Brief Pending",
   activity:
     "Secure connection established. Waiting for today’s department briefing upload.",
   topic_tag: "COLLEGE_GOV_STANDBY",
 };
 
-async function getCollegeGovBrief(): Promise<DailyBrief> {
+async function getCollegeGovBrief(): Promise<ParsedBrief> {
   try {
     if (!process.env.UPSTASH_REDIS_REST_URL) return fallbackCollegeBrief;
-    const brief = await redis.get<DailyBrief>("daily_brief:college-gov");
-    return brief || fallbackCollegeBrief;
+    const raw = await redis.get("daily_brief:college-gov");
+    return parseDailyBrief(raw, fallbackCollegeBrief);
   } catch {
     return fallbackCollegeBrief;
   }
@@ -67,6 +62,8 @@ export default async function HigherEdHubPage() {
         <TrustBar variant="light" />
         <SyllabusMap variant="light" />
         <PedagogicalEfficacy variant="light" />
+
+        <ImplementationGuide theme="light" variant="college-gov" />
       </main>
 
       <Footer variant="light" />

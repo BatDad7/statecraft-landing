@@ -4,10 +4,29 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquareCode, X, Bot, Sparkles } from "lucide-react";
 
-const StatecraftTA = () => {
+type TAVertical = "ap-gov" | "college-gov";
+
+const StatecraftTA = ({
+  vertical = "ap-gov",
+}: {
+  vertical?: TAVertical;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  // Use production by default. Override in Vercel (or locally) with NEXT_PUBLIC_TA_BASE_URL
+  // e.g. "https://statecraftapp.azurewebsites.net" (prod) or "https://statecraftapp-staging.azurewebsites.net" (staging)
+  const baseUrl =
+    (process.env.NEXT_PUBLIC_TA_BASE_URL || "https://statecraftapp.azurewebsites.net").replace(
+      /\/+$/,
+      ""
+    );
+  // Standalone deep links supported by the TA app.
+  // - AP Gov: `/ap-gov`
+  // - American Gov: `/am-gov` (selection page today; can be made auto-select in the TA app)
+  const assistantUrl =
+    vertical === "ap-gov" ? `${baseUrl}/ap-gov` : `${baseUrl}/am-gov`;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -20,7 +39,7 @@ const StatecraftTA = () => {
 
   const toggleAssistant = () => {
     if (isMobile) {
-      window.open("https://statecraftapp-staging.azurewebsites.net/ap-gov", "_blank");
+      window.open(assistantUrl, "_blank");
     } else {
       setIsOpen(!isOpen);
     }
@@ -62,7 +81,9 @@ const StatecraftTA = () => {
                   <span className="font-serif font-bold text-white tracking-tight">Statecraft AI | Course Architect</span>
                 </div>
                 <span className="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">
-                  Ask me to align Statecraft with AP Gov Unit 4
+                  {vertical === "college-gov"
+                    ? "Tip: if you see the sim chooser, click “American Government” to start"
+                    : "Ask me to align Statecraft with AP Gov Unit 4"}
                 </span>
               </div>
               <button 
@@ -77,7 +98,7 @@ const StatecraftTA = () => {
             {/* Iframe Content */}
             <div className="flex-1 w-full bg-slate-900 relative">
               <iframe 
-                src="https://statecraftapp-staging.azurewebsites.net/ap-gov"
+                src={assistantUrl}
                 className="w-full h-full border-none"
                 title="Statecraft AI Assistant"
               />

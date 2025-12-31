@@ -176,8 +176,10 @@ export async function generateDailyBrief(verticalId: 'ap-gov' | 'college-gov' = 
   // D. Save to Redis
   // Key strategy: 'daily_brief' (legacy/default) AND 'daily_brief:college-gov'
   const redisKey = verticalId === 'ap-gov' ? 'daily_brief' : `daily_brief:${verticalId}`;
-  
-  await redis.set(redisKey, JSON.stringify(brief), { ex: 90000 }); 
+  // Keep briefs around long enough that a missed cron run doesn't result in empty pages.
+  // (We still surface staleness via the UI/health checks.)
+  const BRIEF_TTL_SECONDS = 60 * 60 * 24 * 7; // 7 days
+  await redis.set(redisKey, JSON.stringify(brief), { ex: BRIEF_TTL_SECONDS }); 
   
   // E. Dispatch Email Report
   try {

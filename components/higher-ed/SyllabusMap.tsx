@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 type SyllabusSegment = {
   weeks: string;
   label: string;
@@ -31,28 +33,75 @@ const SEGMENTS: SyllabusSegment[] = [
   },
 ];
 
-export default function SyllabusMap() {
+export default function SyllabusMap({
+  variant = "dark",
+}: {
+  variant?: "dark" | "light";
+}) {
+  const isLight = variant === "light";
+
   return (
     <section className="mt-12">
-      <div className="rounded-2xl border border-slate-700/50 bg-slate-900/70 backdrop-blur-md p-6 md:p-8">
+      <div
+        className={clsx(
+          "rounded-2xl border p-6 md:p-8 backdrop-blur-md",
+          isLight
+            ? "border-slate-200 bg-white/90 shadow-sm"
+            : "border-slate-700/50 bg-slate-900/70"
+        )}
+      >
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div>
-            <div className="font-mono text-xs uppercase tracking-widest text-emerald-500/80">
+            <div
+              className={clsx(
+                "font-mono text-xs uppercase tracking-widest",
+                isLight ? "text-blue-700" : "text-emerald-500/80"
+              )}
+            >
               /// SYLLABUS MAP
             </div>
-            <h2 className="mt-2 text-2xl md:text-3xl font-extrabold tracking-tight">
+            <h2
+              className={clsx(
+                "mt-2 text-2xl md:text-3xl font-extrabold tracking-tight",
+                isLight ? "text-slate-900" : "text-white"
+              )}
+            >
               15-Week Semester → Simulation Turns
             </h2>
-            <p className="mt-3 text-slate-300 text-sm md:text-base max-w-2xl">
-              This is designed to <span className="text-white font-semibold">replace inefficient lecturing</span>, not add to it.
+            <p
+              className={clsx(
+                "mt-3 text-sm md:text-base max-w-2xl",
+                isLight ? "text-slate-700" : "text-slate-300"
+              )}
+            >
+              This is designed to{" "}
+              <span className={clsx("font-semibold", isLight ? "text-slate-900" : "text-white")}>
+                replace inefficient lecturing
+              </span>
+              , not add to it.
               The simulation becomes the assessment substrate—students generate evidence through real interactions.
             </p>
           </div>
 
           <div className="shrink-0">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-mono text-xs uppercase tracking-widest text-emerald-300">
+            <div
+              className={clsx(
+                "inline-flex items-center gap-2 rounded-full border px-4 py-2",
+                isLight ? "border-blue-200 bg-blue-50" : "border-emerald-500/30 bg-emerald-500/10"
+              )}
+            >
+              <span
+                className={clsx(
+                  "h-2 w-2 rounded-full animate-pulse",
+                  isLight ? "bg-blue-600" : "bg-emerald-500"
+                )}
+              />
+              <span
+                className={clsx(
+                  "font-mono text-xs uppercase tracking-widest",
+                  isLight ? "text-blue-800" : "text-emerald-300"
+                )}
+              >
                 Saves 13% Instructional Time
               </span>
             </div>

@@ -8,38 +8,28 @@ import FeatureGrid from "@/components/landing/FeatureGrid";
 import Testimonials from "@/components/landing/Testimonials";
 import IntelBriefing from "@/components/landing/intel-briefing";
 import { redis } from '@/lib/redis';
+import { parseDailyBrief, type DailyBrief as ParsedBrief } from "@/lib/briefs";
+import ImplementationGuide from "@/components/shared/ImplementationGuide";
 
 // Force revalidation every 60 seconds to pick up new Redis content
 export const revalidate = 60;
 
-interface DailyBrief {
-  headline: string;
-  activity: string;
-  topic_tag: string;
-  date?: string;
-}
-
-async function getDailyBrief(): Promise<DailyBrief> {
+async function getDailyBrief(): Promise<ParsedBrief> {
   try {
     // If env vars are missing (build time), return fallback immediately
     if (!process.env.UPSTASH_REDIS_REST_URL) {
       return fallbackBrief;
     }
     
-    const brief = await redis.get<DailyBrief>('daily_brief');
-    
-    if (!brief) {
-      return fallbackBrief;
-    }
-    
-    return brief;
+    const raw = await redis.get("daily_brief");
+    return parseDailyBrief(raw, fallbackBrief);
   } catch (error) {
     console.error('Failed to fetch daily brief:', error);
     return fallbackBrief;
   }
 }
 
-const fallbackBrief: DailyBrief = {
+const fallbackBrief: ParsedBrief = {
   headline: "Intelligence Channels Silent",
   activity: "Secure connection established. Waiting for daily briefing upload from HQ.",
   topic_tag: "SYSTEM_STANDBY",
@@ -107,16 +97,16 @@ export default async function Home() {
           date={displayDate}
           headline={brief.headline}
           activity={brief.activity}
+          topicTag={brief.topic_tag}
         />
       </div>
 
       <TrustBar 
-        label="Trusted by 500+ High Schools"
+        label="Statecraft is used in over 600 education institutions"
         logos={[
           "Norfolk Academy",
           "Houston ISD",
           "University Liggett School",
-          "Griswold High School (OR)",
           "Bristol Eastern High School (CT)"
         ]}
       />
@@ -190,6 +180,8 @@ export default async function Home() {
       <div id="document-docket">
         <DocumentDocket />
       </div>
+
+      <ImplementationGuide theme="dark" variant="ap-gov" />
     </div>
   );
 }
