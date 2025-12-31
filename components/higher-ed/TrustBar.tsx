@@ -47,7 +47,7 @@ export default function TrustBar({
                 isLight ? "text-slate-900" : "text-white"
               )}
             >
-              Used in 450+ universities
+              Statecraft is used in 450+ Universities
             </h2>
           </div>
           <div className={clsx("text-sm max-w-xl", isLight ? "text-slate-600" : "text-slate-400")}>
