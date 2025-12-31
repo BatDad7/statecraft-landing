@@ -15,7 +15,14 @@ const StatecraftTA = ({
   const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const assistantUrl = `https://statecraftapp-staging.azurewebsites.net/${vertical}`;
+  // Use production by default. Override in Vercel (or locally) with NEXT_PUBLIC_TA_BASE_URL
+  // e.g. "https://statecraftapp.azurewebsites.net" (prod) or "https://statecraftapp-staging.azurewebsites.net" (staging)
+  const baseUrl =
+    (process.env.NEXT_PUBLIC_TA_BASE_URL || "https://statecraftapp.azurewebsites.net").replace(
+      /\/+$/,
+      ""
+    );
+  const assistantUrl = `${baseUrl}/${vertical}`;
 
   useEffect(() => {
     const checkMobile = () => {
