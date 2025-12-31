@@ -22,7 +22,10 @@ const StatecraftTA = ({
       /\/+$/,
       ""
     );
-  const assistantUrl = `${baseUrl}/${vertical}`;
+  // NOTE: The TA app currently supports a standalone deep link for AP Gov at `/ap-gov`.
+  // Other sims (incl. American Government) are selected from the root menu.
+  const assistantPath = vertical === "ap-gov" ? "/ap-gov" : "/";
+  const assistantUrl = `${baseUrl}${assistantPath}`;
 
   useEffect(() => {
     const checkMobile = () => {
