@@ -23,9 +23,10 @@ const StatecraftTA = ({
       ""
     );
   // NOTE: The TA app currently supports a standalone deep link for AP Gov at `/ap-gov`.
-  // Other sims (incl. American Government) are selected from the root menu.
-  const assistantPath = vertical === "ap-gov" ? "/ap-gov" : "/";
-  const assistantUrl = `${baseUrl}${assistantPath}`;
+  // Other sims (incl. American Government) are selected from the root menu today.
+  // We pass a best-effort hint (`?sim=am_gov`) in case the TA app adds support later.
+  const assistantUrl =
+    vertical === "ap-gov" ? `${baseUrl}/ap-gov` : `${baseUrl}/?sim=am_gov`;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -81,7 +82,7 @@ const StatecraftTA = ({
                 </div>
                 <span className="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">
                   {vertical === "college-gov"
-                    ? "Ask me to align Statecraft with American Government learning objectives"
+                    ? "Tip: select “American Government” on the first screen to start"
                     : "Ask me to align Statecraft with AP Gov Unit 4"}
                 </span>
               </div>
