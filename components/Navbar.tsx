@@ -256,6 +256,7 @@ const Navbar = ({ forcedDomain }: { forcedDomain?: DomainTarget }) => {
                     <Link
                       href="https://www.statecraftsims.com/login"
                       className={navLinkClass}
+                      onClick={closeMenu}
                     >
                       <User className={iconClass} />
                       <span className="font-medium">Instructor Login</span>
@@ -263,6 +264,7 @@ const Navbar = ({ forcedDomain }: { forcedDomain?: DomainTarget }) => {
                     <Link
                       href="https://www.statecraftsims.com/login"
                       className={navLinkClass}
+                      onClick={closeMenu}
                     >
                       <LogIn className={iconClass} />
                       <span className="font-medium">Student Login</span>
@@ -280,6 +282,7 @@ const Navbar = ({ forcedDomain }: { forcedDomain?: DomainTarget }) => {
                         ? "bg-blue-700 text-white hover:bg-blue-600 shadow-blue-900/20"
                         : "bg-terminal-green text-slate-900 hover:bg-terminal-green/90 shadow-terminal-green/20"
                     )}
+                    onClick={closeMenu}
                   >
                     Book Instructor Demo
                   </Link>
